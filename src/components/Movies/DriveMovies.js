@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Axios from 'axios' 
-import TMDB_api_key from '../TMDB_api_key'
+import TMDB_api_key from '../../TMDB_api_key'
 
 export default class Movies extends Component {
   constructor(){

@@ -1,12 +1,11 @@
-import React, {Component} from 'react'
-import {Link} from 'react-router-dom'
+import React, { Component } from 'react'
 
-class Homepage extends Component {
-    render() {
-        return (
-            <div></div>
-        )
-    }
+export default class Homepage extends Component {
+  render() {
+    return (
+      <div>
+        Homepage
+      </div>
+    )
+  }
 }
-
-export default Homepage
