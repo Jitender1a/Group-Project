@@ -1,6 +1,4 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react';import './App.css';
 import Axios from 'axios';
 
 class App extends Component {
@@ -19,14 +17,15 @@ class App extends Component {
   }
   render() {
     return (
-      this.state.movies.map(movie => {
+      this.state.movies.map((movie, i) => {
         return (
-          <div>
+          <div key={i}>
             <iframe 
+            title='movie'
             src={`https://drive.google.com/file/d/${movie.id}/preview`} 
             width="640" 
             height="480"
-            allowfullscreen="allowfullscreen"
+            allowFullScreen="allowfullscreen"
             mozallowfullscreen="mozallowfullscreen" 
             msallowfullscreen="msallowfullscreen" 
             oallowfullscreen="oallowfullscreen" 

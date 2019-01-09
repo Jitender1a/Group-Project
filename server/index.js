@@ -88,16 +88,13 @@ app.get('/files', listFiles)
 function listFiles(req, response) {
     const auth = req.app.get('auth')
     const drive = google.drive({version: 'v3', auth});
-  //   console.log(drive)
     drive.files.list({
       pageSize: 10,
       fields: 'nextPageToken, files(id, name)',
     }, (err, res) => {
       if (err) return console.log('The API returned an error: ' + err);
-      // console.log(res.data)
       const files = res.data.files;
       if (files.length) {
-        console.log(files)
         response.send(files).status(200)
       } else {
         console.log('No files found.');
