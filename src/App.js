@@ -1,5 +1,5 @@
 import React, { Component } from 'react';import './App.css';
-import DriveMovies from './components/DriveMovies'
+import DriveMovies from './components/Movies/DriveMovies'
 
 class App extends Component {
 
