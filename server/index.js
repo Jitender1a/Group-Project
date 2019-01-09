@@ -11,6 +11,7 @@ const {google} = require('googleapis');
 const { CONNECTION_STRING, SERVER_PORT, SESSION_SECRET, CLIENT_ID, CLIENT_SECRET } = process.env
 
 const app = express()
+app.use(bodyParser.json())
 
 // If modifying these scopes, delete token.json.
 const SCOPES = ['https://www.googleapis.com/auth/drive'];
@@ -89,7 +90,7 @@ function listFiles(req, response) {
     const auth = req.app.get('auth')
     const drive = google.drive({version: 'v3', auth});
     drive.files.list({
-      pageSize: 10,
+      pageSize: 100,
       fields: 'nextPageToken, files(id, name)',
     }, (err, res) => {
       if (err) return console.log('The API returned an error: ' + err);
