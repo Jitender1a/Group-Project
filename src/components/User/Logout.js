@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { userLoggedOut } from '../ducks/reducer'
+import { userLoggedOut } from '../../ducks/reducer'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 

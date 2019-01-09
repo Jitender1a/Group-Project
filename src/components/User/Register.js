@@ -3,7 +3,7 @@ import axios from 'axios'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 
-import { userLoggedIn } from '../ducks/reducer'
+import { userLoggedIn } from '../../ducks/reducer'
 
 class Register extends Component {
   constructor() {
