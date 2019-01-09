@@ -1,23 +1,36 @@
-const initialState = {
-    movies: []
+
+let initialState = {
+    isAuthenticated: false,
+    user: {},
 }
 
-const GET_MOVIES = 'GET_MOVIES'
+const USER_LOGGED_IN = 'USER_LOGGED_IN'
+const USER_LOGGED_OUT = 'USER_LOGGED_OUT'
 
 export default function reducer(state = initialState, action) {
-    switch (action.type) {
+    switch(action.type) {
+        
+        case USER_LOGGED_IN:
+        return { ...state, isAuthenticated: true , user: action.payload }
+        
+        case USER_LOGGED_OUT:
+        return { ...state, isAuthenticated: false, user: {} }
 
-        case GET_MOVIES:
-            return { ...state, movies: action.payload}
-    
-        default:
+        default: 
             return state
     }
 }
 
-export function getMovies(movies){
+
+export function userLoggedIn(user) {
     return {
-        type: GET_MOVIES,
-        payload: movies
+      type: USER_LOGGED_IN,
+      payload: user
     }
-}
+  }
+  
+  export function userLoggedOut() {
+    return {
+      type: USER_LOGGED_OUT
+    }
+  }
