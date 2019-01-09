@@ -24,3 +24,6 @@ yarn-debug.log*
 yarn-error.log*
 
 credentials.json
+
+TMDB_api_key.js
+
