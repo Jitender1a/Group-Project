@@ -1,6 +1,8 @@
 import React, { Component } from 'react';import './App.css';
 import DriveMovies from './components/Movies/DriveMovies'
 import {Switch, Route} from 'react-router-dom'
+
+//User
 import Login from './components/User/Login'
 import Register from './components/User/Register'
 import LoginHome from './components/User/LoginHome'
