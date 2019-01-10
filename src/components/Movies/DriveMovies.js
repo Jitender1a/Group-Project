@@ -13,7 +13,8 @@ class Movies extends Component {
         moviePosters: [],
         years: [],
         titles: [],
-        movies: []
+        movies: [],
+        search: ''
       }
   }
 
