@@ -12,7 +12,8 @@ class Movies extends Component {
     this.state = {
         moviePosters: [],
         years: [],
-        titles: []
+        titles: [],
+        movies: []
       }
   }
 
@@ -20,6 +21,9 @@ class Movies extends Component {
       componentDidMount(){
         Axios.get('/files').then(res => {
           console.log(res.data)
+          this.setState({
+            movies: res.data,
+          })
           let years = res.data.map(movie => {
             let noUnderScores = movie.name.replace(/_/g, ' ')
             let noFileFormat = noUnderScores.replace(/.mp4|.mkv/g, '')
@@ -53,9 +57,6 @@ class Movies extends Component {
 
 
           
-          // this.setState({
-          //   movies: res.data,
-          // })
           let posters = res.data.map(movie => {
             let noUnderScores = movie.name.replace(/_/g, ' ')
             let noFileFormat = noUnderScores.replace(/.mp4|.mkv/g, '')
@@ -90,7 +91,8 @@ class Movies extends Component {
               <img src={poster} alt="" width='400px' height='600px' onClick={() => {
                 this.props.getInfo({
                   year: this.state.years[i],
-                  title: this.state.titles[i]
+                  title: this.state.titles[i],
+                  id: this.state.movies[i].id
                 })
               }}/>
             </Link>

@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Axios from 'axios';
 import TMDB_api_key from '../../TMDB_api_key'
+import { Link } from 'react-router-dom'
 
 class MoviesInfo extends Component {
     constructor(){
@@ -28,6 +29,9 @@ class MoviesInfo extends Component {
       <div>
         { movieInfo.title }<br/>
         { movieInfo.overview }
+        <Link to='/PlayMovie'>
+            <img src={`https://image.tmdb.org/t/p/original${movieInfo.poster_path}`} alt="" width='150px' height='250px'/>
+        </Link>
         <img src={`https://image.tmdb.org/t/p/original${movieInfo.backdrop_path}`} alt="" width='80%' height='800px'/>
         Rating { movieInfo.vote_average }
       </div>

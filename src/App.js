@@ -7,7 +7,10 @@ import Login from './components/User/Login'
 import Register from './components/User/Register'
 import LoginHome from './components/User/LoginHome'
 import Logout from './components/User/Logout'
+
 import MoviesInfo from './components/Movies/MoviesInfo';
+import PlayMovie from './components/Movies/PlayMovie'
+
 
 class App extends Component {
 
@@ -22,6 +25,7 @@ class App extends Component {
           <Route path='/LoginHome' component={LoginHome}/>
           <Route path='/Logout' component={Logout}/>
           <Route path='/MovieInfo' component={MoviesInfo}/>
+          <Route path='/PlayMovie' component={PlayMovie}/>
        </Switch>
 
      </div>
