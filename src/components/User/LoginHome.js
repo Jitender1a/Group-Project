@@ -19,6 +19,9 @@ class LoginHome extends Component{
             <div class="RegHome">
                 <Link class="RegLink" to="Logout">Logout</Link>
             </div>
+            <div>
+            {/* <Link to="UserAccount">Users Account</Link> */}
+            </div>
         </div>     
         )
 

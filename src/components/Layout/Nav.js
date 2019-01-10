@@ -1,12 +1,18 @@
-import React, { Component } from 'react'
-import {Link} from 'react-router-dom'
+import React from 'react'
+import {Link, withRouter} from 'react-router-dom'
 
-export default class Nav extends Component {
-  render() {
-    return (
-      <div>
-        Nav
-      </div>
+function Nav(props) {
+    return(
+        <div className='nav-bar'>
+            <h1 onClick={() => props.history.push('/')}>Flixify</h1>
+            <div>
+                <div>
+                    <Link to='/AllMovies'>Movies</Link>
+                    <Link to='/LoginHome'>Login</Link>
+                </div>
+            </div>
+        </div>
     )
-  }
 }
+
+export default withRouter(Nav)
