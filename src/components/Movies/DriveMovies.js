@@ -14,14 +14,14 @@ class Movies extends Component {
         years: [],
         titles: [],
         movies: [],
-        search: ''
-      }
+        popularity: [],
+        releaseDate: [],
+        rating: []      }
   }
 
     
       componentDidMount(){
         Axios.get('/files').then(res => {
-          console.log(res.data)
           this.setState({
             movies: res.data,
           })
@@ -59,6 +59,7 @@ class Movies extends Component {
 
           
           let posters = res.data.map(movie => {
+            let id = movie.id
             let noUnderScores = movie.name.replace(/_/g, ' ')
             let noFileFormat = noUnderScores.replace(/.mp4|.mkv/g, '')
             let queryString = noFileFormat.replace(/[0-9]|[()]/ig, '')
@@ -66,57 +67,120 @@ class Movies extends Component {
             let year = noFileFormat.replace(/[^0-9]/ig, '')
             return Axios.get(`https://api.themoviedb.org/3/search/movie?year=${year}&include_adult=false&page=1&query=${noSpaces}&language=en-US&api_key=${TMDB_api_key.tmdb}`).then(res => {
                 let moviePosters = []
-                moviePosters.push(`https://image.tmdb.org/t/p/original${res.data.results[0].poster_path}`)
+                moviePosters.push({
+                  poster: `https://image.tmdb.org/t/p/original${res.data.results[0].poster_path}`,
+                  popularity: res.data.results[0].popularity,
+                  releaseDate: res.data.results[0].release_date,
+                  rating: res.data.results[0].vote_average,
+                  year: year,
+                  title: noSpaces,
+                  id
+                })
                 return moviePosters
               })
           })
           Promise.all(posters).then(res => {
-            let urls = res.map(url => {
-              return url[0]
+            let posters = res.map(data => {
+              return {
+                poster: data[0].poster,
+                popularity: data[0].popularity,
+                releaseDate: data[0].releaseDate,
+                rating: data[0].rating,
+                year: data[0].year,
+                title: data[0].title,
+                id: data[0].id
+              }
             })
             this.setState({
-              moviePosters: urls
+              moviePosters: posters
             })
           })
         })
       }
 
+      componentDidUpdate(prevState){
+        if(this.state.moviePosters !== prevState.moviePosters){
+
+        }
+      }
+
+      comparePopularity = (a,b) => {
+        if(a.popularity > b.popularity){
+              return -1
+            }
+            if(a.popularity < b.popularity){
+              return 1
+            }
+            return 0
+      }
+
+      compareRating = (a,b) => {
+        if(a.rating > b.rating){
+              return -1
+            }
+            if(a.rating < b.rating){
+              return 1
+            }
+            return 0
+      }
+
+      compareReleaseDate = (a,b) => {
+        if(a.releaseDate > b.releaseDate){
+              return -1
+            }
+            if(a.releaseDate < b.releaseDate){
+              return 1
+            }
+            return 0
+      }
+
+
 
   render() {
-    console.log(this.state.titles)
     return (
-        this.state.moviePosters.map((poster, i) => {
+      <div>
+
+        <button
+        onClick={() => (this.setState({
+          moviePosters: [ ...this.state.moviePosters ].sort(this.comparePopularity)
+        }))}
+        >
+          Popular
+        </button>
+
+        <button
+        onClick={() => (this.setState({
+          moviePosters: [ ...this.state.moviePosters ].sort(this.compareRating)
+        }))}
+        >
+          Rating
+        </button>
+        
+        <button
+        onClick={() => (this.setState({
+          moviePosters: [ ...this.state.moviePosters ].sort(this.compareReleaseDate)
+        }))}
+        >
+          Release Date
+        </button>
+
+        {this.state.moviePosters.map((poster, i) => {
+          console.log(poster)
           return (
             <div key={i}>
             <Link to='/MovieInfo'>
-              <img src={poster} alt="" width='400px' height='600px' onClick={() => {
+              <img src={poster.poster} alt="" width='400px' height='600px' onClick={() => {
                 this.props.getInfo({
-                  year: this.state.years[i],
-                  title: this.state.titles[i],
-                  id: this.state.movies[i].id
+                  year: poster.year,
+                  title: poster.title,
+                  id: poster.id
                 })
               }}/>
             </Link>
             </div>
           )
-        })
-    //   this.state.movies.map((movie, i) => {
-    //     return (
-    //       <div key={i}>
-    //         <iframe 
-    //         title='movie'
-    //         src={`https://drive.google.com/file/d/${movie.id}/preview`} 
-    //         width="640" 
-    //         height="480"
-    //         allowFullScreen="allowfullscreen"
-    //         mozallowfullscreen="mozallowfullscreen" 
-    //         msallowfullscreen="msallowfullscreen" 
-    //         oallowfullscreen="oallowfullscreen" 
-    //         webkitallowfullscreen="webkitallowfullscreen"
-    //         ></iframe>
-    //       </div>
-    //     )
-    //   })
+        })}
+      </div>
     )
   }
 }
