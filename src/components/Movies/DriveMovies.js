@@ -1,22 +1,63 @@
 import React, { Component } from 'react'
 import Axios from 'axios' 
 import TMDB_api_key from '../../TMDB_api_key'
+import { connect } from 'react-redux';
+import { getInfo } from '../../ducks/reducer'
+import { Link } from 'react-router-dom'
 
-export default class Movies extends Component {
+class Movies extends Component {
   constructor(){
     super()
 
     this.state = {
-        moviePosters: []
+        moviePosters: [],
+        years: [],
+        titles: [],
+        movies: [],
+        search: ''
       }
   }
 
     
       componentDidMount(){
         Axios.get('/files').then(res => {
+          console.log(res.data)
           this.setState({
             movies: res.data,
           })
+          let years = res.data.map(movie => {
+            let noUnderScores = movie.name.replace(/_/g, ' ')
+            let noFileFormat = noUnderScores.replace(/.mp4|.mkv/g, '')
+            let year = noFileFormat.replace(/[^0-9]/ig, '')
+            let years = []
+            years.push(year)
+            return years
+          })
+          let allYears = years.map(year => {
+            return year[0] 
+          })
+          this.setState({
+            years: allYears
+          })
+
+          let titles = res.data.map(movie => {
+            let noUnderScores = movie.name.replace(/_/g, ' ')
+            let noFileFormat = noUnderScores.replace(/.mp4|.mkv/g, '')
+            let queryString = noFileFormat.replace(/[0-9]|[()]/ig, '')
+            let noSpaces = queryString.replace(/\s/g, '%20')
+            let titles = []
+            titles.push(noSpaces)
+            return titles
+          })
+          let allTitles = titles.map(title => {
+            return title[0]
+          })
+          this.setState({
+            titles: allTitles
+          })
+
+
+          
           let posters = res.data.map(movie => {
             let noUnderScores = movie.name.replace(/_/g, ' ')
             let noFileFormat = noUnderScores.replace(/.mp4|.mkv/g, '')
@@ -24,7 +65,6 @@ export default class Movies extends Component {
             let noSpaces = queryString.replace(/\s/g, '%20')
             let year = noFileFormat.replace(/[^0-9]/ig, '')
             return Axios.get(`https://api.themoviedb.org/3/search/movie?year=${year}&include_adult=false&page=1&query=${noSpaces}&language=en-US&api_key=${TMDB_api_key.tmdb}`).then(res => {
-              console.log(res.data.results[0])
                 let moviePosters = []
                 moviePosters.push(`https://image.tmdb.org/t/p/original${res.data.results[0].poster_path}`)
                 return moviePosters
@@ -41,13 +81,22 @@ export default class Movies extends Component {
         })
       }
 
+
   render() {
+    console.log(this.state.titles)
     return (
         this.state.moviePosters.map((poster, i) => {
-          console.log(poster)
           return (
             <div key={i}>
-              <img src={poster} alt="" width='500px' height='750px'/>
+            <Link to='/MovieInfo'>
+              <img src={poster} alt="" width='400px' height='600px' onClick={() => {
+                this.props.getInfo({
+                  year: this.state.years[i],
+                  title: this.state.titles[i],
+                  id: this.state.movies[i].id
+                })
+              }}/>
+            </Link>
             </div>
           )
         })
@@ -71,3 +120,5 @@ export default class Movies extends Component {
     )
   }
 }
+
+export default connect(null, { getInfo })(Movies)
