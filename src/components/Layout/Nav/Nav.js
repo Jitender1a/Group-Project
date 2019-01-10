@@ -1,5 +1,6 @@
 import React from 'react'
 import {Link, withRouter} from 'react-router-dom'
+import './Nav.css'
 
 function Nav(props) {
     return(
@@ -8,7 +9,8 @@ function Nav(props) {
             <div>
                 <div>
                     <Link to='/AllMovies'>Movies</Link>
-                    <Link to='/LoginHome'>Login</Link>
+                    <Link to='/Account'>Account</Link>
+                    {/* <Link to='/LoginHome'>Login</Link> */}
                 </div>
             </div>
         </div>

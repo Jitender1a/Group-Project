@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Axios from 'axios';
-import TMDB_api_key from '../../TMDB_api_key'
+import TMDB_api_key from '../../../TMDB_api_key'
 import { Link } from 'react-router-dom'
 
 class MoviesInfo extends Component {
