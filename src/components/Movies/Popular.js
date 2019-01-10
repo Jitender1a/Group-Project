@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 
-export default class PopularMovies extends Component {
+export default class Popular extends Component {
   render() {
     return (
       <div>
-        PopularMovies
+        Popular
       </div>
     )
   }

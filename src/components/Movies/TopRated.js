@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 
-export default class TrendingMovies extends Component {
+export default class TopRated extends Component {
   render() {
     return (
       <div>
-        TrendingMovies
+        TopRated
       </div>
     )
   }

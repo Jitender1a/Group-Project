@@ -1,5 +1,4 @@
 import React, { Component } from 'react';import './App.css';
-import DriveMovies from './components/Movies/DriveMovies'
 import {Switch, Route} from 'react-router-dom'
 
 //Layout
@@ -12,32 +11,17 @@ import SideNav from './components/Layout/SideNav'
 import SplashScreen from './components/Layout/SplashScreen'
 
 //Movies
-import AllMovies from './components/Movies/AllMovies'
-import KidsMovies from './components/Movies/KidsMovies'
-import MovieGenres from './components/Movies/MovieGenres'
+import DriveMovies from './components/Movies/DriveMovies'
+import Popular from './components/Movies/Popular'
+import ReleaseDate from './components/Movies/ReleaseDate'
+import TopRated from './components/Movies/TopRated'
 import MoviesInfo from './components/Movies/MoviesInfo'
-import MovieTrailers from './components/Movies/MovieTrailers'
-import PopularMovies from './components/Movies/PopularMovies'
-import RandomMovies from './components/Movies/RandomMovies'
-import RecentlyWatchedMovies from './components/Movies/RecentlyWatchedMovies'
-import TrendingMovies from './components/Movies/TrendingMovies'
+import PlayMovie from './components/Movies/PlayMovie'
 
 //Tools
 import Admin from './components/Tools/Admin'
 import GoogleCast from './components/Tools/GoogleCast'
 import Settings from './components/Tools/Settings'
-
-//Tv Shows
-import AllTvShows from './components/TvShows/AllTvShows'
-import DriveTvShows from './components/TvShows/DriveTvShows'
-import KidsTvShows from './components/TvShows/KidsTvShows'
-import PopularTvShows from './components/TvShows/Popular'
-import RandomTvShows from './components/TvShows/RandomTvShows'
-import RecentlyWatchedTvShows from './components/TvShows/RecentlyWatchedTvShows'
-import TrendingTvShows from './components/TvShows/TrendingTvShows'
-import TvShowGenres from './components/TvShows/TvShowGenres'
-import TvShowsInfo from './components/TvShows/TvShowsInfo'
-import TvShowTrailers from './components/TvShows/TvShowTrailers'
 
 //User
 import Login from './components/User/Login'
@@ -62,6 +46,9 @@ class App extends Component {
             <Route path='/Register' component={Register}/>
             <Route path='/LoginHome' component={LoginHome}/>
             <Route path='/Logout' component={Logout}/>
+            <Route path='/DriveMovies' component={DriveMovies}/>
+            <Route path='/MovieInfo' component={MoviesInfo}/>
+            <Route path='/PlayMovie' component={PlayMovie}/>
         </Switch>
       </div>
     );
@@ -77,29 +64,8 @@ export default App;
 {/* <Route path='/SideNav' component={SideNav}/> */}
 {/* <Route path='/SplashScreen' component={SplashScreen}/> */}
 
-{/* <Route path='/AllMovies' component={AllMovies}/> */}
-{/* <Route path='/KidsMovies' component={KidsMovies}/> */}
-{/* <Route path='/MovieGenres' component={MovieGenres}/> */}
-{/* <Route path='/MoviesInfo' component={MoviesInfo}/> */}
-{/* <Route path='/MovieTrailers' component={MovieTrailers}/> */}
-{/* <Route path='/PopularMovies' component={PopularMovies}/> */}
-{/* <Route path='/RandomMovies' component={RandomMovies}/> */}
-{/* <Route path='/RecentlyWatchedMovies' component={RecentlyWatchedMovies}/> */}
-{/* <Route path='/TrendingMovies' component={TrendingMovies}/> */}
-
 {/* <Route path='/Admin' component={Admin}/> */}
 {/* <Route path='/GoogleCast' component={GoogleCast}/> */}
 {/* <Route path='/Settings' component={Settings}/> */}
-
-{/* <Route path='/AllTvShows' component={AllTvShows}/> */}
-{/* <Route path='/DriveTvShows' component={DriveTvShows}/> */}
-{/* <Route path='/KidsTvShows' component={KidsTvShows}/> */}
-{/* <Route path='/PopularTvShows ' component={PopularTvShows }/> */}
-{/* <Route path='/RandomTvShows' component={RandomTvShows}/> */}
-{/* <Route path='/RecentlyWatchedTvShows' component={RecentlyWatchedTvShows}/> */}
-{/* <Route path='/TrendingTvShows' component={TrendingTvShows}/> */}
-{/* <Route path='/TvShowGenres' component={TvShowGenres}/> */}
-{/* <Route path='/TvShowsInfo' component={TvShowsInfo}/> */}
-{/* <Route path='/TvShowTrailers' component={TvShowTrailers}/> */}
 
 {/* <Route path='/UserAccount' component={UserAccount}/> */}
