@@ -207,21 +207,21 @@ class Movies extends Component {
             </Link>
           </div>
         </div>
-
-        <div className='poster-container'>
-          { 
-            this.state.moviePosters.map((poster, i) => {
-              return (
-                <div key={i}>
-                <Link to='/MovieInfo'>
-                  <img src={poster.poster} alt="" width='188px' height='279px' onClick={() => {
-                    this.props.getInfo({
-                      year: poster.year,
-                      title: poster.title,
-                      id: poster.id
-                    })
-                  }}/>
-                </Link>
+        
+          <div className='poster-container'>
+            { 
+                this.state.moviePosters.map((poster, i) => {
+                return (
+                  <div key={i}>
+                  <Link to='/MovieInfo'>
+                    <img src={poster.poster} alt="" width='188px' height='279px' onClick={() => {
+                      this.props.getInfo({
+                        year: poster.year,
+                        title: poster.title,
+                        id: poster.id
+                      })
+                    }}/>
+                  </Link>
                 </div>
               )
             })
