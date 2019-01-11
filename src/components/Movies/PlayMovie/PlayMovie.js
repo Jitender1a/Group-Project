@@ -1,16 +1,15 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
-import './PlayMovie.css'
 
 class PlayMovie extends Component {
   render() {
     return (
-      <div className='player'>
+      <div>
         <iframe 
             title='movie'
             src={`https://drive.google.com/file/d/${this.props.info.id}/preview`} 
-            width="100%" 
-            height="100%"
+            width="640" 
+            height="480"
             allowFullScreen="allowfullscreen"
             mozallowfullscreen="mozallowfullscreen" 
             msallowfullscreen="msallowfullscreen" 
