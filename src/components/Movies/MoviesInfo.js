@@ -14,7 +14,6 @@ class MoviesInfo extends Component {
     }
 
     componentDidMount(){
-        console.log('info', this.props.info)
         Axios.get(`https://api.themoviedb.org/3/search/movie?year=${this.props.info.year}&include_adult=false&page=1&query=${this.props.info.title}&language=en-US&api_key=${TMDB_api_key.tmdb}`).then(res => {
             this.setState({
                 movieInfo: res.data.results[0]
@@ -23,7 +22,6 @@ class MoviesInfo extends Component {
     }
 
   render() {
-      console.log(this.state.movieInfo)
       let { movieInfo } = this.state
     return (
       <div>
