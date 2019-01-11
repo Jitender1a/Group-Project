@@ -5,10 +5,10 @@ import {Switch, Route} from 'react-router-dom'
 import AboutUs from './components/Layout/AboutUs'
 import Contact from './components/Layout/Contact'
 import Homepage from './components/Layout/Homepage/Homepage'
-import Nav from './components/Layout/Nav'
+import Nav from './components/Layout/Nav/Nav'
 import OurTeam from './components/Layout/OurTeam'
 import SideNav from './components/Layout/SideNav'
-import SplashScreen from './components/Layout/SplashScreen'
+import SplashScreen from './components/Layout/SplashScreen/SplashScreen'
 
 //Movies
 import DriveMovies from './components/Movies/DriveMovies'
