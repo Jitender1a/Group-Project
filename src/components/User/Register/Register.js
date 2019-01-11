@@ -3,12 +3,13 @@ import axios from 'axios'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 
-import { userLoggedIn } from '../../ducks/reducer'
+import { userLoggedIn } from '../../../ducks/reducer'
 
-class Login extends Component {
+class Register extends Component {
   constructor() {
     super()
     this.state = {
+      name: '',
       email: '',
       password: '',
       error: ''
@@ -24,7 +25,7 @@ class Login extends Component {
   }
 
   handleClick = () => {
-    axios.post('/auth/login', this.state).then(response => {
+    axios.post('/auth/register', this.state).then(response => {
       let user = response.data
       this.props.userLoggedIn(user)
     }).catch(err => {
@@ -38,8 +39,14 @@ class Login extends Component {
   render() {
     return this.props.isAuthenticated ? 
     <Redirect to="/"/> :
-    <div class="loginPage">
-      <h1>Login</h1>
+    <div class="RegistrationPage">
+      <h1>Registration</h1>
+      <input 
+        type="text" 
+        name="name" 
+        placeholder="name" 
+        value={this.state.name} 
+        onChange={this.handleChange} />
       <input 
         type="text" 
         name="email" 
@@ -52,7 +59,7 @@ class Login extends Component {
         placeholder="password" 
         value={this.state.password} 
         onChange={this.handleChange} />
-      <button class="LoginButton"onClick={this.handleClick}>submit</button>
+      <button class="LoginButton" onClick={this.handleClick}>submit</button>
       {this.state.error}
     </div>
   }
@@ -65,4 +72,4 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps, { userLoggedIn })(Login)
+export default connect(mapStateToProps, { userLoggedIn })(Register)
