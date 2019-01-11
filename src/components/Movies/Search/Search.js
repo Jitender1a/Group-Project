@@ -16,6 +16,7 @@ class Search extends Component {
     }
 
     componentDidMount(){
+        console.log(this.props.posters)
         let allPosters = this.props.posters.map(poster => {
             return poster.poster
         })
@@ -23,10 +24,18 @@ class Search extends Component {
             posters: allPosters
         })
         let query = this.props.search.replace(/ /g, '%20')
+        console.log(query)
         Axios.get(`https://api.themoviedb.org/3/search/movie?include_adult=false&page=1&query=${query}&language=en-US&api_key=${TMDB_api_key.tmdb}`).then(res => {
-            this.setState({
-                poster: `https://image.tmdb.org/t/p/original${res.data.results[0].poster_path}`
-            })
+            console.log(res.data.results[0])
+            if(!res.data.results[0]){
+                this.setState({
+                    poster: ''
+                })
+            } else {
+                this.setState({
+                    poster: `https://image.tmdb.org/t/p/original${res.data.results[0].poster_path}`
+                })
+            }
         })
     }
 
