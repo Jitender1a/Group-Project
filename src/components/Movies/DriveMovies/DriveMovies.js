@@ -4,6 +4,7 @@ import TMDB_api_key from '../../../TMDB_api_key'
 import { connect } from 'react-redux';
 import { getInfo } from '../../../ducks/reducer'
 import { Link } from 'react-router-dom'
+import './DriveMovies.css'
 
 class Movies extends Component {
   constructor(){
@@ -138,48 +139,51 @@ class Movies extends Component {
 
   render() {
     return (
-      <div>
+      <div className='drivemovies'>
+        <div className='button-container'>
+          <button
+          onClick={() => (this.setState({
+            moviePosters: [ ...this.state.moviePosters ].sort(this.comparePopularity)
+          }))}
+          >
+            Popular
+          </button>
 
-        <button
-        onClick={() => (this.setState({
-          moviePosters: [ ...this.state.moviePosters ].sort(this.comparePopularity)
-        }))}
-        >
-          Popular
-        </button>
-
-        <button
-        onClick={() => (this.setState({
-          moviePosters: [ ...this.state.moviePosters ].sort(this.compareRating)
-        }))}
-        >
-          Rating
-        </button>
+          <button
+          onClick={() => (this.setState({
+            moviePosters: [ ...this.state.moviePosters ].sort(this.compareRating)
+          }))}
+          >
+            Rating
+          </button>
+          
+          <button
+          onClick={() => (this.setState({
+            moviePosters: [ ...this.state.moviePosters ].sort(this.compareReleaseDate)
+          }))}
+          >
+            Release Date
+          </button>
+        </div>
         
-        <button
-        onClick={() => (this.setState({
-          moviePosters: [ ...this.state.moviePosters ].sort(this.compareReleaseDate)
-        }))}
-        >
-          Release Date
-        </button>
-
-        {this.state.moviePosters.map((poster, i) => {
-          console.log(poster)
-          return (
-            <div key={i}>
-            <Link to='/MovieInfo'>
-              <img src={poster.poster} alt="" width='400px' height='600px' onClick={() => {
-                this.props.getInfo({
-                  year: poster.year,
-                  title: poster.title,
-                  id: poster.id
-                })
-              }}/>
-            </Link>
-            </div>
-          )
-        })}
+        <div className='poster-container'>
+          {this.state.moviePosters.map((poster, i) => {
+            console.log(poster)
+            return (
+              <div key={i}>
+              <Link to='/MovieInfo'>
+                <img src={poster.poster} alt="" width='188px' height='279px' onClick={() => {
+                  this.props.getInfo({
+                    year: poster.year,
+                    title: poster.title,
+                    id: poster.id
+                  })
+                }}/>
+              </Link>
+              </div>
+            )
+          })}
+        </div>
       </div>
     )
   }

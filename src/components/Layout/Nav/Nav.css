@@ -1,21 +1,25 @@
 .nav-bar {
-    font-family: 'Josefin Slab', serif;
     width: 100%;
-    height: 75px;
+    height: 9vh;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    background-color:rgb(44, 231, 19);
-    background-size:16px 16px;
+    background-color: rgb(41, 44, 51);
+    /* margin-right: 6%; */
    }
    
    .nav-bar a {
+    /* text-decoration: none; */
+    /* font-size: 25px; */
+    /* margin-right: 30px; */
+    font-size: 18px;
+    font-family: 'Montserrat', sans-serif;
+    color: rgb(230, 230, 230);
     text-decoration: none;
-    color: black;
-    font-size: 25px;
-    margin-right: 30px;
-   
+    padding-left: 25px;
+    text-shadow: 3px 5px 10px #000;
+    
    }
    
    @media(max-width:500px){
@@ -26,11 +30,11 @@
     }
    }
    .nav-bar a:hover {
-    color: red;
+    color: rgb(18, 154, 245);
    }
    
    .nav-bar h1 {
-    color: black;
+    color: rgb(230, 230, 230);
     margin-left: 25px;
     cursor: pointer;
    }
@@ -42,5 +46,5 @@
    }
    
    .nav-bar h1:hover{
-    color:red;
+    color: rgb(18, 154, 245);
    }
