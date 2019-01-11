@@ -2,24 +2,15 @@ import React, { Component } from 'react';import './App.css';
 import {Switch, Route} from 'react-router-dom'
 
 //Layout
-import Homepage from './components/Layout/Homepage/Homepage'
 import Nav from './components/Layout/Nav/Nav'
-import OurTeam from './components/Layout/OurTeam/OurTeam'
-import SideNav from './components/Layout/SideNav/SideNav'
 import SplashScreen from './components/Layout/SplashScreen/SplashScreen'
 
 //Movies
 import DriveMovies from './components/Movies/DriveMovies/DriveMovies'
-import Popular from './components/Movies/Popular/Popular'
-import ReleaseDate from './components/Movies/ReleaseDate/ReleaseDate'
-import TopRated from './components/Movies/TopRated/TopRated'
 import MoviesInfo from './components/Movies/MoviesInfo/MoviesInfo'
 import PlayMovie from './components/Movies/PlayMovie/PlayMovie'
+import Search from './components/Movies/Search/Search'
 
-//Tools
-import Admin from './components/Tools/Admin/Admin'
-import GoogleCast from './components/Tools/GoogleCast/GoogleCast'
-import Settings from './components/Tools/Settings/Settings'
 
 //User
 import Login from './components/User/Login/Login'
@@ -46,6 +37,7 @@ class App extends Component {
             <Route path='/MovieInfo' component={MoviesInfo}/>
             <Route path='/PlayMovie' component={PlayMovie}/>
             <Route path='/Account' component={Account}/>
+            <Route path='/Search' component={Search}/>
         </Switch>
       </div>
     );

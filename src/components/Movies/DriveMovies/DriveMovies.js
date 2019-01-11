@@ -1,8 +1,9 @@
+
 import React, { Component } from 'react'
 import Axios from 'axios' 
 import TMDB_api_key from '../../../TMDB_api_key'
 import { connect } from 'react-redux';
-import { getInfo } from '../../../ducks/reducer'
+import { getInfo, search, getPosters } from '../../../ducks/reducer'
 import { Link } from 'react-router-dom'
 import './DriveMovies.css'
 
@@ -17,7 +18,9 @@ class Movies extends Component {
         movies: [],
         popularity: [],
         releaseDate: [],
-        rating: []      }
+        rating: [],
+        search: ''    
+      }
   }
 
     
@@ -45,7 +48,7 @@ class Movies extends Component {
             let noUnderScores = movie.name.replace(/_/g, ' ')
             let noFileFormat = noUnderScores.replace(/.mp4|.mkv/g, '')
             let queryString = noFileFormat.replace(/[0-9]|[()]/ig, '')
-            let noSpaces = queryString.replace(/\s/g, '%20')
+            let noSpaces = queryString.replace(/ /g, '%20')
             let titles = []
             titles.push(noSpaces)
             return titles
@@ -64,7 +67,7 @@ class Movies extends Component {
             let noUnderScores = movie.name.replace(/_/g, ' ')
             let noFileFormat = noUnderScores.replace(/.mp4|.mkv/g, '')
             let queryString = noFileFormat.replace(/[0-9]|[()]/ig, '')
-            let noSpaces = queryString.replace(/\s/g, '%20')
+            let noSpaces = queryString.replace(/ /g, '%20')
             let year = noFileFormat.replace(/[^0-9]/ig, '')
             return Axios.get(`https://api.themoviedb.org/3/search/movie?year=${year}&include_adult=false&page=1&query=${noSpaces}&language=en-US&api_key=${TMDB_api_key.tmdb}`).then(res => {
                 let moviePosters = []
@@ -95,14 +98,9 @@ class Movies extends Component {
             this.setState({
               moviePosters: posters
             })
+            this.props.getPosters(this.state.moviePosters)
           })
         })
-      }
-
-      componentDidUpdate(prevState){
-        if(this.state.moviePosters !== prevState.moviePosters){
-
-        }
       }
 
       comparePopularity = (a,b) => {
@@ -135,6 +133,12 @@ class Movies extends Component {
             return 0
       }
 
+      handleChange = (val, key) => {
+        let obj = {}
+        obj[key] = val
+        this.setState(obj)
+      }
+
 
 
   render() {
@@ -164,29 +168,41 @@ class Movies extends Component {
           >
             Release Date
           </button>
+
+          <input 
+          onChange={(e) => {this.handleChange(e.target.value, 'search')}}
+          value={this.state.search}
+          />
+
+          <Link to='/Search'>
+            <button onClick={() => this.props.search(this.state.search)}>
+              Search
+            </button>
+          </Link>
         </div>
-        
-        <div className='poster-container'>
-          {this.state.moviePosters.map((poster, i) => {
-            console.log(poster)
-            return (
-              <div key={i}>
-              <Link to='/MovieInfo'>
-                <img src={poster.poster} alt="" width='188px' height='279px' onClick={() => {
-                  this.props.getInfo({
-                    year: poster.year,
-                    title: poster.title,
-                    id: poster.id
-                  })
-                }}/>
-              </Link>
-              </div>
-            )
-          })}
-        </div>
+
+          <div className='poster-container'>
+            { 
+                this.state.moviePosters.map((poster, i) => {
+                return (
+                  <div key={i}>
+                  <Link to='/MovieInfo'>
+                    <img src={poster.poster} alt="" width='188px' height='279px' onClick={() => {
+                      this.props.getInfo({
+                        year: poster.year,
+                        title: poster.title,
+                        id: poster.id
+                      })
+                    }}/>
+                  </Link>
+                </div>
+                )
+              })
+            }
+          </div>
       </div>
     )
   }
 }
 
-export default connect(null, { getInfo })(Movies)
+export default connect(null, { getInfo, search, getPosters})(Movies)
