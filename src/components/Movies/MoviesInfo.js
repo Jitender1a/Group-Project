@@ -3,6 +3,8 @@ import { connect } from 'react-redux'
 import Axios from 'axios';
 import TMDB_api_key from '../../TMDB_api_key'
 import { Link } from 'react-router-dom'
+import './MoviesInfo.css'
+
 
 class MoviesInfo extends Component {
     constructor(){
@@ -26,14 +28,25 @@ class MoviesInfo extends Component {
       console.log(this.state.movieInfo)
       let { movieInfo } = this.state
     return (
-      <div>
-        { movieInfo.title }<br/>
-        { movieInfo.overview }
-        <Link to='/PlayMovie'>
-            <img src={`https://image.tmdb.org/t/p/original${movieInfo.poster_path}`} alt="" width='150px' height='250px'/>
-        </Link>
-        <img src={`https://image.tmdb.org/t/p/original${movieInfo.backdrop_path}`} alt="" width='80%' height='800px'/>
-        Rating { movieInfo.vote_average }
+      <div className='MoviesInfo'>
+         <img src={`https://image.tmdb.org/t/p/original${movieInfo.backdrop_path}`} alt="" width='100%' height='600px' />
+         
+         <div className='movieTitle'>
+         { movieInfo.title }<br/> 
+         </div>
+         
+         
+         <Link to='/PlayMovie'> <img className='MoviePlay' src={`https://image.tmdb.org/t/p/original${movieInfo.poster_path}`}/></Link>
+         
+
+         <div className='description'>
+         { movieInfo.overview }
+         </div>
+         
+         <div className='rating'>
+         Rating { movieInfo.vote_average }
+         </div>
+
       </div>
     )
   }

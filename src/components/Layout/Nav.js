@@ -7,7 +7,7 @@ function Nav(props) {
             <h1 onClick={() => props.history.push('/')}>Flixify</h1>
             <div>
                 <div>
-                    <Link to='/AllMovies'>Movies</Link>
+                    <Link to='/DriveMovies'>Movies</Link>
                     <Link to='/LoginHome'>Login</Link>
                 </div>
             </div>
