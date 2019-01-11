@@ -1,0 +1,28 @@
+.loginPage{
+    text-align: center;
+    border: solid;
+    margin: 5% 35% 5% 35%;
+    padding-top: 50px;
+    padding-bottom: 30px;
+    font-family: 'Josefin Slab', serif;
+  
+  }
+  
+  @media(max-width:500px){
+    .loginPage{
+      margin: 5% 10% 5% 10%;
+    }
+  }
+
+  .LoginButton{
+    margin-top: 5px;
+    font-size: 13.5px;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+    color: white;
+    background-color: black;
+  }
+  .LoginButton:hover {
+    background-color:grey; 
+    color: white;
+  }

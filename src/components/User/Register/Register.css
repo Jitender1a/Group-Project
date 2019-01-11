@@ -1,0 +1,14 @@
+.RegistrationPage{
+    text-align: center;
+    border: solid;
+    margin: 5% 30% 5% 30%;
+    padding-top: 50px;
+    padding-bottom: 30px;
+    font-family: 'Josefin Slab', serif;
+  }
+  
+  @media(max-width:500px){
+    .RegistrationPage{
+      margin: 5% .05% 5% .05%;
+    }
+  }

@@ -152,7 +152,6 @@ class Movies extends Component {
           >
             Popular
           </button>
-
           <button
           onClick={() => (this.setState({
             moviePosters: [ ...this.state.moviePosters ].sort(this.compareRating)
@@ -180,7 +179,7 @@ class Movies extends Component {
             </button>
           </Link>
         </div>
-
+        
           <div className='poster-container'>
             { 
                 this.state.moviePosters.map((poster, i) => {

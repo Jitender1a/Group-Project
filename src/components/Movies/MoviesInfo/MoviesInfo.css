@@ -3,14 +3,14 @@
     position: absolute;
     overflow: hidden;
     z-index:-1;
-    
     padding-bottom: 0px;
-    height: 120vh;
+    height: 100vh;
  }
  
  
  .movieTitle {
-    font-family: 'Roboto Slab', serif;
+  font-family: 'Lato', sans-serif;
+    /* font-family: 'Roboto Slab', serif; */
     color: White;
     font-size: 70px;
     position: relative;
@@ -23,11 +23,13 @@
 
  .description {
     font-size: 17px;
-    font-family: 'Roboto Slab', serif;
+    font-family: 'Lato', sans-serif;
+
+    /* font-family: 'Roboto Slab', serif; */
     color: black;
     margin-left: 40%;
     position: relative;
-    bottom: 600px;
+    bottom: 550px;
     padding-bottom: 0px;
   
     margin-right: 9%;
@@ -55,5 +57,5 @@
       position: relative;
       top: -950px;
       margin-left: 40%;
-    
+      font-family: 'Lato', sans-serif;
   }

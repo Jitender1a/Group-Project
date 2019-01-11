@@ -29,7 +29,7 @@ class MoviesInfo extends Component {
      let { movieInfo } = this.state
    return (
      <div className='MoviesInfo'>
-        <img src={`https://image.tmdb.org/t/p/original${movieInfo.backdrop_path}`} alt="" width='100%' height='500px' />
+        <img src={`https://image.tmdb.org/t/p/original${movieInfo.backdrop_path}`} alt="" width='100%' height='500px'/>
 
         <div className='movieTitle'>
         { movieInfo.title }<br/>
