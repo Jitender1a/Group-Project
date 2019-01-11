@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import Axios from 'axios';
-import TMDB_api_key from '../../TMDB_api_key'
+import TMDB_api_key from '../../../TMDB_api_key'
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom'
-import { getInfo } from '../../ducks/reducer'
+import { getInfo } from '../../../ducks/reducer'
 
 class Search extends Component {
     constructor(){

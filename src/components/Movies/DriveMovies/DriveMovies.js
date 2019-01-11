@@ -1,9 +1,11 @@
+
 import React, { Component } from 'react'
 import Axios from 'axios' 
 import TMDB_api_key from '../../../TMDB_api_key'
 import { connect } from 'react-redux';
 import { getInfo, search, getPosters } from '../../../ducks/reducer'
 import { Link } from 'react-router-dom'
+import './DriveMovies.css'
 
 class Movies extends Component {
   constructor(){
@@ -141,63 +143,66 @@ class Movies extends Component {
 
   render() {
     return (
-      <div>
-
-        <button
-        onClick={() => (this.setState({
-          moviePosters: [ ...this.state.moviePosters ].sort(this.comparePopularity)
-        }))}
-        >
-          Popular
-        </button>
-
-        <button
-        onClick={() => (this.setState({
-          moviePosters: [ ...this.state.moviePosters ].sort(this.compareRating)
-        }))}
-        >
-          Rating
-        </button>
-        
-        <button
-        onClick={() => (this.setState({
-          moviePosters: [ ...this.state.moviePosters ].sort(this.compareReleaseDate)
-        }))}
-        >
-          Release Date
-        </button>
-
-        <input 
-        onChange={(e) => {this.handleChange(e.target.value, 'search')}}
-        value={this.state.search}
-        />
-
-        <Link to='/Search'>
-          <button onClick={() => this.props.search(this.state.search)}>
-            Search
+      <div className='drivemovies'>
+        <div className='button-container'>
+          <button
+          onClick={() => (this.setState({
+            moviePosters: [ ...this.state.moviePosters ].sort(this.comparePopularity)
+          }))}
+          >
+            Popular
           </button>
-        </Link>
 
-        { 
-            this.state.moviePosters.map((poster, i) => {
-            return (
-              <div key={i}>
-              <Link to='/MovieInfo'>
-                <img src={poster.poster} alt="" width='400px' height='600px' onClick={() => {
-                  this.props.getInfo({
-                    year: poster.year,
-                    title: poster.title,
-                    id: poster.id
-                  })
-                }}/>
-              </Link>
-            </div>
-            )
-          })
-        }
+          <button
+          onClick={() => (this.setState({
+            moviePosters: [ ...this.state.moviePosters ].sort(this.compareRating)
+          }))}
+          >
+            Rating
+          </button>
+          
+          <button
+          onClick={() => (this.setState({
+            moviePosters: [ ...this.state.moviePosters ].sort(this.compareReleaseDate)
+          }))}
+          >
+            Release Date
+          </button>
+
+          <input 
+          onChange={(e) => {this.handleChange(e.target.value, 'search')}}
+          value={this.state.search}
+          />
+
+          <Link to='/Search'>
+            <button onClick={() => this.props.search(this.state.search)}>
+              Search
+            </button>
+          </Link>
+        </div>
+
+          <div className='poster-container'>
+            { 
+                this.state.moviePosters.map((poster, i) => {
+                return (
+                  <div key={i}>
+                  <Link to='/MovieInfo'>
+                    <img src={poster.poster} alt="" width='188px' height='279px' onClick={() => {
+                      this.props.getInfo({
+                        year: poster.year,
+                        title: poster.title,
+                        id: poster.id
+                      })
+                    }}/>
+                  </Link>
+                </div>
+                )
+              })
+            }
+          </div>
       </div>
     )
   }
 }
 
-export default connect(null, { getInfo, search, getPosters })(Movies)
+export default connect(null, { getInfo, search, getPosters})(Movies)
