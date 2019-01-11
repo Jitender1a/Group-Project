@@ -17,6 +17,7 @@ import ReleaseDate from './components/Movies/ReleaseDate'
 import TopRated from './components/Movies/TopRated'
 import MoviesInfo from './components/Movies/MoviesInfo'
 import PlayMovie from './components/Movies/PlayMovie'
+import Search from './components/Movies/Search'
 
 //Tools
 import Admin from './components/Tools/Admin'
@@ -49,6 +50,8 @@ class App extends Component {
             <Route path='/DriveMovies' component={DriveMovies}/>
             <Route path='/MovieInfo' component={MoviesInfo}/>
             <Route path='/PlayMovie' component={PlayMovie}/>
+            <Route path='/Search' component={Search}/>
+
         </Switch>
       </div>
     );
