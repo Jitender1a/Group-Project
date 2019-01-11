@@ -1,61 +1,40 @@
 .MoviesInfo{
-    background: white;
+    background:#F0F0E1;
     position: absolute;
     overflow: hidden;
     z-index:-1;
-    transform: skewY(-3.0deg);
-    transform-origin:0 0;
     padding-bottom: 0px;
-    height: 120vh;
+    height: 100vh;
  }
  
  
- @media(max-width:500px){
-    .MovieInfo {
-      font-size: 10px;
-      height: 90vh;
-    }
-  }
- 
  .movieTitle {
-    font-family: 'Staatliches', cursive;
+  font-family: 'Lato', sans-serif;
+    /* font-family: 'Roboto Slab', serif; */
     color: White;
     font-size: 70px;
     position: relative;
     top:-400px;
     margin-left: 40%;
-    transform: skewY(3.0deg);
-    transform-origin:0 0;
+  
     padding-bottom: 0px;
  }
  
- @media(max-width:500px){
-    .movieTitle {
-      font-size: 45px;
-    }
-  }
- 
+
  .description {
-    font-size: 20px;
-    font-family: 'Raleway', sans-serif;
+    font-size: 17px;
+    font-family: 'Lato', sans-serif;
+
+    /* font-family: 'Roboto Slab', serif; */
     color: black;
     margin-left: 40%;
     position: relative;
     bottom: 550px;
     padding-bottom: 0px;
-    transform: skewY(3.0deg);
-    transform-origin:0 0;
+  
     margin-right: 9%;
   }
  
-  @media(max-width:500px){
-    .description {
-      font-size: 10px;
-      bottom: 250px;
-      margin-right: 1px;
-      margin-left:60%;
-    }
-  }
  
   .MoviePlay{
       position: relative;
@@ -63,8 +42,7 @@
       margin-left: 3%;
       width: 341px;
       height: 506px;
-      transform: skewY(3.0deg);
-      transform-origin:0 0;
+
       padding-bottom: 0px;
       transition: transform .3s
   }
@@ -72,13 +50,6 @@
     transform: scale(1.1)
   }
  
-  @media(max-width:500px){
-    .MoviePlay {
-      top:-150px;
-      width: 200px;
-      height: 200px;
-    }
-  }
  
   .rating{
       font-size: 25px;
@@ -86,14 +57,5 @@
       position: relative;
       top: -950px;
       margin-left: 40%;
-      transform: skewY(3.0deg);
-      transform-origin:0 0;
-  }
- 
-  @media(max-width:500px){
-    .rating {
-      font-size: 13px;
-      position: relative;
-      top: -700px;
-    }
+      font-family: 'Lato', sans-serif;
   }
