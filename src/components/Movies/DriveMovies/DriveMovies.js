@@ -160,48 +160,52 @@ class Movies extends Component {
     console.log(this.state.moviePosters)
     return (
       <div className='drivemovies'>
-        <div className='button-container'>
-          <button
-          onClick={() => (this.setState({
-            moviePosters: [ ...this.state.moviePosters ].sort(this.comparePopularity)
-          }))}
-          >
-            Popular
-          </button>
-          <button
-          onClick={() => (this.setState({
-            moviePosters: [ ...this.state.moviePosters ].sort(this.compareRating)
-          }))}
-          >
-            Rating
-          </button>
-          
-          <button
-          onClick={() => (this.setState({
-            moviePosters: [ ...this.state.moviePosters ].sort(this.compareReleaseDate)
-          }))}
-          >
-            Release Date
-          </button>
-
-          <button
-          onClick={() => (this.setState({
-            moviePosters: [ ...this.state.moviePosters ].sort(this.compareAlphabetically)
-          }))}
-          >
-            A-Z
-          </button>
-
-          <input 
-          onChange={(e) => {this.handleChange(e.target.value, 'search')}}
-          value={this.state.search}
-          />
-
-          <Link to='/Search'>
-            <button onClick={() => this.props.search(this.state.search)}>
-              Search
+        <div className='toolbar-container'>
+          <div className='button-container'>
+            <button
+            onClick={() => (this.setState({
+              moviePosters: [ ...this.state.moviePosters ].sort(this.compareAlphabetically)
+            }))}
+            >
+              A-Z
             </button>
-          </Link>
+            
+            <button
+            onClick={() => (this.setState({
+              moviePosters: [ ...this.state.moviePosters ].sort(this.comparePopularity)
+            }))}
+            >
+              Popular
+            </button>
+
+            <button
+            onClick={() => (this.setState({
+              moviePosters: [ ...this.state.moviePosters ].sort(this.compareRating)
+            }))}
+            >
+              Top Rated
+            </button>
+            
+            <button
+            onClick={() => (this.setState({
+              moviePosters: [ ...this.state.moviePosters ].sort(this.compareReleaseDate)
+            }))}
+            >
+              Release Date
+            </button>
+          </div> 
+          <div className='searchbar-container'>
+            <input 
+            onChange={(e) => {this.handleChange(e.target.value, 'search')}}
+            value={this.state.search}
+            />
+
+            <Link to='/Search'>
+              <button onClick={() => this.props.search(this.state.search)}>
+                Search
+              </button>
+            </Link>
+          </div>
         </div>
         
           <div className='poster-container'>
@@ -219,10 +223,10 @@ class Movies extends Component {
                     }}/>
                   </Link>
                 </div>
-                )
-              })
+              )
+            })
             }
-          </div>
+        </div>
       </div>
     )
   }
