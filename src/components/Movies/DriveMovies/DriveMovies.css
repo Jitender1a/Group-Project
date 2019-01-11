@@ -28,9 +28,10 @@
 }
 
 .poster-container {
+    justify-content: space-around;
     display: flex;
     flex-wrap: wrap;
-    padding: 0;
+    padding: 20px;
 }
 
 
@@ -38,8 +39,8 @@
     /* -webkit-filter: grayscale(100%);
     filter: grayscale(100%); */
     border-radius: 4px;
-    margin-left: 20px;
-    /* margin-right: 10px; */
+    margin-left: 10px;
+    margin-right: 10px;
     margin-top: 20px;
     /* margin-bottom: 20px; */
     box-shadow: 3px 5px 10px #000;
