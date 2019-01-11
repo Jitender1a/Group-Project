@@ -66,8 +66,13 @@ class Movies extends Component {
             let id = movie.id
             let noUnderScores = movie.name.replace(/_/g, ' ')
             let noFileFormat = noUnderScores.replace(/.mp4|.mkv/g, '')
-            let queryString = noFileFormat.replace(/[0-9]|[()]/ig, '')
-            let noSpaces = queryString.replace(/ /g, '%20')
+            // console.log('1', noFileFormat)
+            let queryString = noFileFormat.replace(/\(|\)/ig, '')
+            // console.log('2', queryString)
+            let noDate = queryString.replace(/2018|2017|2016|2015|2014|2013|2012|2011|2010|2009|2008|2007|2006|2005|2004|2003|2002|2001|2000|1999|1994|1977/g, '')
+            // console.log('3', noDate)
+            let noSpaces = noDate.replace(/ /g, '%20')
+            // console.log('4', noSpaces)
             let year = noFileFormat.replace(/[^0-9]/ig, '')
             return Axios.get(`https://api.themoviedb.org/3/search/movie?year=${year}&include_adult=false&page=1&query=${noSpaces}&language=en-US&api_key=${TMDB_api_key.tmdb}`).then(res => {
                 let moviePosters = []
@@ -133,6 +138,16 @@ class Movies extends Component {
             return 0
       }
 
+      compareAlphabetically = (a,b) => {
+        if(a.title < b.title){
+              return -1
+            }
+            if(a.title > b.title){
+              return 1
+            }
+            return 0
+      }
+
       handleChange = (val, key) => {
         let obj = {}
         obj[key] = val
@@ -142,6 +157,7 @@ class Movies extends Component {
 
 
   render() {
+    console.log(this.state.moviePosters)
     return (
       <div className='drivemovies'>
         <div className='button-container'>
@@ -167,6 +183,14 @@ class Movies extends Component {
           }))}
           >
             Release Date
+          </button>
+
+          <button
+          onClick={() => (this.setState({
+            moviePosters: [ ...this.state.moviePosters ].sort(this.compareAlphabetically)
+          }))}
+          >
+            A-Z
           </button>
 
           <input 
