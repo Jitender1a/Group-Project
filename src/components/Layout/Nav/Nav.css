@@ -8,6 +8,7 @@
     background-color: rgb(41, 44, 51);
     position: fixed;
     z-index: 10;
+    box-shadow: 3px 5px 10px #000;
     /* margin-right: 6%; */
    }
    

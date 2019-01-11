@@ -66,8 +66,13 @@ class Movies extends Component {
             let id = movie.id
             let noUnderScores = movie.name.replace(/_/g, ' ')
             let noFileFormat = noUnderScores.replace(/.mp4|.mkv/g, '')
-            let queryString = noFileFormat.replace(/[0-9]|[()]/ig, '')
-            let noSpaces = queryString.replace(/ /g, '%20')
+            // console.log('1', noFileFormat)
+            let queryString = noFileFormat.replace(/\(|\)/ig, '')
+            // console.log('2', queryString)
+            let noDate = queryString.replace(/2018|2017|2016|2015|2014|2013|2012|2011|2010|2009|2008|2007|2006|2005|2004|2003|2002|2001|2000|1999|1994|1977/g, '')
+            // console.log('3', noDate)
+            let noSpaces = noDate.replace(/ /g, '%20')
+            // console.log('4', noSpaces)
             let year = noFileFormat.replace(/[^0-9]/ig, '')
             return Axios.get(`https://api.themoviedb.org/3/search/movie?year=${year}&include_adult=false&page=1&query=${noSpaces}&language=en-US&api_key=${TMDB_api_key.tmdb}`).then(res => {
                 let moviePosters = []
@@ -133,6 +138,16 @@ class Movies extends Component {
             return 0
       }
 
+      compareAlphabetically = (a,b) => {
+        if(a.title < b.title){
+              return -1
+            }
+            if(a.title > b.title){
+              return 1
+            }
+            return 0
+      }
+
       handleChange = (val, key) => {
         let obj = {}
         obj[key] = val
@@ -142,64 +157,76 @@ class Movies extends Component {
 
 
   render() {
+    console.log(this.state.moviePosters)
     return (
       <div className='drivemovies'>
-        <div className='button-container'>
-          <button
-          onClick={() => (this.setState({
-            moviePosters: [ ...this.state.moviePosters ].sort(this.comparePopularity)
-          }))}
-          >
-            Popular
-          </button>
-
-          <button
-          onClick={() => (this.setState({
-            moviePosters: [ ...this.state.moviePosters ].sort(this.compareRating)
-          }))}
-          >
-            Rating
-          </button>
-          
-          <button
-          onClick={() => (this.setState({
-            moviePosters: [ ...this.state.moviePosters ].sort(this.compareReleaseDate)
-          }))}
-          >
-            Release Date
-          </button>
-
-          <input 
-          onChange={(e) => {this.handleChange(e.target.value, 'search')}}
-          value={this.state.search}
-          />
-
-          <Link to='/Search'>
-            <button onClick={() => this.props.search(this.state.search)}>
-              Search
+        <div className='toolbar-container'>
+          <div className='button-container'>
+            <button
+            onClick={() => (this.setState({
+              moviePosters: [ ...this.state.moviePosters ].sort(this.compareAlphabetically)
+            }))}
+            >
+              A-Z
             </button>
-          </Link>
+            
+            <button
+            onClick={() => (this.setState({
+              moviePosters: [ ...this.state.moviePosters ].sort(this.comparePopularity)
+            }))}
+            >
+              Popular
+            </button>
+
+            <button
+            onClick={() => (this.setState({
+              moviePosters: [ ...this.state.moviePosters ].sort(this.compareRating)
+            }))}
+            >
+              Top Rated
+            </button>
+            
+            <button
+            onClick={() => (this.setState({
+              moviePosters: [ ...this.state.moviePosters ].sort(this.compareReleaseDate)
+            }))}
+            >
+              Release Date
+            </button>
+          </div> 
+          <div className='searchbar-container'>
+            <input 
+            onChange={(e) => {this.handleChange(e.target.value, 'search')}}
+            value={this.state.search}
+            />
+
+            <Link to='/Search'>
+              <button onClick={() => this.props.search(this.state.search)}>
+                Search
+              </button>
+            </Link>
+          </div>
         </div>
 
-          <div className='poster-container'>
-            { 
-                this.state.moviePosters.map((poster, i) => {
-                return (
-                  <div key={i}>
-                  <Link to='/MovieInfo'>
-                    <img src={poster.poster} alt="" width='188px' height='279px' onClick={() => {
-                      this.props.getInfo({
-                        year: poster.year,
-                        title: poster.title,
-                        id: poster.id
-                      })
-                    }}/>
-                  </Link>
+        <div className='poster-container'>
+          { 
+            this.state.moviePosters.map((poster, i) => {
+              return (
+                <div key={i}>
+                <Link to='/MovieInfo'>
+                  <img src={poster.poster} alt="" width='188px' height='279px' onClick={() => {
+                    this.props.getInfo({
+                      year: poster.year,
+                      title: poster.title,
+                      id: poster.id
+                    })
+                  }}/>
+                </Link>
                 </div>
-                )
-              })
+              )
+            })
             }
-          </div>
+        </div>
       </div>
     )
   }
