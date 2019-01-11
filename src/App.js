@@ -4,7 +4,7 @@ import {Switch, Route} from 'react-router-dom'
 //Layout
 import AboutUs from './components/Layout/AboutUs'
 import Contact from './components/Layout/Contact'
-import Homepage from './components/Layout/Homepage'
+import Homepage from './components/Layout/Homepage/Homepage'
 import Nav from './components/Layout/Nav'
 import OurTeam from './components/Layout/OurTeam'
 import SideNav from './components/Layout/SideNav'
@@ -27,7 +27,7 @@ import Settings from './components/Tools/Settings'
 //User
 import Login from './components/User/Login'
 import Register from './components/User/Register'
-import LoginHome from './components/User/LoginHome'
+import LoginHome from './components/User/Account/Account'
 import Logout from './components/User/Logout'
 import UserAccount from './components/User/UserAccount'
 
