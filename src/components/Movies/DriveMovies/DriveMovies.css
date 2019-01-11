@@ -2,8 +2,18 @@
 
 }
 
+.drivemovies::before {
+    display: block; 
+    content: " "; 
+    margin-top: -9vh; 
+    height: 9vh; 
+    visibility: hidden; 
+    pointer-events: none;
+}
+  
 .drivemovies {
     background-color: #1e2126;
+    margin-top: 9vh;
 }
 
 .button-container {
@@ -31,6 +41,7 @@
     display: flex;
     flex-wrap: wrap;
     padding: 0;
+    justify-content: center;
 }
 
 
@@ -43,4 +54,10 @@
     margin-top: 20px;
     /* margin-bottom: 20px; */
     box-shadow: 3px 5px 10px #000;
+    transition: transform .3s
 }
+
+.drivemovies img:hover {
+    transform: scale(1.2);
+    z-index: 0;
+  }
