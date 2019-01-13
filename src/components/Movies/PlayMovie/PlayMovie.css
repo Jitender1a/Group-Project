@@ -1,5 +1,12 @@
+.player::before {
+    display: block; 
+    content: " "; 
+    height: 9vh; 
+    visibility: hidden;
+}
+
 .player{
     text-align: center;
-    height: 92vh;
+    height: 89.7vh;
     margin-right: .3%;
- }
+}
