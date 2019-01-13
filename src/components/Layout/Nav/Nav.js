@@ -5,8 +5,8 @@ import './Nav.css'
 function Nav(props) {
     return(
         <div className='nav-bar'>
-            <h1 onClick={() => props.history.push('/')}>Flixify</h1>
-            <div>
+            <h1 onClick={() => props.history.push('/')}>MARVEL</h1>
+            <div className='routes-container'>
                 <div>
                     <Link to='/DriveMovies'>Movies</Link>
                     <Link to='/Account'>Account</Link>

@@ -31,31 +31,31 @@ class Search extends Component {
     }
 
 
-  render() {
-      let index = this.state.posters.indexOf(this.state.poster)
-      if(index === -1){
-        return (
-            <div>
-                Movie Not Available
-            </div>
-        )
-      } else { 
-          console.log(this.props.posters[index])
-          return (
-            <div>
-                <Link to='/MovieInfo'>
-                    <img src={this.state.poster} alt="" width='400px' height='600px' onClick={
-                        () => {this.props.getInfo({
-                            year: this.props.posters[index].year,
-                            title: this.props.posters[index].title,
-                            id: this.props.posters[index].id
-                        })}
-                    }/>
-                </Link>
-            </div>
-          )
-      }
-  }
+    render() {
+        let index = this.state.posters.indexOf(this.state.poster)
+        if(index === -1){
+            return (
+                <div className='search'>
+                    Movie Not Available
+                </div>
+            )
+        } else { 
+            console.log(this.props.posters[index])
+            return (
+                <div className='search'>
+                    <Link to='/MovieInfo'>
+                        <img src={this.state.poster} alt="" width='400px' height='600px' onClick={
+                            () => {this.props.getInfo({
+                                year: this.props.posters[index].year,
+                                title: this.props.posters[index].title,
+                                id: this.props.posters[index].id
+                            })}
+                        }/>
+                    </Link>
+                </div>
+            )
+        }
+    }
 }
 
 function mapStateToProps(state){

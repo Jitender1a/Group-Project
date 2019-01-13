@@ -1,0 +1,10 @@
+.search::before {
+    display: block; 
+    content: " "; 
+    height: 9vh; 
+    visibility: hidden;
+}
+
+.search{
+    background-color: #1e2126;
+}

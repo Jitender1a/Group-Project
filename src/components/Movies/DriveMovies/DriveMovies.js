@@ -207,7 +207,10 @@ class Movies extends Component {
             </Link>
           </div>
         </div>
-        
+        <div class="marvel-container">
+          <div class="marvel">MARVEL</div>
+          <div class="studios">STUDIOS</div>
+        </div>
           <div className='poster-container'>
             { 
                 this.state.moviePosters.map((poster, i) => {
