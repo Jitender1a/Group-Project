@@ -194,7 +194,7 @@ class Movies extends Component {
               Release Date
             </button>
           </div> 
-          <div className='searchbar-container'>
+          <div className='searchbar'>
             <input 
             onChange={(e) => {this.handleChange(e.target.value, 'search')}}
             value={this.state.search}
