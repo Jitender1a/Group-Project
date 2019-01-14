@@ -318,7 +318,7 @@ class Movies extends Component {
               Search
             </button>
           </Link>
-        </div>
+          </div>
 
           {
             this.state.alphabetical ?
@@ -809,12 +809,12 @@ class Movies extends Component {
                     }}/>
                   </Link>
                 </div>
-                )
-              })
+              )
+            })
             }
           </div>
           }
-      </div>
+        </div>
     )
   }
 }

@@ -1,0 +1,45 @@
+.LoginHome{
+    text-align: center;
+    font-size: 30px;
+    font-family: 'Josefin Slab', serif;
+  
+  }
+  
+  
+  .RegHome{
+    padding-top: 10px;
+    text-align: center;
+    font-size: 30px;
+    font-family: 'Josefin Slab', serif;
+  
+  }
+  
+  .LoginLink{
+    text-decoration: none;
+    color: Black;
+  }
+  .LoginLink:hover{
+    color: grey;
+  }
+  .RegLink{
+    text-decoration: none;
+    color: Black;
+  }
+  
+  .RegLink:hover{
+    color: grey;
+  }
+  .user{
+    
+    border: solid;
+    margin: 5% 35% 5% 35%;
+    padding-top: 50px;
+    padding-bottom: 30px;
+  }
+  
+  .line {
+    border: 0;
+    height: 3px;
+    background-color:lightgrey;
+    width: 100%;
+  }

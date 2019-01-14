@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
+import './Account.css'
 
 class LoginHome extends Component{
     render(){
