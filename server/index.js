@@ -124,7 +124,6 @@ function listFiles(req, response) {
 
 //Auth.js
 app.post('/auth/login', AuthCtrl.login)
-app.post('/auth/register', AuthCtrl.register)
 app.get('/auth/logout', AuthCtrl.logout)
 app.get('/auth/currentUser', AuthCtrl.getCurrentUser)
 
