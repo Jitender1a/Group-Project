@@ -28,25 +28,34 @@ class MoviesInfo extends Component {
      console.log(this.state.movieInfo)
      let { movieInfo } = this.state
    return (
-     <div className='MoviesInfo'>
-        <img src={`https://image.tmdb.org/t/p/original${movieInfo.backdrop_path}`} alt="" width='100%' height='500px'/>
-
-        <div className='movieTitle'>
-        { movieInfo.title }<br/>
+     <div className='moviesInfo'>
+        <div className='backdrop'>
+            <img src={`https://image.tmdb.org/t/p/original${movieInfo.backdrop_path}`} alt="" width='100%' height='100%'/>
         </div>
 
+        <div className='info-container'>
+            <div className='poster'>
+            <Link to='/PlayMovie'> 
+                <img className='moviePlay' src={`https://image.tmdb.org/t/p/original${movieInfo.poster_path}`}/>
+            </Link>
+            </div>
 
-        <Link to='/PlayMovie'> <img className='MoviePlay' src={`https://image.tmdb.org/t/p/original${movieInfo.poster_path}`}/></Link>
+            <div className='text-container'>
+                <div className='movieTitle'>
+                    {movieInfo.title}<br/>
+                </div>
 
+                <div className='rating'>
+                    <div className='imdb'>IMDb</div> 
+                    { movieInfo.vote_average } 
+                    <img width = "55px" height = "34px" src='https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Nick-CC_HD-Cornerlogo.svg/2000px-Nick-CC_HD-Cornerlogo.svg.png' alt=""/>
+                </div>
 
-        <div className='description'>
-        { movieInfo.overview }
+                <div className='description'>
+                    { movieInfo.overview }
+                </div>
+            </div>
         </div>
-
-        <div className='rating'>
-        Rating { movieInfo.vote_average }
-        </div>
-
      </div>
    )
  }
