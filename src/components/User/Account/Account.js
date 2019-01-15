@@ -11,14 +11,14 @@ class LoginHome extends Component{
                 <Link class="LoginLink"to='Login'>Login</Link>
             </div>  
 
-            <div className="line"></div>
+            {/* <div className="line"></div> */}
             <div class="RegHome">
-            <Link class="RegLink"to ='Register'>Register</Link>
+            {/* <Link class="RegLink"to ='Register'>Register</Link> */}
             </div>  
             
-            <div className="line"></div>
+            {/* <div className="line"></div> */}
             <div class="RegHome">
-                <Link class="RegLink" to="Logout">Logout</Link>
+                {/* <Link class="RegLink" to="Logout">Logout</Link> */}
             </div>
             <div>
             {/* <Link to="UserAccount">Users Account</Link> */}

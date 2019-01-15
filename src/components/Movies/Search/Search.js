@@ -4,6 +4,7 @@ import TMDB_api_key from '../../../TMDB_api_key'
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom'
 import { getInfo } from '../../../ducks/reducer'
+import './Search.css'
 
 class Search extends Component {
     constructor(){
@@ -44,16 +45,26 @@ class Search extends Component {
         let index = this.state.posters.indexOf(this.state.poster)
         if(index === -1){
             return (
-                <div className='search'>
+            <div>
+               <div className='searchS'>
+               <div className='paddingN'></div>
                     Movie Not Available
-                </div>
+               </div>
+               <div className='exact'>
+                   Please Make Sure Spelling Is Exact
+               </div>
+               <div className='LinkDiv'>
+               <Link className='linkHome'to='/DriveMovies'>Return Home</Link>
+               </div>
+            </div>
             )
         } else { 
             console.log(this.props.posters[index])
             return (
                 <div className='search'>
+                <div className='padding'></div>
                     <Link to='/MovieInfo'>
-                        <img src={this.state.poster} alt="" width='400px' height='600px' onClick={
+                        <img src={this.state.poster} alt="" width='350px' height='500px' onClick={
                             () => {this.props.getInfo({
                                 year: this.props.posters[index].year,
                                 title: this.props.posters[index].title,
@@ -61,6 +72,7 @@ class Search extends Component {
                             })}
                         }/>
                     </Link>
+                    
                 </div>
             )
         }

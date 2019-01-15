@@ -5,6 +5,61 @@
     visibility: hidden;
 }
 
+
+.searchS::before {
+    display: block; 
+    content: " "; 
+    height: 9vh; 
+    visibility: hidden;
+}
+
 .search{
+    text-align: center;
     background-color: #1e2126;
+    transition: transform .9s;
+}
+
+.search:hover{
+    transform: scale(1.09)
+    }
+
+.padding{
+   margin: 3%;
+}
+
+.paddingN{
+    margin-top: 10%;
+}
+
+.searchS{
+    text-align: center;
+    color: white;
+    font-size: 50px;
+
+}
+
+.LinkDiv{
+    margin-top: 3%;
+    text-align: center;
+    border: solid white; 
+    opacity: .9;
+    width: 15%;
+    margin-left: 42%;
+    transition: transform .9s;
+}
+
+.LinkDiv:hover{
+    transform: scale(1.1);
+    border-color: grey;
+}
+
+.linkHome{
+    text-decoration: none;
+    color: white;
+}
+
+.exact{
+    margin-top: 2%;
+    text-align: center;
+    color: white;
 }
