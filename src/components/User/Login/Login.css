@@ -1,7 +1,14 @@
+.loginPage::before {
+  display: block; 
+  content: " "; 
+  height: 9vh; 
+  visibility: hidden; 
+}
+
 .loginPage{
     text-align: center;
     border: solid;
-    margin: 5% 35% 5% 35%;
+    margin: 0 35%;;
     padding-top: 50px;
     padding-bottom: 30px;
     font-family: 'Josefin Slab', serif;

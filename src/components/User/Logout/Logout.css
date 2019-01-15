@@ -1,3 +1,10 @@
+.LogOutButton::before {
+  display: block; 
+  content: " "; 
+  height: 9vh; 
+  visibility: hidden; 
+}
+
 .LogOutButton{
     text-align: center;
     text-decoration: none;
@@ -5,6 +12,5 @@
     -webkit-transition-duration: 0.4s;
     transition-duration: 0.4s;
     color:black;
-    
   }
 
