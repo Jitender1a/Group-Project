@@ -46,17 +46,23 @@ class Movies extends Component {
         x: [],    
         y: [],    
         z: [],
-        alphabetical: false
+        alphabetical: false,
+        nextPageToken: ''
       }
   }
 
     
       componentDidMount(){
+        Axios.get('/token').then(res => {
+          this.setState({
+            nextPageToken: res.data
+          })
+        })
         Axios.get('/files').then(res => {
           this.setState({
             movies: res.data,
           })
-          let years = res.data.map(movie => {
+          let years = this.state.movies.map(movie => {
             let noUnderScores = movie.name.replace(/_/g, ' ')
             let noFileFormat = noUnderScores.replace(/.mp4|.mkv/g, '')
             let year = noFileFormat.replace(/[^0-9]/ig, '')
@@ -71,7 +77,7 @@ class Movies extends Component {
             years: allYears
           })
 
-          let titles = res.data.map(movie => {
+          let titles = this.state.movies.map(movie => {
             let noUnderScores = movie.name.replace(/_/g, ' ')
             let noFileFormat = noUnderScores.replace(/.mp4|.mkv/g, '')
             let queryString = noFileFormat.replace(/[0-9]|[()]/ig, '')
@@ -89,7 +95,7 @@ class Movies extends Component {
 
 
           
-          let posters = res.data.map(movie => {
+          let posters = this.state.movies.map(movie => {
             let id = movie.id
             let noUnderScores = movie.name.replace(/_/g, ' ')
             let noFileFormat = noUnderScores.replace(/.mp4|.mkv/g, '')
@@ -268,7 +274,6 @@ class Movies extends Component {
 
 
   render() {
-    console.log(this.state.a)
     return (
       <div className='drivemovies'>
         <div className='button-container'>
