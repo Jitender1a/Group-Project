@@ -28,22 +28,21 @@ class MoviesInfo extends Component {
      console.log(this.state.movieInfo)
      let { movieInfo } = this.state
    return (
-     <div className='moviesInfo'>
+     <div className='moviesContainer'>
         <div className='backdrop'>
             <img src={`https://image.tmdb.org/t/p/original${movieInfo.backdrop_path}`} alt="" width='100%' height='100%'/>
+            
         </div>
 
-        <div className='info-container'>
-            <div className='poster'>
-            <Link to='/PlayMovie'> 
-                <div className='imgWrapper'>
-                    <img className='moviePlay' src={`https://image.tmdb.org/t/p/original${movieInfo.poster_path}`}/>
+        <div className='infoContainer'>
+            <div className='posterContainer'>
+                <Link to='/PlayMovie'> 
+                    <img className='poster' src={`https://image.tmdb.org/t/p/original${movieInfo.poster_path}`} alt="" width='82%' height='auto' />
                     <img className='playButton' src='https://www.clipartmax.com/png/middle/201-2017485_movie-player-play-button-comments-round-play-button-png.png' alt=""/>
-                </div>
-            </Link>
+                </Link>
             </div>
 
-            <div className='text-container'>
+            <div className='textContainer'>
                 <div className='movieTitle'>
                     {movieInfo.title}<br/>
                 </div>
