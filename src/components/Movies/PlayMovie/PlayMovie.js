@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom'
 import './PlayMovie.css'
 
 class PlayMovie extends Component {
   render() {
-    return (
+    return this.props.isAuthenticated ?
       <div className='player'>
         <iframe 
             title='movie'
@@ -19,14 +20,16 @@ class PlayMovie extends Component {
             >
         </iframe>
       </div>
-    )
+      :
+      <Redirect to='/Login'/>
   }
 }
 
 function mapStateToProps(state){
-    let { info } = state
+    let { info, isAuthenticated } = state
     return {
-        info
+        info,
+        isAuthenticated
     }
 }
 

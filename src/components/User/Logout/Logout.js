@@ -15,13 +15,9 @@ class Header extends Component {
   render() {
     return (
       <div>
-        <div></div>
-        {this.props.isAuthenticated ? 
-        <button onClick={this.logout}>Logout</button> : 
-        <button>
-          <Link class="LogOutButton" to="Login">Login</Link>
-        </button>
-        }
+        <Link to='/'>
+          <button onClick={() => {this.props.userLoggedOut()}}>Logout</button> : 
+        </Link>
       </div>
     )
   }

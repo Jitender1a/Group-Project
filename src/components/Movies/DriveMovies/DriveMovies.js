@@ -4,7 +4,7 @@ import Axios from 'axios'
 import TMDB_api_key from '../../../TMDB_api_key'
 import { connect } from 'react-redux';
 import { getInfo, search, getPosters } from '../../../ducks/reducer'
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 import './DriveMovies.css'
 
 class Movies extends Component {
@@ -47,7 +47,9 @@ class Movies extends Component {
         y: [],    
         z: [],
         alphabetical: false,
-        nextPageToken: ''
+        nextPageToken: '',
+        marvelContainer: 'marvel-container',
+        keyPress: true
       }
   }
 
@@ -270,10 +272,24 @@ class Movies extends Component {
         obj[key] = val
         this.setState(obj)
       }
+
+      searchClick = () => {
+        this.props.search(this.state.search)
+      }
+
+      handleKeyPress = (e) => {
+        if(e.key === 'Enter'){
+          this.searchClick()
+          this.setState({
+            keyPress: false
+          })
+        }
+      }
       
       
       
   render() {
+    console.log(this.state.n)
     return (
       <div className='drivemovies'>
         <div className='toolbar-container'>
@@ -281,7 +297,8 @@ class Movies extends Component {
           <button
           onClick={() => (this.setState({
             moviePosters: [ ...this.state.moviePosters ].sort(this.compareAlphabetically),
-            alphabetical: true
+            alphabetical: true,
+            marvelContainer: 'marvelContainerAZ'
           }))}
           >
             A-Z
@@ -318,491 +335,704 @@ class Movies extends Component {
           <input 
           onChange={(e) => {this.handleChange(e.target.value, 'search')}}
           value={this.state.search}
+          onKeyPress={this.handleKeyPress}
           />
+          {
+            this.state.keyPress ?
 
           <Link to='/Search'>
-            <button onClick={() => this.props.search(this.state.search)}>
+            <button onClick={this.searchClick}>
               Search
             </button>
           </Link>
+          :
+          <Redirect to='/Search'/>
+          }
           </div>
           </div>
-          <div class="marvel-container">
-          <div class="marvel">MARVEL</div>
-          <div class="studios">STUDIOS</div>
+          <div className={this.state.marvelContainer}>
+          <div className="marvel">MARVEL</div>
+          <div className="studios">STUDIOS</div>
           </div>
 
           {
             this.state.alphabetical ?
+            <div className='poster-container'>
+          {
+            this.state.a.length ? 
 
-          <div className='poster-container'>
-          <h1 style={{color: 'white'}}>A</h1>
-          {
-            this.state.a.map((poster, i) => {
-              return (
-                <div key={i}>
-                  <Link to='/MovieInfo'>
-                    <img src={poster.poster} alt="" width='188px' height='279px' onClick={() => {
-                      this.props.getInfo({
-                        year: poster.year,
-                        title: poster.title,
-                        id: poster.id
-                      })
-                    }}/>
-                  </Link>
-                </div>
-              )
-            })
+            <div className='alphabetical'>
+              <h1 className='letters'>A</h1>
+              {
+                this.state.a.map((poster, i) => {
+                  return (
+                    <div key={i} className='marginRight'>
+                      <Link to='/MovieInfo'>
+                        <img src={poster.poster} alt="" width='188px' height='279px' onClick={() => {
+                          this.props.getInfo({
+                            year: poster.year,
+                            title: poster.title,
+                            id: poster.id
+                          })
+                        }}/>
+                      </Link>
+                    </div>
+                  )
+                })
+              }
+            </div> 
+            : 
+            null
           }
-          <h1 style={{color: 'white'}}>B</h1>
           {
-            this.state.b.map((poster, i) => {
-              return (
-                <div key={i}>
-                  <Link to='/MovieInfo'>
-                    <img src={poster.poster} alt="" width='188px' height='279px' onClick={() => {
-                      this.props.getInfo({
-                        year: poster.year,
-                        title: poster.title,
-                        id: poster.id
-                      })
-                    }}/>
-                  </Link>
-                </div>
-              )
-            })
+            this.state.b.length ?
+
+            <div className='alphabetical'>
+            <h1 className='letters'>B</h1>
+            {
+              this.state.b.map((poster, i) => {
+                return (
+                  <div key={i} className='marginRight'>
+                    <Link to='/MovieInfo'>
+                      <img src={poster.poster} alt="" width='188px' height='279px' onClick={() => {
+                        this.props.getInfo({
+                          year: poster.year,
+                          title: poster.title,
+                          id: poster.id
+                        })
+                      }}/>
+                    </Link>
+                  </div>
+                )
+              })
+            }
+            </div>
+            :
+            null
           }
-          <h1 style={{color: 'white'}}>C</h1>
           {
-            this.state.c.map((poster, i) => {
-              return (
-                <div key={i}>
-                  <Link to='/MovieInfo'>
-                    <img src={poster.poster} alt="" width='188px' height='279px' onClick={() => {
-                      this.props.getInfo({
-                        year: poster.year,
-                        title: poster.title,
-                        id: poster.id
-                      })
-                    }}/>
-                  </Link>
-                </div>
-              )
-            })
+            this.state.c.length ? 
+
+            <div className='alphabetical'>
+            <h1 className='letters'>C</h1>
+            {
+              this.state.c.map((poster, i) => {
+                return (
+                  <div key={i} className='marginRight'>
+                    <Link to='/MovieInfo'>
+                      <img src={poster.poster} alt="" width='188px' height='279px' onClick={() => {
+                        this.props.getInfo({
+                          year: poster.year,
+                          title: poster.title,
+                          id: poster.id
+                        })
+                      }}/>
+                    </Link>
+                  </div>
+                )
+              })
+            }
+            </div>
+            :
+            null
           }
-          <h1 style={{color: 'white'}}>D</h1>
           {
-            this.state.d.map((poster, i) => {
-              return (
-                <div key={i}>
-                  <Link to='/MovieInfo'>
-                    <img src={poster.poster} alt="" width='188px' height='279px' onClick={() => {
-                      this.props.getInfo({
-                        year: poster.year,
-                        title: poster.title,
-                        id: poster.id
-                      })
-                    }}/>
-                  </Link>
-                </div>
-              )
-            })
+            this.state.d.length ? 
+
+            <div className='alphabetical'>
+            <h1 className='letters'>D</h1>
+            {
+              this.state.d.map((poster, i) => {
+                return (
+                  <div key={i} className='marginRight'>
+                    <Link to='/MovieInfo'>
+                      <img src={poster.poster} alt="" width='188px' height='279px' onClick={() => {
+                        this.props.getInfo({
+                          year: poster.year,
+                          title: poster.title,
+                          id: poster.id
+                        })
+                      }}/>
+                    </Link>
+                  </div>
+                )
+              })
+            }
+            </div>
+            :
+            null
           }
-          <h1 style={{color: 'white'}}>E</h1>
           {
-            this.state.e.map((poster, i) => {
-              return (
-                <div key={i}>
-                  <Link to='/MovieInfo'>
-                    <img src={poster.poster} alt="" width='188px' height='279px' onClick={() => {
-                      this.props.getInfo({
-                        year: poster.year,
-                        title: poster.title,
-                        id: poster.id
-                      })
-                    }}/>
-                  </Link>
-                </div>
-              )
-            })
+            this.state.e.length ?
+
+            <div className='alphabetical'>
+            <h1 className='letters'>E</h1>
+            {
+              this.state.e.map((poster, i) => {
+                return (
+                  <div key={i} className='marginRight'>
+                    <Link to='/MovieInfo'>
+                      <img src={poster.poster} alt="" width='188px' height='279px' onClick={() => {
+                        this.props.getInfo({
+                          year: poster.year,
+                          title: poster.title,
+                          id: poster.id
+                        })
+                      }}/>
+                    </Link>
+                  </div>
+                )
+              })
+            }
+            </div>
+            :
+            null
           }
-          <h1 style={{color: 'white'}}>F</h1>
           {
-            this.state.f.map((poster, i) => {
-              return (
-                <div key={i}>
-                  <Link to='/MovieInfo'>
-                    <img src={poster.poster} alt="" width='188px' height='279px' onClick={() => {
-                      this.props.getInfo({
-                        year: poster.year,
-                        title: poster.title,
-                        id: poster.id
-                      })
-                    }}/>
-                  </Link>
-                </div>
-              )
-            })
+            this.state.f.length ? 
+
+            <div className='alphabetical'>
+            <h1 className='letters'>F</h1>
+            {
+              this.state.f.map((poster, i) => {
+                return (
+                  <div key={i} className='marginRight'>
+                    <Link to='/MovieInfo'>
+                      <img src={poster.poster} alt="" width='188px' height='279px' onClick={() => {
+                        this.props.getInfo({
+                          year: poster.year,
+                          title: poster.title,
+                          id: poster.id
+                        })
+                      }}/>
+                    </Link>
+                  </div>
+                )
+              })
+            }
+            </div>
+            :
+            null
           }
-          <h1 style={{color: 'white'}}>G</h1>
           {
-            this.state.g.map((poster, i) => {
-              return (
-                <div key={i}>
-                  <Link to='/MovieInfo'>
-                    <img src={poster.poster} alt="" width='188px' height='279px' onClick={() => {
-                      this.props.getInfo({
-                        year: poster.year,
-                        title: poster.title,
-                        id: poster.id
-                      })
-                    }}/>
-                  </Link>
-                </div>
-              )
-            })
+            this.state.g.length ? 
+
+            <div className='alphabetical'>
+            <h1 className='letters'>G</h1>
+            {
+              this.state.g.map((poster, i) => {
+                return (
+                  <div key={i} className='marginRight'>
+                    <Link to='/MovieInfo'>
+                      <img src={poster.poster} alt="" width='188px' height='279px' onClick={() => {
+                        this.props.getInfo({
+                          year: poster.year,
+                          title: poster.title,
+                          id: poster.id
+                        })
+                      }}/>
+                    </Link>
+                  </div>
+                )
+              })
+            }
+            </div>
+            :
+            null
           }
-          <h1 style={{color: 'white'}}>H</h1>
           {
-            this.state.h.map((poster, i) => {
-              return (
-                <div key={i}>
-                  <Link to='/MovieInfo'>
-                    <img src={poster.poster} alt="" width='188px' height='279px' onClick={() => {
-                      this.props.getInfo({
-                        year: poster.year,
-                        title: poster.title,
-                        id: poster.id
-                      })
-                    }}/>
-                  </Link>
-                </div>
-              )
-            })
+            this.state.h.length ?
+            
+            <div className='alphabetical'>
+            <h1 className='letters'>H</h1>
+            {
+              this.state.h.map((poster, i) => {
+                return (
+                  <div key={i} className='marginRight'>
+                    <Link to='/MovieInfo'>
+                      <img src={poster.poster} alt="" width='188px' height='279px' onClick={() => {
+                        this.props.getInfo({
+                          year: poster.year,
+                          title: poster.title,
+                          id: poster.id
+                        })
+                      }}/>
+                    </Link>
+                  </div>
+                )
+              })
+            }
+            </div>
+            :
+            null
           }
-          <h1 style={{color: 'white'}}>I</h1>
           {
-            this.state.i.map((poster, i) => {
-              return (
-                <div key={i}>
-                  <Link to='/MovieInfo'>
-                    <img src={poster.poster} alt="" width='188px' height='279px' onClick={() => {
-                      this.props.getInfo({
-                        year: poster.year,
-                        title: poster.title,
-                        id: poster.id
-                      })
-                    }}/>
-                  </Link>
-                </div>
-              )
-            })
+            this.state.i.length ? 
+
+            <div className='alphabetical'>
+            <h1 className='letters'>I</h1>
+            {
+              this.state.i.map((poster, i) => {
+                return (
+                  <div key={i} className='marginRight'>
+                    <Link to='/MovieInfo'>
+                      <img src={poster.poster} alt="" width='188px' height='279px' onClick={() => {
+                        this.props.getInfo({
+                          year: poster.year,
+                          title: poster.title,
+                          id: poster.id
+                        })
+                      }}/>
+                    </Link>
+                  </div>
+                )
+              })
+            }
+            </div>
+            :
+            null
           }
-          <h1 style={{color: 'white'}}>J</h1>
           {
-            this.state.j.map((poster, i) => {
-              return (
-                <div key={i}>
-                  <Link to='/MovieInfo'>
-                    <img src={poster.poster} alt="" width='188px' height='279px' onClick={() => {
-                      this.props.getInfo({
-                        year: poster.year,
-                        title: poster.title,
-                        id: poster.id
-                      })
-                    }}/>
-                  </Link>
-                </div>
-              )
-            })
+            this.state.j.length ? 
+
+            <div className='alphabetical'>
+            <h1 className='letters'>J</h1>
+            {
+              this.state.j.map((poster, i) => {
+                return (
+                  <div key={i} className='marginRight'>
+                    <Link to='/MovieInfo'>
+                      <img src={poster.poster} alt="" width='188px' height='279px' onClick={() => {
+                        this.props.getInfo({
+                          year: poster.year,
+                          title: poster.title,
+                          id: poster.id
+                        })
+                      }}/>
+                    </Link>
+                  </div>
+                )
+              })
+            }
+            </div>
+            : 
+            null
           }
-          <h1 style={{color: 'white'}}>K</h1>
           {
-            this.state.k.map((poster, i) => {
-              return (
-                <div key={i}>
-                  <Link to='/MovieInfo'>
-                    <img src={poster.poster} alt="" width='188px' height='279px' onClick={() => {
-                      this.props.getInfo({
-                        year: poster.year,
-                        title: poster.title,
-                        id: poster.id
-                      })
-                    }}/>
-                  </Link>
-                </div>
-              )
-            })
+            this.state.k.length ? 
+
+            <div className='alphabetical'>
+            <h1 className='letters'>K</h1>
+            {
+              this.state.k.map((poster, i) => {
+                return (
+                  <div key={i} className='marginRight'>
+                    <Link to='/MovieInfo'>
+                      <img src={poster.poster} alt="" width='188px' height='279px' onClick={() => {
+                        this.props.getInfo({
+                          year: poster.year,
+                          title: poster.title,
+                          id: poster.id
+                        })
+                      }}/>
+                    </Link>
+                  </div>
+                )
+              })
+            }
+            </div>
+            :
+            null
           }
-          <h1 style={{color: 'white'}}>L</h1>
           {
-            this.state.l.map((poster, i) => {
-              return (
-                <div key={i}>
-                  <Link to='/MovieInfo'>
-                    <img src={poster.poster} alt="" width='188px' height='279px' onClick={() => {
-                      this.props.getInfo({
-                        year: poster.year,
-                        title: poster.title,
-                        id: poster.id
-                      })
-                    }}/>
-                  </Link>
-                </div>
-              )
-            })
+            this.state.l.length ? 
+
+            <div className='alphabetical'>
+            <h1 className='letters'>L</h1>
+            {
+              this.state.l.map((poster, i) => {
+                return (
+                  <div key={i} className='marginRight'>
+                    <Link to='/MovieInfo'>
+                      <img src={poster.poster} alt="" width='188px' height='279px' onClick={() => {
+                        this.props.getInfo({
+                          year: poster.year,
+                          title: poster.title,
+                          id: poster.id
+                        })
+                      }}/>
+                    </Link>
+                  </div>
+                )
+              })
+            }
+            </div>
+            :
+            null
           }
-          <h1 style={{color: 'white'}}>M</h1>
           {
-            this.state.m.map((poster, i) => {
-              return (
-                <div key={i}>
-                  <Link to='/MovieInfo'>
-                    <img src={poster.poster} alt="" width='188px' height='279px' onClick={() => {
-                      this.props.getInfo({
-                        year: poster.year,
-                        title: poster.title,
-                        id: poster.id
-                      })
-                    }}/>
-                  </Link>
-                </div>
-              )
-            })
+            this.state.m.length ? 
+
+            <div className='alphabetical'>
+            <h1 className='letters'>M</h1>
+            {
+              this.state.m.map((poster, i) => {
+                return (
+                  <div key={i} className='marginRight'>
+                    <Link to='/MovieInfo'>
+                      <img src={poster.poster} alt="" width='188px' height='279px' onClick={() => {
+                        this.props.getInfo({
+                          year: poster.year,
+                          title: poster.title,
+                          id: poster.id
+                        })
+                      }}/>
+                    </Link>
+                  </div>
+                )
+              })
+            }
+            </div>
+            : 
+            null
           }
-          <h1 style={{color: 'white'}}>N</h1>
           {
-            this.state.n.map((poster, i) => {
-              return (
-                <div key={i}>
-                  <Link to='/MovieInfo'>
-                    <img src={poster.poster} alt="" width='188px' height='279px' onClick={() => {
-                      this.props.getInfo({
-                        year: poster.year,
-                        title: poster.title,
-                        id: poster.id
-                      })
-                    }}/>
-                  </Link>
-                </div>
-              )
-            })
+            this.state.n.length ? 
+
+            <div className='alphabetical'>
+            <h1 className='letters'>N</h1>
+            {
+              this.state.n.map((poster, i) => {
+                return (
+                  <div key={i} className='marginRight'>
+                    <Link to='/MovieInfo'>
+                      <img src={poster.poster} alt="" width='188px' height='279px' onClick={() => {
+                        this.props.getInfo({
+                          year: poster.year,
+                          title: poster.title,
+                          id: poster.id
+                        })
+                      }}/>
+                    </Link>
+                  </div>
+                )
+              })
+            }
+            </div>
+            :
+            null
           }
-          <h1 style={{color: 'white'}}>O</h1>
           {
-            this.state.o.map((poster, i) => {
-              return (
-                <div key={i}>
-                  <Link to='/MovieInfo'>
-                    <img src={poster.poster} alt="" width='188px' height='279px' onClick={() => {
-                      this.props.getInfo({
-                        year: poster.year,
-                        title: poster.title,
-                        id: poster.id
-                      })
-                    }}/>
-                  </Link>
-                </div>
-              )
-            })
+            this.state.o.length ? 
+
+            <div className='alphabetical'>
+            <h1 className='letters'>O</h1>
+            {
+              this.state.o.map((poster, i) => {
+                return (
+                  <div key={i} className='marginRight'>
+                    <Link to='/MovieInfo'>
+                      <img src={poster.poster} alt="" width='188px' height='279px' onClick={() => {
+                        this.props.getInfo({
+                          year: poster.year,
+                          title: poster.title,
+                          id: poster.id
+                        })
+                      }}/>
+                    </Link>
+                  </div>
+                )
+              })
+            }
+            </div>
+            :
+            null
           }
-          <h1 style={{color: 'white'}}>P</h1>
           {
-            this.state.p.map((poster, i) => {
-              return (
-                <div key={i}>
-                  <Link to='/MovieInfo'>
-                    <img src={poster.poster} alt="" width='188px' height='279px' onClick={() => {
-                      this.props.getInfo({
-                        year: poster.year,
-                        title: poster.title,
-                        id: poster.id
-                      })
-                    }}/>
-                  </Link>
-                </div>
-              )
-            })
+            this.state.p.length ? 
+
+            <div className='alphabetical'>
+            <h1 className='letters'>P</h1>
+            {
+              this.state.p.map((poster, i) => {
+                return (
+                  <div key={i} className='marginRight'>
+                    <Link to='/MovieInfo'>
+                      <img src={poster.poster} alt="" width='188px' height='279px' onClick={() => {
+                        this.props.getInfo({
+                          year: poster.year,
+                          title: poster.title,
+                          id: poster.id
+                        })
+                      }}/>
+                    </Link>
+                  </div>
+                )
+              })
+            }
+            </div>
+            :
+            null
           }
-        <h1 style={{color: 'white'}}>Q</h1>
           {
-            this.state.q.map((poster, i) => {
-              return (
-                <div key={i}>
-                  <Link to='/MovieInfo'>
-                    <img src={poster.poster} alt="" width='188px' height='279px' onClick={() => {
-                      this.props.getInfo({
-                        year: poster.year,
-                        title: poster.title,
-                        id: poster.id
-                      })
-                    }}/>
-                  </Link>
-                </div>
-              )
-            })
+            this.state.q.length ? 
+
+            <div className='alphabetical'>
+            <h1 className='letters'>Q</h1>
+            {
+              this.state.q.map((poster, i) => {
+                return (
+                  <div key={i} className='marginRight'>
+                    <Link to='/MovieInfo'>
+                      <img src={poster.poster} alt="" width='188px' height='279px' onClick={() => {
+                        this.props.getInfo({
+                          year: poster.year,
+                          title: poster.title,
+                          id: poster.id
+                        })
+                      }}/>
+                    </Link>
+                  </div>
+                )
+              })
+            }
+            </div>
+            :
+            null
           }
-          <h1 style={{color: 'white'}}>R</h1>
           {
-            this.state.r.map((poster, i) => {
-              return (
-                <div key={i}>
-                  <Link to='/MovieInfo'>
-                    <img src={poster.poster} alt="" width='188px' height='279px' onClick={() => {
-                      this.props.getInfo({
-                        year: poster.year,
-                        title: poster.title,
-                        id: poster.id
-                      })
-                    }}/>
-                  </Link>
-                </div>
-              )
-            })
+            this.state.r.length ? 
+
+            <div className='alphabetical'>
+            <h1 className='letters'>R</h1>
+            {
+              this.state.r.map((poster, i) => {
+                return (
+                  <div key={i} className='marginRight'>
+                    <Link to='/MovieInfo'>
+                      <img src={poster.poster} alt="" width='188px' height='279px' onClick={() => {
+                        this.props.getInfo({
+                          year: poster.year,
+                          title: poster.title,
+                          id: poster.id
+                        })
+                      }}/>
+                    </Link>
+                  </div>
+                )
+              })
+            }
+            </div>
+            :
+            null
           }
-          <h1 style={{color: 'white'}}>S</h1>
           {
-            this.state.s.map((poster, i) => {
-              return (
-                <div key={i}>
-                  <Link to='/MovieInfo'>
-                    <img src={poster.poster} alt="" width='188px' height='279px' onClick={() => {
-                      this.props.getInfo({
-                        year: poster.year,
-                        title: poster.title,
-                        id: poster.id
-                      })
-                    }}/>
-                  </Link>
-                </div>
-              )
-            })
+            this.state.s.length ? 
+
+            <div className='alphabetical'>
+            <h1 className='letters'>S</h1>
+            {
+              this.state.s.map((poster, i) => {
+                return (
+                  <div key={i} className='marginRight'>
+                    <Link to='/MovieInfo'>
+                      <img src={poster.poster} alt="" width='188px' height='279px' onClick={() => {
+                        this.props.getInfo({
+                          year: poster.year,
+                          title: poster.title,
+                          id: poster.id
+                        })
+                      }}/>
+                    </Link>
+                  </div>
+                )
+              })
+            }
+            </div>
+            : 
+            null
           }
-          <h1 style={{color: 'white'}}>T</h1>
           {
-            this.state.t.map((poster, i) => {
-              return (
-                <div key={i}>
-                  <Link to='/MovieInfo'>
-                    <img src={poster.poster} alt="" width='188px' height='279px' onClick={() => {
-                      this.props.getInfo({
-                        year: poster.year,
-                        title: poster.title,
-                        id: poster.id
-                      })
-                    }}/>
-                  </Link>
-                </div>
-              )
-            })
+            this.state.t.length ? 
+
+            <div className='alphabetical'>
+            <h1 className='marginRight'>T</h1>
+            {
+              this.state.t.map((poster, i) => {
+                return (
+                  <div key={i} className='marginRight'>
+                    <Link to='/MovieInfo'>
+                      <img src={poster.poster} alt="" width='188px' height='279px' onClick={() => {
+                        this.props.getInfo({
+                          year: poster.year,
+                          title: poster.title,
+                          id: poster.id
+                        })
+                      }}/>
+                    </Link>
+                  </div>
+                )
+              })
+            }
+            </div>
+            :
+            null
           }
-          <h1 style={{color: 'white'}}>U</h1>
           {
-            this.state.u.map((poster, i) => {
-              return (
-                <div key={i}>
-                  <Link to='/MovieInfo'>
-                    <img src={poster.poster} alt="" width='188px' height='279px' onClick={() => {
-                      this.props.getInfo({
-                        year: poster.year,
-                        title: poster.title,
-                        id: poster.id
-                      })
-                    }}/>
-                  </Link>
-                </div>
-              )
-            })
+            this.state.u.length ? 
+
+            <div className='alphabetical'>
+            <h1 className='letters'>U</h1>
+            {
+              this.state.u.map((poster, i) => {
+                return (
+                  <div key={i} className='marginRight'>
+                    <Link to='/MovieInfo'>
+                      <img src={poster.poster} alt="" width='188px' height='279px' onClick={() => {
+                        this.props.getInfo({
+                          year: poster.year,
+                          title: poster.title,
+                          id: poster.id
+                        })
+                      }}/>
+                    </Link>
+                  </div>
+                )
+              })
+            }
+            </div>
+            :
+            null
           }
-          <h1 style={{color: 'white'}}>V</h1>
           {
-            this.state.v.map((poster, i) => {
-              return (
-                <div key={i}>
-                  <Link to='/MovieInfo'>
-                    <img src={poster.poster} alt="" width='188px' height='279px' onClick={() => {
-                      this.props.getInfo({
-                        year: poster.year,
-                        title: poster.title,
-                        id: poster.id
-                      })
-                    }}/>
-                  </Link>
-                </div>
-              )
-            })
+            this.state.v.length ?
+
+            <div className='alphabetical'>
+            <h1 className='letters'>V</h1>
+            {
+              this.state.v.map((poster, i) => {
+                return (
+                  <div key={i} className='marginRight'>
+                    <Link to='/MovieInfo'>
+                      <img src={poster.poster} alt="" width='188px' height='279px' onClick={() => {
+                        this.props.getInfo({
+                          year: poster.year,
+                          title: poster.title,
+                          id: poster.id
+                        })
+                      }}/>
+                    </Link>
+                  </div>
+                )
+              })
+            }
+            </div>
+            :
+            null 
           }
-          <h1 style={{color: 'white'}}>W</h1>
           {
-            this.state.w.map((poster, i) => {
-              return (
-                <div key={i}>
-                  <Link to='/MovieInfo'>
-                    <img src={poster.poster} alt="" width='188px' height='279px' onClick={() => {
-                      this.props.getInfo({
-                        year: poster.year,
-                        title: poster.title,
-                        id: poster.id
-                      })
-                    }}/>
-                  </Link>
-                </div>
-              )
-            })
+            this.state.w.length ? 
+
+            <div className='alphabetical'>
+            <h1 className='letters'>W</h1>
+            {
+              this.state.w.map((poster, i) => {
+                return (
+                  <div key={i} className='marginRight'>
+                    <Link to='/MovieInfo'>
+                      <img src={poster.poster} alt="" width='188px' height='279px' onClick={() => {
+                        this.props.getInfo({
+                          year: poster.year,
+                          title: poster.title,
+                          id: poster.id
+                        })
+                      }}/>
+                    </Link>
+                  </div>
+                )
+              })
+            }
+            </div>
+            :
+            null
           }
-          <h1 style={{color: 'white'}}>X</h1>
           {
-            this.state.x.map((poster, i) => {
-              return (
-                <div key={i}>
-                  <Link to='/MovieInfo'>
-                    <img src={poster.poster} alt="" width='188px' height='279px' onClick={() => {
-                      this.props.getInfo({
-                        year: poster.year,
-                        title: poster.title,
-                        id: poster.id
-                      })
-                    }}/>
-                  </Link>
-                </div>
-              )
-            })
+            this.state.x.length ? 
+
+            <div className='alphabetical'>
+            <h1 className='letters'>X</h1>
+            {
+              this.state.x.map((poster, i) => {
+                return (
+                  <div key={i} className='marginRight'>
+                    <Link to='/MovieInfo'>
+                      <img src={poster.poster} alt="" width='188px' height='279px' onClick={() => {
+                        this.props.getInfo({
+                          year: poster.year,
+                          title: poster.title,
+                          id: poster.id
+                        })
+                      }}/>
+                    </Link>
+                  </div>
+                )
+              })
+            }
+            </div>
+            :
+            null
           }
-          <h1 style={{color: 'white'}}>Y</h1>
           {
-            this.state.y.map((poster, i) => {
-              return (
-                <div key={i}>
-                  <Link to='/MovieInfo'>
-                    <img src={poster.poster} alt="" width='188px' height='279px' onClick={() => {
-                      this.props.getInfo({
-                        year: poster.year,
-                        title: poster.title,
-                        id: poster.id
-                      })
-                    }}/>
-                  </Link>
-                </div>
-              )
-            })
+            this.state.y.length ? 
+
+            <div className='alphabetical'>
+            <h1 className='letters'>Y</h1>
+            {
+              this.state.y.map((poster, i) => {
+                return (
+                  <div key={i} className='marginRight'>
+                    <Link to='/MovieInfo'>
+                      <img src={poster.poster} alt="" width='188px' height='279px' onClick={() => {
+                        this.props.getInfo({
+                          year: poster.year,
+                          title: poster.title,
+                          id: poster.id
+                        })
+                      }}/>
+                    </Link>
+                  </div>
+                )
+              })
+            }
+            </div>
+            : 
+            null
           }
-          <h1 style={{color: 'white'}}>Z</h1>
           {
-            this.state.z.map((poster, i) => {
-              return (
-                <div key={i}>
-                  <Link to='/MovieInfo'>
-                    <img src={poster.poster} alt="" width='188px' height='279px' onClick={() => {
-                      this.props.getInfo({
-                        year: poster.year,
-                        title: poster.title,
-                        id: poster.id
-                      })
-                    }}/>
-                  </Link>
-                </div>
-              )
-            })
+            this.state.z.length ? 
+
+            <div className='alphabetical'>
+            <h1 className='letters'>Z</h1>
+            {
+              this.state.z.map((poster, i) => {
+                return (
+                  <div key={i} className='marginRight'>
+                    <Link to='/MovieInfo'>
+                      <img src={poster.poster} alt="" width='188px' height='279px' onClick={() => {
+                        this.props.getInfo({
+                          year: poster.year,
+                          title: poster.title,
+                          id: poster.id
+                        })
+                      }}/>
+                    </Link>
+                  </div>
+                )
+              })
+            }
+            </div>
+            :
+            null
           }
           </div>
           :

@@ -9,7 +9,7 @@ class Login extends Component {
   constructor() {
     super()
     this.state = {
-      email: '',
+      username: '',
       password: '',
       error: ''
     }
@@ -24,7 +24,7 @@ class Login extends Component {
   }
 
   handleClick = () => {
-    axios.post('/auth/login', this.state).then(response => {
+    axios.post('/auth/login', {username: this.state.username, password: this.state.password}).then(response => {
       let user = response.data
       this.props.userLoggedIn(user)
     }).catch(err => {
@@ -35,6 +35,12 @@ class Login extends Component {
     })
   }
 
+  handleKeyPress = (e) => {
+    if(e.key === 'Enter'){
+      this.handleClick()
+    }
+  }
+
   render() {
     return this.props.isAuthenticated ? 
     <Redirect to="/"/> :
@@ -42,16 +48,17 @@ class Login extends Component {
       <h1>Login</h1>
       <input 
         type="text" 
-        name="email" 
-        placeholder="email" 
-        value={this.state.email} 
+        name="username" 
+        placeholder="Username" 
+        value={this.state.username} 
         onChange={this.handleChange} />
       <input 
-        type="text" 
+        type="password" 
         name="password" 
         placeholder="password" 
         value={this.state.password} 
-        onChange={this.handleChange} />
+        onChange={this.handleChange}
+        onKeyPress={this.handleKeyPress} />
       <button class="LoginButton"onClick={this.handleClick}>submit</button>
       {this.state.error}
     </div>
