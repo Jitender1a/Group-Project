@@ -270,13 +270,23 @@ class Movies extends Component {
         obj[key] = val
         this.setState(obj)
       }
-
-
-
+      
+      
+      
   render() {
     return (
       <div className='drivemovies'>
-        <div className='button-container'>
+        <div className='toolbar-container'>
+          <div className='button-container'>
+          <button
+          onClick={() => (this.setState({
+            moviePosters: [ ...this.state.moviePosters ].sort(this.compareAlphabetically),
+            alphabetical: true
+          }))}
+          >
+            A-Z
+          </button>
+
           <button
           onClick={() => (this.setState({
             moviePosters: [ ...this.state.moviePosters ].sort(this.comparePopularity),
@@ -292,7 +302,7 @@ class Movies extends Component {
             alphabetical: false
           }))}
           >
-            Rating
+            Top Rated
           </button>
           
           <button
@@ -303,16 +313,8 @@ class Movies extends Component {
           >
             Release Date
           </button>
-
-          <button
-          onClick={() => (this.setState({
-            moviePosters: [ ...this.state.moviePosters ].sort(this.compareAlphabetically),
-            alphabetical: true
-          }))}
-          >
-            A-Z
-          </button>
-
+          </div>
+          <div className='searchbar'>
           <input 
           onChange={(e) => {this.handleChange(e.target.value, 'search')}}
           value={this.state.search}
@@ -323,6 +325,11 @@ class Movies extends Component {
               Search
             </button>
           </Link>
+          </div>
+          </div>
+          <div class="marvel-container">
+          <div class="marvel">MARVEL</div>
+          <div class="studios">STUDIOS</div>
           </div>
 
           {

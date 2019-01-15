@@ -1,61 +1,144 @@
-.MoviesInfo::before {
-    display: block; 
-    content: " "; 
-    height: 9vh; 
+.moviesInfo::before {
+    display: block;
+    content: " ";
+    height: 9vh;
     visibility: hidden;
 }
 
-.MoviesInfo{
-    background:#F0F0E1;
+.moviesInfo{
+    background-color: #1e2126;
+    /* background: purple; */
+     /* z-index:-1; */
+     padding: 0 4%;
+    }
+
+.backdrop img{
+    opacity: .5;
+    /* background-size: auto; */
+    box-shadow: 3px 5px 10px #000;
+}
+
+.info-container {
+    display: flex;
+    margin-top: -99vh;
+    /* background-color: green; */
+    justify-content: center;
+    margin-left: 20px;
+    margin-right: 20px;
+    /* justify-content: space-between; */
+}
+
+.imgWrapper {
+    position: relative; 
+    /* width: 195px; 
+    height: 195px; */
+}
+
+.moviePlay{
+    border-radius: 5px;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+    /* top: -500px; */
+    /* margin-left: 3%; */
+    width: 341px;
+    height: 506px;
+    /* width: 26.7vw;
+    height: 82.9vh; */
+    /* padding-bottom: 0px; */
+    transition: transform .6s;
+    box-shadow: 3px 5px 10px #000;
+}
+
+.moviePlay:hover{
+    transform: scale(1.1)
+}
+
+.playButton {
     position: absolute;
-    overflow: hidden;
-    z-index:-1;
-    padding-bottom: 0px;
-    height: 120vh;
- }
- 
- .movieTitle {
-  font-family: 'Lato', sans-serif;
-    /* font-family: 'Roboto Slab', serif; */
-    color: White;
+    left: 7.5vw;
+    top: 28vh;
+    z-index: 10;
+    width: 150px; 
+    height: 150px;
+    opacity: .7;
+    background-color: white;
+    border-radius: 50%;
+
+}
+
+.playButton:hover{
+    background-color: #1e2126;
+}
+
+.text-container {
+    display: inline-block;
+    text-align: center;
+    /* background-color: purple; */
+    margin-left: 20px;
+    margin-top: 15vh;
+
+}
+
+.movieTitle {
+    /* font-family: 'Lato', sans-serif; */
+    font-family: 'Homenaje', sans-serif;
+    color: rgb(230, 230, 230);
     font-size: 70px;
     position: relative;
-    top:-400px;
-    margin-left: 40%;
-    padding-bottom: 0px;
- }
- 
- .description {
-    font-size: 17px;
-    font-family: 'Lato', sans-serif;
-    /* font-family: 'Roboto Slab', serif; */
-    color: black;
-    margin-left: 40%;
-    position: relative;
-    bottom: 550px;
-    padding-bottom: 0px;
-    margin-right: 9%;
-  }
- 
-  .MoviePlay{
-      position: relative;
-      top: -500px;
-      margin-left: 3%;
-      width: 341px;
-      height: 506px;
-      padding-bottom: 0px;
-      transition: transform .3s
-  }
+    justify-content: center;
+    text-shadow: 3px 5px 10px #000;
+    margin:auto;
+    /* font-weight: 500; */
+    /* top:-400px; */
+    /* margin-left: 40%; */
+    /* padding-bottom: 0px; */
+}
 
-  .MoviePlay:hover{
-    transform: scale(1.1)
+.rating{
+    font-size: 25px;
+    color:rgb(230, 230, 230);
+    position: relative;
+    display: flex;
+    justify-content: left;
+    margin-left: 7%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+
+    /* text-align: center; */
+    /* top: -950px; */
+    /* margin-left: 40%; */
+    /* font-family: 'Lato', sans-serif; */
+    text-shadow: 3px 5px 10px #000;
+}
+
+.imdb {
+    border: #e8b708 solid 1px;
+    border-radius: 5px;
+    padding: 0 5px;
+    margin-right: 10px;
+    box-shadow: 3px 5px 10px #000;
+
+}
+
+ .description {
+    border-radius: 5px;
+    font-size: 17px;
+    /* font-family: 'Lato', sans-serif; */
+    color: rgb(230, 230, 230);
+    /* margin-left: 40%; */
+    position: relative;
+    text-shadow: 3px 5px 10px #000;
+    margin: 0 5%;
+    /* border: rgb(230, 230, 230) solid 1px; */
+    padding: 5px 0;
+    background-color: #1e212638;
+    box-shadow: 3px 5px 10px #000;
+
+    /* bottom: 550px; */
+    /* padding-bottom: 0px; */
+    /* margin-right: 9%; */
   }
+  
  
-  .rating{
-      font-size: 25px;
-      color:white;
-      position: relative;
-      top: -950px;
-      margin-left: 40%;
-      font-family: 'Lato', sans-serif;
-  }
