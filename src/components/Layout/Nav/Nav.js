@@ -10,12 +10,11 @@ function Nav(props) {
             <h1 onClick={() => props.history.push('/')}>MARVEL</h1>
             <div className='routes-container'>
                 <div>
-                    <Link to='/DriveMovies'>Movies</Link>
                     {
                         props.isAuthenticated ?
                         <button onClick={() => {props.userLoggedOut()}}>Logout</button>
                         :
-                        <Link to='/Login'>Login</Link>
+                        null
                     }
                     {/* <Link to='/LoginHome'>Login</Link> */}
                 </div>
