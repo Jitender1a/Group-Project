@@ -36,7 +36,10 @@ class MoviesInfo extends Component {
         <div className='info-container'>
             <div className='poster'>
             <Link to='/PlayMovie'> 
-                <img className='moviePlay' src={`https://image.tmdb.org/t/p/original${movieInfo.poster_path}`}/>
+                <div className='imgWrapper'>
+                    <img className='moviePlay' src={`https://image.tmdb.org/t/p/original${movieInfo.poster_path}`}/>
+                    <img className='playButton' src='https://www.clipartmax.com/png/middle/201-2017485_movie-player-play-button-comments-round-play-button-png.png' alt=""/>
+                </div>
             </Link>
             </div>
 
@@ -47,8 +50,8 @@ class MoviesInfo extends Component {
 
                 <div className='rating'>
                     <div className='imdb'>IMDb</div> 
-                    { movieInfo.vote_average } 
-                    <img width = "55px" height = "34px" src='https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Nick-CC_HD-Cornerlogo.svg/2000px-Nick-CC_HD-Cornerlogo.svg.png' alt=""/>
+                    { movieInfo.vote_average }
+                    {/* <img width = "55px" height = "34px" src='https://cdn.freebiesupply.com/logos/large/2x/dolby-digital-5-1-logo-png-transparent.png' alt=""/> */}
                 </div>
 
                 <div className='description'>

@@ -28,10 +28,17 @@
     /* justify-content: space-between; */
 }
 
+.imgWrapper {
+    position: relative; 
+    /* width: 195px; 
+    height: 195px; */
+}
+
 .moviePlay{
     border-radius: 5px;
     justify-content: center;
     position: relative;
+    z-index: 1;
     /* top: -500px; */
     /* margin-left: 3%; */
     width: 341px;
@@ -45,6 +52,23 @@
 
 .moviePlay:hover{
     transform: scale(1.1)
+}
+
+.playButton {
+    position: absolute;
+    left: 7.5vw;
+    top: 28vh;
+    z-index: 10;
+    width: 150px; 
+    height: 150px;
+    opacity: .7;
+    background-color: white;
+    border-radius: 50%;
+
+}
+
+.playButton:hover{
+    background-color: #1e2126;
 }
 
 .text-container {
