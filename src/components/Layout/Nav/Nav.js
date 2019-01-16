@@ -1,5 +1,5 @@
 import React from 'react'
-import {Link, withRouter} from 'react-router-dom'
+import {withRouter} from 'react-router-dom'
 import './Nav.css'
 import { userLoggedOut } from '../../../ducks/reducer'
 import { connect } from 'react-redux'
@@ -7,7 +7,7 @@ import { connect } from 'react-redux'
 function Nav(props) {
     return(
         <div className='nav-bar'>
-            <h1 onClick={() => props.history.push('/')}>MARVEL</h1>
+            <h1 onClick={() => props.history.push('/')}>The Club</h1>
             <div className='routes-container'>
                 <div>
                     {

@@ -12,6 +12,10 @@ class Search extends Component {
 
         this.state = {
             poster: '',
+            backDrop: '',
+            title: '',
+            rating: '',
+            overview: '',
             posters: []
         }
     }
@@ -34,7 +38,11 @@ class Search extends Component {
                 })
             } else {
                 this.setState({
-                    poster: `https://image.tmdb.org/t/p/original${res.data.results[0].poster_path}`
+                    poster: `https://image.tmdb.org/t/p/original${res.data.results[0].poster_path}`,
+                    backDrop: `https://image.tmdb.org/t/p/original${res.data.results[0].backdrop_path}`,
+                    title: res.data.results[0].title,
+                    rating: res.data.results[0].vote_average,
+                    overview: res.data.results[0].overview
                 })
             }
         })
@@ -42,6 +50,7 @@ class Search extends Component {
 
 
     render() {
+        console.log(this.state.posters)
         let index = this.state.posters.indexOf(this.state.poster)
         if(index === -1){
             return (
@@ -61,19 +70,45 @@ class Search extends Component {
         } else { 
             console.log(this.props.posters[index])
             return (
-                <div className='search'>
-                <div className='padding'></div>
-                    <Link to='/MovieInfo'>
-                        <img src={this.state.poster} alt="" width='350px' height='500px' onClick={
-                            () => {this.props.getInfo({
-                                year: this.props.posters[index].year,
-                                title: this.props.posters[index].title,
-                                id: this.props.posters[index].id
-                            })}
-                        }/>
-                    </Link>
+                <div className='moviesContainer'>
+                <div className='backdrop'>
+                    <img src={this.state.backDrop} alt="" width='100%' height='100%'/>
                     
                 </div>
+                {/* <img className='background' src='https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/rN0W64K4ipau8gxv/dark-gray-background-soft-fifteen-shades-of-grey-smooth-background-with-the-addition-of-a-bit-of-noise_bvu2c-5qtg_thumbnail-full01.png' alt=""/> */}
+                <div className='infoContainer'>
+                    <div className='posterContainer'>
+                    {
+                        this.props.isAuthenticated ?
+                        <Link to='/PlayMovie'> 
+                            <img className='poster' src={this.state.poster} alt=""/>
+                            {/* <img className='playButton' src='https://www.clipartmax.com/png/middle/201-2017485_movie-player-play-button-comments-round-play-button-png.png' alt=""/> */}
+                        </Link>
+                        :
+                        <Link to='/Login'> 
+                            <img className='poster' src={this.state.poster} alt=""/>
+                            {/* <img className='playButton' src='https://www.clipartmax.com/png/middle/201-2017485_movie-player-play-button-comments-round-play-button-png.png' alt=""/> */}
+                        </Link>
+                    }
+                    </div>
+        
+                    <div className='textContainer'>
+                        <div className='movieTitle'>
+                            {this.state.title}<br/>
+                        </div>
+        
+                        <div className='rating'>
+                            <div className='imdb'>IMDb</div> 
+                            { this.state.rating }
+                            {/* <img width = "55px" height = "34px" src='https://cdn.freebiesupply.com/logos/large/2x/dolby-digital-5-1-logo-png-transparent.png' alt=""/> */}
+                        </div>
+        
+                        <div className='description'>
+                            { this.state.overview }
+                        </div>
+                    </div>
+                </div>
+             </div>
             )
         }
     }
