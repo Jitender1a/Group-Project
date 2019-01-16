@@ -27,32 +27,29 @@ class MoviesInfo extends Component {
      console.log(this.props.isAuthenticated)
      let { movieInfo } = this.state
    return (
-     <div className='moviesInfo'>
+     <div className='moviesContainer'>
         <div className='backdrop'>
             <img src={`https://image.tmdb.org/t/p/original${movieInfo.backdrop_path}`} alt="" width='100%' height='100%'/>
+            
         </div>
-
-        <div className='info-container'>
-            <div className='poster'>
+        <img className='background' src='https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/rN0W64K4ipau8gxv/dark-gray-background-soft-fifteen-shades-of-grey-smooth-background-with-the-addition-of-a-bit-of-noise_bvu2c-5qtg_thumbnail-full01.png' alt=""/>
+        <div className='infoContainer'>
+            <div className='posterContainer'>
             {
                 this.props.isAuthenticated ?
                 <Link to='/PlayMovie'> 
-                <div className='imgWrapper'>
-                    <img className='moviePlay' src={`https://image.tmdb.org/t/p/original${movieInfo.poster_path}`}/>
-                    <img className='playButton' src='https://www.clipartmax.com/png/middle/201-2017485_movie-player-play-button-comments-round-play-button-png.png' alt=""/>
-                </div>
+                    <img className='poster' src={`https://image.tmdb.org/t/p/original${movieInfo.poster_path}`} alt=""/>
+                    {/* <img className='playButton' src='https://www.clipartmax.com/png/middle/201-2017485_movie-player-play-button-comments-round-play-button-png.png' alt=""/> */}
                 </Link>
                 :
                 <Link to='/Login'> 
-                    <div className='imgWrapper'>
-                        <img className='moviePlay' src={`https://image.tmdb.org/t/p/original${movieInfo.poster_path}`}/>
-                        <img className='playButton' src='https://www.clipartmax.com/png/middle/201-2017485_movie-player-play-button-comments-round-play-button-png.png' alt=""/>
-                    </div>
+                    <img className='poster' src={`https://image.tmdb.org/t/p/original${movieInfo.poster_path}`} alt=""/>
+                    {/* <img className='playButton' src='https://www.clipartmax.com/png/middle/201-2017485_movie-player-play-button-comments-round-play-button-png.png' alt=""/> */}
                 </Link>
             }
             </div>
 
-            <div className='text-container'>
+            <div className='textContainer'>
                 <div className='movieTitle'>
                     {movieInfo.title}<br/>
                 </div>

@@ -341,9 +341,9 @@ class Movies extends Component {
             this.state.keyPress ?
 
           <Link to='/Search'>
-            <button onClick={this.searchClick}>
+            {/* <button onClick={this.searchClick}>
               Search
-            </button>
+            </button> */}
           </Link>
           :
           <Redirect to='/Search'/>
@@ -856,7 +856,7 @@ class Movies extends Component {
             this.state.t.length ? 
 
             <div className='alphabetical'>
-            <h1 className='marginRight'>T</h1>
+            <h1 className='letters'>T</h1>
             {
               this.state.t.map((poster, i) => {
                 return (

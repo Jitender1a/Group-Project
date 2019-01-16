@@ -1,3 +1,7 @@
+::-webkit-scrollbar {
+    display: none;
+}
+
 body {     
   background: #1e2126;
 }
@@ -64,18 +68,16 @@ body {
     box-shadow: 3px 5px 10px #000;
 }
 
-.searchbar button {
+/* .searchbar button {
     border-radius: 3px;
-    /* margin-left: 20px; */
     background-color: #1e2126;
     color: rgb(230, 230, 230);
     border: none;
-    /* font-family: 'Amatic SC', cursive; */
     font-size: 15px;
     margin: 8px 6px;
     padding: 5px 14px;
     text-shadow: 3px 5px 10px #000;
-}
+} */
 
 .searchbar button:hover {
     color: #d4d5d6;
@@ -86,10 +88,9 @@ body {
     justify-content: space-around;
     display: flex;
     flex-wrap: wrap;
-    /* padding: 0; */
     justify-content: center;
-    padding: 10px 32px;
-    margin-top: -165px;
+    /* padding: 10px 32px; */
+    margin-top: -155px;
     /* background: purple; */
 }
 
@@ -115,7 +116,7 @@ body {
 
 .drivemovies img:hover {
     transform: scale(1.1);
-    z-index: 0;
+    z-index: 3;
   }
 
 /* Marvel */
@@ -182,6 +183,7 @@ body {
 
 .letters {
     margin-right: 48px;
+    margin-left: 25px;
 }
 
 .marginRight {

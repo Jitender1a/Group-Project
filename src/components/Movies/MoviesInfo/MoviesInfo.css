@@ -1,51 +1,76 @@
-.moviesInfo::before {
+.moviesContainer::before {
     display: block;
     content: " ";
     height: 9vh;
     visibility: hidden;
 }
 
-.moviesInfo{
+.moviesContainer{
     background-color: #1e2126;
-    /* background: purple; */
      /* z-index:-1; */
      padding: 0 4%;
     }
 
 .backdrop img{
+    /* position: relative; */
+    z-index: 1;
     opacity: .5;
-    /* background-size: auto; */
     box-shadow: 3px 5px 10px #000;
 }
 
-.info-container {
-    display: flex;
-    margin-top: -99vh;
+.background {
+    border: #e8b708 solid 1px;
+    position: absolute;
+    top: 22vh;
+    bottom: 0;
+    left: 22vw;
+    right: 0;
+    border-radius: 5px;
+    /* background-color: #1e2126; */
+    width: 70%;
+    height: auto;
+    opacity: .5;
+    box-shadow: 3px 5px 10px #000;
+}
+
+.infoContainer {
+    /* position: absolute;
+    top: 19vh;
+    bottom: 0;
+    left: 0;
+    right: 0; */
+    /* height: 100%;
+    width: 100%; */
+    /* z-index: 2; */
+    /* display: flex; */
+    /* margin-top: -99vh; */
     /* background-color: green; */
-    justify-content: center;
-    margin-left: 20px;
-    margin-right: 20px;
+    /* justify-content: center; */
+    /* margin-left: 20px; */
+    /* margin-right: 20px; */
     /* justify-content: space-between; */
 }
 
-.imgWrapper {
-    position: relative; 
-    /* width: 195px; 
-    height: 195px; */
-}
-
-.moviePlay{
-    border-radius: 5px;
-    justify-content: center;
+/* .posterContainer {
     position: relative;
-    z-index: 1;
-    /* top: -500px; */
-    /* margin-left: 3%; */
     width: 341px;
     height: 506px;
-    /* width: 26.7vw;
-    height: 82.9vh; */
-    /* padding-bottom: 0px; */
+    width: 82%;
+    height: auto;
+} */
+
+.poster{
+    position: absolute;
+    top: 19vh;
+    bottom: 0;
+    left: 8vw;
+    right: 0;
+    border-radius: 5px;
+    z-index: 1;
+    /* width: 341px;
+    height: 506px; */
+    width: 26.5%;
+    height: auto;
     transition: transform .6s;
     box-shadow: 3px 5px 10px #000;
 }
@@ -56,27 +81,29 @@
 
 .playButton {
     position: absolute;
-    left: 7.5vw;
+    left: 8vw;
     top: 28vh;
     z-index: 10;
-    width: 150px; 
-    height: 150px;
+    width: 31%; 
+    height: auto;
     opacity: .7;
     background-color: white;
     border-radius: 50%;
-
 }
 
-.playButton:hover{
+.playButton:hover {
     background-color: #1e2126;
 }
 
-.text-container {
+.textContainer {
+    position: absolute;
+    top: 29vh;
+    bottom: 11vh;
+    left: 35vw;
+    right: 8vw;
     display: inline-block;
     text-align: center;
     /* background-color: purple; */
-    margin-left: 20px;
-    margin-top: 15vh;
 
 }
 
@@ -84,11 +111,13 @@
     /* font-family: 'Lato', sans-serif; */
     font-family: 'Homenaje', sans-serif;
     color: rgb(230, 230, 230);
-    font-size: 70px;
+    font-size: 5vw;
     position: relative;
     justify-content: center;
     text-shadow: 3px 5px 10px #000;
-    margin:auto;
+    border-bottom: rgb(230, 230, 230);
+    margin: 0 20px;
+    /* margin:auto; */
     /* font-weight: 500; */
     /* top:-400px; */
     /* margin-left: 40%; */
@@ -96,13 +125,13 @@
 }
 
 .rating{
-    font-size: 25px;
+    font-size: 2vw;
     color:rgb(230, 230, 230);
     position: relative;
     display: flex;
     justify-content: left;
     margin-left: 7%;
-    margin-top: 40px;
+    margin-top: 10px;
     margin-bottom: 20px;
 
 
@@ -114,27 +143,30 @@
 }
 
 .imdb {
-    border: #e8b708 solid 1px;
+    border: #e8b708 solid .5px;
     border-radius: 5px;
     padding: 0 5px;
     margin-right: 10px;
     box-shadow: 3px 5px 10px #000;
+    background-color: #1e21268e;
 
 }
 
  .description {
+    border: #e8b708 solid .5px;
     border-radius: 5px;
-    font-size: 17px;
+    font-size: 1.5vw;
     /* font-family: 'Lato', sans-serif; */
     color: rgb(230, 230, 230);
     /* margin-left: 40%; */
     position: relative;
     text-shadow: 3px 5px 10px #000;
-    margin: 0 5%;
+    margin: 0 3%;
     /* border: rgb(230, 230, 230) solid 1px; */
-    padding: 5px 0;
-    background-color: #1e212638;
+    padding: 5px 1px;
+    background-color: #1e21268e;
     box-shadow: 3px 5px 10px #000;
+    line-height: 1.4;
 
     /* bottom: 550px; */
     /* padding-bottom: 0px; */
