@@ -336,6 +336,7 @@ class Movies extends Component {
           onChange={(e) => {this.handleChange(e.target.value, 'search')}}
           value={this.state.search}
           onKeyPress={this.handleKeyPress}
+          placeholder='Search Movies'
           />
           {
             this.state.keyPress ?
@@ -351,8 +352,9 @@ class Movies extends Component {
           </div>
           </div>
           <div className={this.state.marvelContainer}>
-          <div className="marvel">MARVEL</div>
-          <div className="studios">STUDIOS</div>
+          <div className="the">The</div>
+          <div className="club">Club</div>
+          {/* <div className="studios">STUDIOS</div> */}
           </div>
 
           {

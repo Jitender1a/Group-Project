@@ -75,7 +75,7 @@ class Search extends Component {
                     <img src={this.state.backDrop} alt="" width='100%' height='100%'/>
                     
                 </div>
-                <img className='background' src='https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/rN0W64K4ipau8gxv/dark-gray-background-soft-fifteen-shades-of-grey-smooth-background-with-the-addition-of-a-bit-of-noise_bvu2c-5qtg_thumbnail-full01.png' alt=""/>
+                {/* <img className='background' src='https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/rN0W64K4ipau8gxv/dark-gray-background-soft-fifteen-shades-of-grey-smooth-background-with-the-addition-of-a-bit-of-noise_bvu2c-5qtg_thumbnail-full01.png' alt=""/> */}
                 <div className='infoContainer'>
                     <div className='posterContainer'>
                     {
