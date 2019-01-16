@@ -7,7 +7,7 @@ import { connect } from 'react-redux'
 function Nav(props) {
     return(
         <div className='nav-bar'>
-            <h1 onClick={() => props.history.push('/')}>The Club</h1>
+            <div onClick={() => props.history.push('/')} className='webName'>The Club</div>
             <div className='routes-container'>
                 <div>
                     {
