@@ -5,11 +5,6 @@
   visibility: hidden;
 }
 
-/* body{
-  background-image: url('https://cpb-us-e1.wpmucdn.com/blog.umd.edu/dist/b/504/files/2017/09/dark-1a9lh34.jpg');
-  
-} */
-
 .loginContainer {
   padding-top: 200px;
   height: 100%;
@@ -35,6 +30,8 @@
     justify-content: space-around;
     align-items: center;
     border-radius: 10px;
+    background-image: url('https://cpb-us-e1.wpmucdn.com/blog.umd.edu/dist/b/504/files/2017/09/dark-1a9lh34.jpg');
+
   }
 
   .loginPage input {
