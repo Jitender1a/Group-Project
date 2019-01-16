@@ -8,6 +8,7 @@ import reducer from './reducer'
 const persistConfig = {
     key: 'root',
     storage: storage,
+    blacklist: ['isAuthenticated'],
     stateReconciler: autoMergeLevel2 // see "Merge Process" section for details.
 };
    

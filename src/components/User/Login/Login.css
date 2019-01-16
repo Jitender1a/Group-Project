@@ -1,26 +1,32 @@
-.loginPage::before {
-  display: block; 
-  content: " "; 
-  height: 9vh; 
-  visibility: hidden; 
+.loginContainer {
+  padding-top: 200px;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
+
+
 .loginPage{
+    color: white;
     text-align: center;
-    border: solid;
     margin: 0 35%;;
-    padding-top: 50px;
-    padding-bottom: 30px;
     font-family: 'Josefin Slab', serif;
-  
-  }
-  
-  @media(max-width:500px){
-    .loginPage{
-      margin: 5% 10% 5% 10%;
-    }
+    width: 100%;
+    height: 35vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
   }
 
+  .loginPage input {
+    width: 100%;
+  }
+  
+  
   .LoginButton{
     margin-top: 5px;
     font-size: 13.5px;
@@ -28,8 +34,15 @@
     transition-duration: 0.4s;
     color: white;
     background-color: black;
+    width: 100%;
   }
   .LoginButton:hover {
     background-color:grey; 
     color: white;
+  }
+  
+  @media(max-width:500px){
+    .loginPage{
+      margin: 5% 10% 5% 10%;
+    }
   }
