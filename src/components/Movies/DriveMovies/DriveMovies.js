@@ -307,7 +307,8 @@ class Movies extends Component {
           <button
           onClick={() => (this.setState({
             moviePosters: [ ...this.state.moviePosters ].sort(this.comparePopularity),
-            alphabetical: false
+            alphabetical: false,
+            marvelContainer: 'marvelContainerAZ'
           }))}
           >
             Popular
@@ -316,7 +317,8 @@ class Movies extends Component {
           <button
           onClick={() => (this.setState({
             moviePosters: [ ...this.state.moviePosters ].sort(this.compareRating),
-            alphabetical: false
+            alphabetical: false,
+            marvelContainer: 'marvelContainerAZ'
           }))}
           >
             Top Rated
@@ -325,7 +327,8 @@ class Movies extends Component {
           <button
           onClick={() => (this.setState({
             moviePosters: [ ...this.state.moviePosters ].sort(this.compareReleaseDate),
-            alphabetical: false
+            alphabetical: false,
+            marvelContainer: 'marvelContainerAZ'
           }))}
           >
             Release Date
@@ -351,11 +354,11 @@ class Movies extends Component {
           }
           </div>
           </div>
-          <div className={this.state.marvelContainer}>
+          {/* <div className={this.state.marvelContainer}>
           <div className="the">The</div>
           <div className="club">Club</div>
-          {/* <div className="studios">STUDIOS</div> */}
-          </div>
+          <div className="studios">STUDIOS</div>
+          </div> */}
 
           {
             this.state.alphabetical ?
