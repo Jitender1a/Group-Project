@@ -46,6 +46,7 @@ body {
     padding: 5px 14px;
     /* box-shadow: 3px 5px 10px #000; */
     text-shadow: 3px 5px 10px #000;
+    outline: none;
 }
 
 .button-container button:hover {
@@ -138,19 +139,39 @@ body {
     /* z-index: -10,000; */
 }
 
-.marvel { 
-  border: solid 1px rgb(230, 230, 230);
-  box-shadow: 3px 5px 10px #000;
+.club { 
+  /* border: solid 1px rgb(230, 230, 230); */
+  /* box-shadow: 3px 5px 10px #000; */
   padding: 8px 4px 0 0;
   margin: auto auto;
   text-align: center;
   color: rgb(230, 230, 230); 
   width: 570px; 
   /* margin-top: 0;   */
-  font-size: 15em; 
+  font-size: 12em; 
   line-height: .80;
-  font-family: "Benton Sans Ex Comp Bla", sans-serif; 
+  font-family: "Rock Salt", sans-serif; 
   text-shadow: 3px 5px 10px #000;
+  /* position: absolute; */
+  z-index: 1;
+  margin-bottom: 50px;
+}
+
+.the { 
+  /* border: solid 1px rgb(230, 230, 230); */
+  /* box-shadow: 3px 5px 10px #000; */
+  padding: 8px 4px 0 0;
+  margin: auto auto;
+  text-align: center;
+  color: rgb(230, 230, 230); 
+  width: 570px; 
+  /* margin-top: 0;   */
+  font-size: 4em; 
+  line-height: .80;
+  font-family: "Rock Salt", sans-serif; 
+  text-shadow: 3px 5px 10px #000;
+  position: relative;
+  z-index: 2;
 }
 
 .studios { 

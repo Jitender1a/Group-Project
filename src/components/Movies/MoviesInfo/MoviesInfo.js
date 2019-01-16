@@ -24,7 +24,7 @@ class MoviesInfo extends Component {
    }
 
  render() {
-     console.log(this.props.isAuthenticated)
+     console.log(this.state.movieInfo)
      let { movieInfo } = this.state
    return (
      <div className='moviesContainer'>
@@ -32,7 +32,7 @@ class MoviesInfo extends Component {
             <img src={`https://image.tmdb.org/t/p/original${movieInfo.backdrop_path}`} alt="" width='100%' height='100%'/>
             
         </div>
-        <img className='background' src='https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/rN0W64K4ipau8gxv/dark-gray-background-soft-fifteen-shades-of-grey-smooth-background-with-the-addition-of-a-bit-of-noise_bvu2c-5qtg_thumbnail-full01.png' alt=""/>
+        {/* <img className='background' src='https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/rN0W64K4ipau8gxv/dark-gray-background-soft-fifteen-shades-of-grey-smooth-background-with-the-addition-of-a-bit-of-noise_bvu2c-5qtg_thumbnail-full01.png' alt=""/> */}
         <div className='infoContainer'>
             <div className='posterContainer'>
             {

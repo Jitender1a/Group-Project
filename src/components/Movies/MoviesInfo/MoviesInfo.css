@@ -19,7 +19,7 @@
 }
 
 .background {
-    border: #e8b708 solid 1px;
+    /* border: #e8b708 solid 1px; */
     position: absolute;
     top: 22vh;
     bottom: 0;
@@ -29,7 +29,7 @@
     /* background-color: #1e2126; */
     width: 70%;
     height: auto;
-    opacity: .5;
+    opacity: 1;
     box-shadow: 3px 5px 10px #000;
 }
 
@@ -100,7 +100,7 @@
     top: 29vh;
     bottom: 11vh;
     left: 35vw;
-    right: 8vw;
+    right: 6vw;
     display: inline-block;
     text-align: center;
     /* background-color: purple; */
@@ -109,7 +109,7 @@
 
 .movieTitle {
     /* font-family: 'Lato', sans-serif; */
-    font-family: 'Homenaje', sans-serif;
+    /* font-family: 'Homenaje', sans-serif; */
     color: rgb(230, 230, 230);
     font-size: 5vw;
     position: relative;
@@ -166,7 +166,7 @@
     padding: 5px 1px;
     background-color: #1e21268e;
     box-shadow: 3px 5px 10px #000;
-    line-height: 1.4;
+    line-height: 1.8;
 
     /* bottom: 550px; */
     /* padding-bottom: 0px; */
