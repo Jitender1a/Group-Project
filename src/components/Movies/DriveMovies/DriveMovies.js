@@ -354,7 +354,7 @@ class Movies extends Component {
           <div className={this.state.marvelContainer}>
           <div className="the">The</div>
           <div className="club">Club</div>
-          {/* <div className="studios">STUDIOS</div> */}
+          <div className="studios">STUDIOS</div>
           </div>
 
           {
