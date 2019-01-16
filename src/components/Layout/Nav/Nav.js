@@ -1,5 +1,5 @@
 import React from 'react'
-import {Link, withRouter} from 'react-router-dom'
+import {withRouter} from 'react-router-dom'
 import './Nav.css'
 import { userLoggedOut } from '../../../ducks/reducer'
 import { connect } from 'react-redux'
