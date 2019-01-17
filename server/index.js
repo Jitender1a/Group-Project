@@ -8,6 +8,7 @@ const fs = require('fs');
 const readline = require('readline');
 const {google} = require('googleapis');
 const AuthCtrl=require('./Auth')
+const nodemailer = require('nodemailer')
 
 const { CONNECTION_STRING, SERVER_PORT, SESSION_SECRET, CLIENT_ID, CLIENT_SECRET } = process.env
 

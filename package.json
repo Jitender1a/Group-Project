@@ -13,6 +13,7 @@
     "jest": "^23.6.0",
     "lodash": "^4.17.11",
     "massive": "^5.7.2",
+    "nodemailer": "^5.1.1",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
     "react-redux": "^6.0.0",

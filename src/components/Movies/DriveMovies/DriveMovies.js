@@ -56,11 +56,6 @@ class Movies extends Component {
 
     
       componentDidMount(){
-        Axios.get('/token').then(res => {
-          this.setState({
-            nextPageToken: res.data
-          })
-        })
         Axios.get('/files').then(res => {
           this.setState({
             movies: res.data,
@@ -238,7 +233,6 @@ class Movies extends Component {
         
       
   render() {
-    console.log(this.state.movies)
     return (
       <div className='drivemovies'>
         <div className='toolbar-container'>
