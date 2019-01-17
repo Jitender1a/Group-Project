@@ -57,7 +57,7 @@ class MoviesInfo extends Component {
                 <div className='rating'>
                     <div className='imdb'>IMDb</div> 
                     { movieInfo.vote_average }
-                    {/* <img width = "55px" height = "34px" src='https://cdn.freebiesupply.com/logos/large/2x/dolby-digital-5-1-logo-png-transparent.png' alt=""/> */}
+                    {/* <img width = "55px" height = "34px" src='http://pluspng.com/img-png/png-hd-icons-1080-1080p-full-hd-icon-icon-512.png' alt=""/> */}
                 </div>
 
                 <div className='description'>
