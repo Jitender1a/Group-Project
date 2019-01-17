@@ -1,3 +1,10 @@
+.loginContainer::before {
+  display: block;
+  content: " ";
+  height: 9vh;
+  visibility: hidden;
+}
+
 .loginContainer {
   padding-top: 200px;
   height: 100%;
@@ -10,7 +17,9 @@
 
 
 .loginPage{
+    border: solid white;
     color: white;
+    opacity: .7;
     text-align: center;
     margin: 0 35%;;
     font-family: 'Josefin Slab', serif;
@@ -20,10 +29,17 @@
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
+    border-radius: 10px;
+    background-image: url('https://cpb-us-e1.wpmucdn.com/blog.umd.edu/dist/b/504/files/2017/09/dark-1a9lh34.jpg');
+
   }
 
   .loginPage input {
-    width: 100%;
+    width: 80%;
+    height: 15%;
+    border-radius: 6px;
+    text-align: center;
+    margin-top: 1%;
   }
   
   
@@ -33,9 +49,14 @@
     -webkit-transition-duration: 0.4s;
     transition-duration: 0.4s;
     color: white;
+    opacity: .6;
     background-color: black;
-    width: 100%;
+    width: 70%;
+    height: 13%;
+    margin-bottom: 3%;
+    border-radius: 5px;
   }
+
   .LoginButton:hover {
     background-color:grey; 
     color: white;
