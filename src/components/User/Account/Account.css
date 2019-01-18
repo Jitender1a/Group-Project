@@ -1,7 +1,7 @@
   .LoginHome::before {
     display: block; 
     content: " "; 
-    height: 9vh; 
+    height: 55px;
     visibility: hidden; 
   }
 
