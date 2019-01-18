@@ -118,12 +118,13 @@
 
 @media(max-width:500px){
     .textContainer{
-        top: 60vh;
+        top: 56vh;
         bottom: 11vh;
         left: 15vw;
-        right: 10vw;
+        right: 14vw;
         display: inline;
         text-emphasis: center;
+        z-index: 3;
     }
   }
 
@@ -146,7 +147,8 @@
 
 @media(max-width:500px){
     .movieTitle{
-     font-size: 5vh;
+     font-size: 4vh;
+     margin:0 -10px;
     }
   }
 
@@ -167,6 +169,16 @@
     /* font-family: 'Lato', sans-serif; */
     text-shadow: 3px 5px 10px #000;
 }
+
+@media(max-width:500px){
+    .rating{
+     font-size: 2vh;
+     margin-top:10px; 
+     justify-content: center;
+     margin-left: 0%;
+
+    }
+  }
 
 .imdb {
     border: #e8b708 solid .5px;
@@ -197,6 +209,12 @@
     /* bottom: 550px; */
     /* padding-bottom: 0px; */
     /* margin-right: 9%; */
+  }
+
+  @media(max-width:500px){
+    .description{
+     font-size: 2vh;
+    }
   }
   
  
