@@ -279,6 +279,7 @@ class Movies extends Component {
               </CheeseburgerMenu>
 
               <HamburgerMenu
+              className='hamburger'
               width={16}
               height={16}
               isOpen={this.state.open}
