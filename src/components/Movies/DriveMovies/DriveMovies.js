@@ -53,17 +53,15 @@ class Movies extends Component {
         nextPageToken: '',
         marvelContainer: 'marvel-container',
         keyPress: true,
-        open: false
+        open: false,
+        mobile: false
       }
   }
 
     
       componentDidMount(){
-        Axios.get('/token').then(res => {
-          this.setState({
-            nextPageToken: res.data
-          })
-        })
+        this.updateWidth()
+        window.addEventListener('resize', this.updateWidth.bind(this))
         Axios.get('/files').then(res => {
           this.setState({
             movies: res.data,
@@ -249,44 +247,115 @@ class Movies extends Component {
           open: false
         })
       }
+
+      updateWidth = () => {
+        if(window.innerWidth > 412){
+          this.setState({
+            mobile: false
+          })
+        } else {
+          this.setState({
+            mobile: true
+          })
+        }
+      }
         
       
   render() {
-    console.log(this.state.movies)
+    // console.log(screen)
     return (
       <div className='drivemovies'>
         <div className='toolbar-container'>
             <div className='button-container'>
+            {
+              this.state.mobile ?
+              <div className='hamburger'>
               <CheeseburgerMenu 
               isOpen={this.state.open}
               closeCallback={this.closeMenu.bind(this)}
+              backgroundColor='#1e2126'
               >
 
-              <div>
-                <button className='hamburgerAZ'
+              <div className='hamburgerButtons'>
+
+                <div 
                 onClick={() => (this.setState({
                   moviePosters: [ ...this.state.moviePosters ].sort(functions.compareAlphabetically),
                   alphabetical: true,
                   marvelContainer: 'marvelContainerAZ',
                   open: false
                 }))}
+                className='asdf'
                 >
-                  A-Z
+                  {/* <i class="fas fa-sort fa-2x"></i> */}
+                  <i class="fas fa-th-large fa-2x"></i>
+                  <p>
+                    A-Z
 
-                </button>
+                  </p>
+                </div>
+                
+                <div
+                onClick={() => (this.setState({
+                  moviePosters: [ ...this.state.moviePosters ].sort(functions.comparePopularity),
+                  alphabetical: false,
+                  marvelContainer: 'marvelContainerAZ',
+                  open: false
+                }))}
+                className='asdf'>
+                  <i class="fas fa-fire fa-2x"></i>
+                  <p>
+                  Popular
+                </p>
+                </div>
+                
+                <div
+                onClick={() => (this.setState({
+                  moviePosters: [ ...this.state.moviePosters ].sort(functions.compareRating),
+                  alphabetical: false,
+                  marvelContainer: 'marvelContainerAZ',
+                  open: false
+                }))}
+                className='asdf'>
+                  {/* <i class="fas fa-star-half-alt fa-2x"></i> */}
+                  {/* <i class="fas fa-star-half fa-2x"></i> */}
+                  {/* <i class="fas fa-star fa-2x"></i> */}
+                  <i class="fas fa-film fa-2x"></i>
+                  <p>
+                    Top Rated
+                  </p>
+                </div>
+                
+                <div
+                onClick={() => (this.setState({
+                  moviePosters: [ ...this.state.moviePosters ].sort(functions.compareReleaseDate),
+                  alphabetical: false,
+                  marvelContainer: 'marvelContainerAZ',
+                  open: false
+                }))}
+                className='asdf'>
+                <i class="fas fa-ticket-alt fa-2x"></i>
+                <p>
+                  Release Date
+                </p>
+                </div>
+
               </div>
 
               </CheeseburgerMenu>
 
               <HamburgerMenu
-              className='hamburger'
-              width={16}
-              height={16}
+              width={30}
+              height={20}
               isOpen={this.state.open}
               menuClicked={this.openMenu.bind(this)}
               color='white'
               animationDuration={0.5}
               />
+              </div>
+              :
+              null
+            }
 
               <button className='a-z'
               onClick={() => (this.setState({
