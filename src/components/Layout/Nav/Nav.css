@@ -14,7 +14,7 @@
 
   .routes-container {
     /* background: purple; */
-    margin-right: 25px;
+    margin-right: 18px;
   }
 
    .nav-bar a {
@@ -49,31 +49,19 @@
      outline: none;
    }
    
-   @media(max-width:500px){
-    .nav-bar a{
-      font-size:11px;
-      margin-right: 10px;
-      padding-right:10px;
-    }
-   }
    .nav-bar a:hover {
     color: #d4d5d6;
    }
    
-   .nav-bar h1 {
+   .webName {
     color: rgb(230, 230, 230);
     margin-left: 25px;
     cursor: pointer;
     font-family: "Rock Salt", sans-serif;
     text-shadow: 3px 5px 10px #000;
+    font-size: 25px;
    }
    
-   @media(max-width:500px){
-    .nav-bar h1{
-      font-size:15px;
-    }
-   }
-   
-   .nav-bar h1:hover{
+   .webName:hover{
     color: #d4d5d6;
    }

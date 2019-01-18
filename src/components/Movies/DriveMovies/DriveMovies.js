@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import { getInfo, search, getPosters } from '../../../ducks/reducer'
 import { Link, Redirect } from 'react-router-dom'
 import './DriveMovies.css'
+import functions from './DriveMovieFunctions'
 
 class Movies extends Component {
   constructor(){
@@ -65,12 +66,7 @@ class Movies extends Component {
             movies: res.data,
           })
           let years = this.state.movies.map(movie => {
-            let noUnderScores = movie.name.replace(/_/g, ' ')
-            let noFileFormat = noUnderScores.replace(/.mp4|.mkv/g, '')
-            let year = noFileFormat.replace(/[^0-9]/ig, '')
-            let years = []
-            years.push(year)
-            return years
+            return functions.movieYear(movie.name)
           })
           let allYears = years.map(year => {
             return year[0] 
@@ -80,13 +76,7 @@ class Movies extends Component {
           })
 
           let titles = this.state.movies.map(movie => {
-            let noUnderScores = movie.name.replace(/_/g, ' ')
-            let noFileFormat = noUnderScores.replace(/.mp4|.mkv/g, '')
-            let queryString = noFileFormat.replace(/[0-9]|[()]/ig, '')
-            let noSpaces = queryString.replace(/ /g, '%20')
-            let titles = []
-            titles.push(noSpaces)
-            return titles
+            return functions.movieTitles(movie.name)
           })
           let allTitles = titles.map(title => {
             return title[0]
@@ -227,46 +217,6 @@ class Movies extends Component {
         })
       }
 
-      comparePopularity = (a,b) => {
-        if(a.popularity > b.popularity){
-              return -1
-            }
-            if(a.popularity < b.popularity){
-              return 1
-            }
-            return 0
-      }
-
-      compareRating = (a,b) => {
-        if(a.rating > b.rating){
-              return -1
-            }
-            if(a.rating < b.rating){
-              return 1
-            }
-            return 0
-      }
-
-      compareReleaseDate = (a,b) => {
-        if(a.releaseDate > b.releaseDate){
-              return -1
-            }
-            if(a.releaseDate < b.releaseDate){
-              return 1
-            }
-            return 0
-      }
-
-      compareAlphabetically = (a,b) => {
-        if(a.title < b.title){
-              return -1
-            }
-            if(a.title > b.title){
-              return 1
-            }
-            return 0
-      }
-
       handleChange = (val, key) => {
         let obj = {}
         obj[key] = val
@@ -285,18 +235,17 @@ class Movies extends Component {
           })
         }
       }
-      
-      
+        
       
   render() {
-    console.log(this.state.n)
+    console.log(this.state.movies)
     return (
       <div className='drivemovies'>
         <div className='toolbar-container'>
           <div className='button-container'>
           <button
           onClick={() => (this.setState({
-            moviePosters: [ ...this.state.moviePosters ].sort(this.compareAlphabetically),
+            moviePosters: [ ...this.state.moviePosters ].sort(functions.compareAlphabetically),
             alphabetical: true,
             marvelContainer: 'marvelContainerAZ'
           }))}
@@ -306,8 +255,9 @@ class Movies extends Component {
 
           <button
           onClick={() => (this.setState({
-            moviePosters: [ ...this.state.moviePosters ].sort(this.comparePopularity),
-            alphabetical: false
+            moviePosters: [ ...this.state.moviePosters ].sort(functions.comparePopularity),
+            alphabetical: false,
+            marvelContainer: 'marvelContainerAZ'
           }))}
           >
             Popular
@@ -315,8 +265,9 @@ class Movies extends Component {
 
           <button
           onClick={() => (this.setState({
-            moviePosters: [ ...this.state.moviePosters ].sort(this.compareRating),
-            alphabetical: false
+            moviePosters: [ ...this.state.moviePosters ].sort(functions.compareRating),
+            alphabetical: false,
+            marvelContainer: 'marvelContainerAZ'
           }))}
           >
             Top Rated
@@ -324,8 +275,9 @@ class Movies extends Component {
           
           <button
           onClick={() => (this.setState({
-            moviePosters: [ ...this.state.moviePosters ].sort(this.compareReleaseDate),
-            alphabetical: false
+            moviePosters: [ ...this.state.moviePosters ].sort(functions.compareReleaseDate),
+            alphabetical: false,
+            marvelContainer: 'marvelContainerAZ'
           }))}
           >
             Release Date
@@ -351,10 +303,10 @@ class Movies extends Component {
           }
           </div>
           </div>
-          <div className={this.state.marvelContainer}>
+          <div className='marvel-container'>
           <div className="the">The</div>
           <div className="club">Club</div>
-          {/* <div className="studios">STUDIOS</div> */}
+          <div className="studios">STUDIO</div>
           </div>
 
           {

@@ -33,7 +33,7 @@
     box-shadow: 3px 5px 10px #000;
 }
 
-.infoContainer {
+/* .infoContainer { */
     /* position: absolute;
     top: 19vh;
     bottom: 0;
@@ -49,7 +49,7 @@
     /* margin-left: 20px; */
     /* margin-right: 20px; */
     /* justify-content: space-between; */
-}
+/* } */
 
 /* .posterContainer {
     position: relative;
@@ -75,16 +75,16 @@
     box-shadow: 3px 5px 10px #000;
 }
 
-.moviePlay:hover{
+.poster:hover{
     transform: scale(1.1)
 }
 
 .playButton {
     position: absolute;
-    left: 8vw;
-    top: 28vh;
+    left: 16.2vw;
+    top: auto;
     z-index: 10;
-    width: 31%; 
+    width: 10%;
     height: auto;
     opacity: .7;
     background-color: white;
@@ -166,7 +166,7 @@
     padding: 5px 1px;
     background-color: #1e21268e;
     box-shadow: 3px 5px 10px #000;
-    line-height: 1.8;
+    line-height: 1.4;
 
     /* bottom: 550px; */
     /* padding-bottom: 0px; */
