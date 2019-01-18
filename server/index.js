@@ -10,7 +10,7 @@ const {google} = require('googleapis');
 const AuthCtrl=require('./Auth')
 const nodemailer = require('nodemailer')
 
-const { CONNECTION_STRING, SERVER_PORT, SESSION_SECRET, CLIENT_ID, CLIENT_SECRET } = process.env
+const { CONNECTION_STRING, SERVER_PORT, SESSION_SECRET, ACCESS_TOKEN, CLIENT_SECRET } = process.env
 
 const app = express()
 app.use(bodyParser.json())
@@ -127,6 +127,42 @@ function listFiles(req, response) {
 app.post('/auth/login', AuthCtrl.login)
 app.get('/auth/logout', AuthCtrl.logout)
 app.get('/auth/currentUser', AuthCtrl.getCurrentUser)
+
+//Nodemailer
+app.post('/email', async (req, response) => {
+  var transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    type: 'OAuth2',
+    user: 'theclubstudio18@gmail.com',
+    clientId: '434411378374-1er3ai6j485af1109lppqobrv3j9p9fb.apps.googleusercontent.com',
+    clientSecret: CLIENT_SECRET,
+    refreshToken: '1/u5Pi30_kQWqLaAyFwAyqSp396aEoAffLu-zsXLrgpH4',
+    accessToken: ACCESS_TOKEN
+  }
+})
+  try {
+    let { text } = req.body
+    var mailOptions = {
+      from: 'The Club Studio',
+      to: 'theclubstudio18@gmail.com',
+      subject: 'Movie Request',
+      text: text
+    }
+    
+    transporter.sendMail(mailOptions, function(err, res){
+      if(err){
+        console.log('Error', err)
+      } else {
+        console.log('Email Sent')
+        response.status(200).send('Email Sent')
+      }
+    })
+  }catch(error) {
+    console.log(error)
+    response.status(500).send(error)
+  }
+})
 
 
 

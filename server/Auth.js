@@ -8,13 +8,13 @@ module.exports = {
       let user = userResponse[0]
 
       if (!user) {
-        return res.status(401).send('email not found')
+        return res.status(401).send('Username Not Found')
       }
 
       const isAuthenticated = password === user.password
 
       if (!isAuthenticated) {
-        return res.status(403).send('incorrect password')
+        return res.status(403).send('Incorrect Password')
       }
 
       delete user.password
@@ -22,7 +22,7 @@ module.exports = {
       res.send(req.session.user)
 
     } catch (error) {
-      console.log('error logging in:', error)
+      console.log('Error Logging In:', error)
       res.status(500).send(error)
     }
   },

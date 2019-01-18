@@ -16,7 +16,9 @@ class Search extends Component {
             title: '',
             rating: '',
             overview: '',
-            posters: []
+            posters: [],
+            request: '',
+            disabled: false
         }
     }
 
@@ -56,6 +58,17 @@ class Search extends Component {
         })
     }
 
+    handleClick = () => {
+        Axios.post('/email', {text: this.props.search}).then(res => {
+            if(res.status === 200){
+                this.setState({
+                    request: 'Request Sent!',
+                    disabled: true
+                })
+            }
+        })
+    }
+
 
     render() {
         let index = this.state.posters.indexOf(this.state.poster)
@@ -71,6 +84,17 @@ class Search extends Component {
                </div>
                <div className='LinkDiv'>
                <Link className='linkHome'to='/DriveMovies'>Return Home</Link>
+               </div>
+               <div className='requestButton'>
+                <button 
+                disabled={this.state.disabled}
+                onClick={this.handleClick}
+                >
+                Request Movie
+                </button>
+               </div>
+               <div className='requestText'>
+                {this.state.request}
                </div>
             </div>
             )

@@ -13,20 +13,6 @@
     visibility: hidden;
 }
 
-.search{
-    text-align: center;
-    background-color: #1e2126;
-    transition: transform .9s;
-}
-
-.search:hover{
-    transform: scale(1.09)
-    }
-
-.padding{
-   margin: 3%;
-}
-
 .paddingN{
     margin-top: 10%;
 }
@@ -41,25 +27,49 @@
 .LinkDiv{
     margin-top: 3%;
     text-align: center;
-    border: solid white; 
+    border: 1px solid white; 
     opacity: .9;
     width: 15%;
     margin-left: 42%;
     transition: transform .9s;
+    padding: 8px;
+    margin-bottom: 24px;
 }
 
-.LinkDiv:hover{
+/* .LinkDiv:hover{
     transform: scale(1.1);
     border-color: grey;
-}
+} */
 
 .linkHome{
     text-decoration: none;
     color: white;
+    font-size: 16px;
 }
 
 .exact{
     margin-top: 2%;
     text-align: center;
     color: white;
+}
+
+.requestText {
+    margin-top: 2%;
+    text-align: center;
+    color: white;
+    font-size: 32px;
+}
+
+.requestButton button{
+    text-align: center;
+    font-size: 16px;
+    color: white;
+    background-color: black;
+    border: 1px solid white;
+    padding: 10px;
+    margin: auto;
+    display: block;
+    background-color: #1E2025;
+    outline: none;
+    cursor: pointer;
 }
