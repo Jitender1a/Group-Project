@@ -3,7 +3,6 @@ module.exports = {
     try {
       const db = req.app.get('db')
       const { username, password } = req.body
-
       let userResponse = await db.getUsername(username)
       let user = userResponse[0]
 
