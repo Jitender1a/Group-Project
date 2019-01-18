@@ -62,8 +62,5 @@
     color: white;
   }
   
-  @media(max-width:500px){
-    .loginPage{
-      margin: 5% 10% 5% 10%;
-    }
-  }
+  
+
