@@ -2,25 +2,31 @@
     display: none;
 }
 
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
 body {     
   background: #1e2126;
+  width: 100vw;
 }
 
 .drivemovies::before {
     display: block; 
     content: " "; 
-    height: 9vh; 
+    height: 55px;
     visibility: hidden; 
 }
   
 .drivemovies {
     background-color: #1e2126;
+    width: 100vw;
 }
 
 .toolbar-container {
     display: flex;
     flex-wrap: wrap;
-    /* background-color: #2b3e48; */
     justify-content: left;
     padding: 0 13px;
     justify-content: space-between;
@@ -33,6 +39,59 @@ body {
     justify-content: left;
     /* padding: 0; */
 }
+
+.fa-bars {
+    color: rgb(230, 230, 230);
+    margin: 8px 6px;
+    padding: 5px 14px;
+    text-shadow: 3px 5px 10px #000;
+    z-index: 2;
+    display: none;
+}
+
+.fa-bars:hover {
+    color: #d4d5d6;
+    transform: scale(1.05);
+    /* border: #fff solid .01px */
+}
+
+@media(max-width:412px){
+    .fa-bars{
+        display: initial;
+        margin: 8px 0px;
+        padding: 0px 0px;
+        margin-left: 6px;
+        font-size: 1.8em;
+    }
+    .a-z{
+        display: none;
+    }
+    .popular{
+        display: none;
+    }
+    .topRated{
+        display: none;
+    }
+    .releaseDate{
+        display: none;
+    }
+    .searchbar input {
+        border-radius: 3px;
+        background-color: rgb(230, 230, 230);
+        color: #1e2126;
+        border: none;
+        font-size: 15px;
+        margin: 8px 6px;
+        padding: 5px 14px;
+        box-shadow: 3px 5px 10px #000;
+        width: 70.5vw;
+    }
+}
+
+.hamburgerAZ {
+    color: black;
+}
+
 
 .button-container button {
     border-radius: 3px;
@@ -50,7 +109,7 @@ body {
     text-shadow: 3px 5px 10px #000;
     outline: none;
     /* letter-spacing: .5px; */
-
+    z-index: 2;
 }
 
 .button-container button:hover {
@@ -73,6 +132,8 @@ body {
     box-shadow: 3px 5px 10px #000;
 }
 
+
+
 /* .searchbar button {
     border-radius: 3px;
     background-color: #1e2126;
@@ -84,10 +145,10 @@ body {
     text-shadow: 3px 5px 10px #000;
 } */
 
-.searchbar button:hover {
+/* .searchbar button:hover {
     color: #d4d5d6;
     transform: scale(1.05);
-   }
+} */
 
 .poster-container {
     justify-content: space-around;
@@ -99,7 +160,7 @@ body {
     /* background: purple; */
 }
 
-.drivemovies img {
+.poster-container img {
     /* -webkit-filter: grayscale(100%);
     filter: grayscale(100%); */
     border-radius: 4px;
@@ -112,25 +173,46 @@ body {
     transition: transform .3s;
     /* opacity: .5; */
     z-index: 1;
+    /* filter: grayscale(); */
     /* background-color: #1e2126 */
 }
 
-/* .drivemovies img:hover {
-    opacity: 1;
-} */
-
-.drivemovies img:hover {
+.poster-container img:hover {
     transform: scale(1.1);
     z-index: 3;
-  }
-
-/* Marvel */
-.bentonsansextracompressedblack {
-    font-family: "Benton Sans Ex Comp Bla";
-    font-style: Normal;
-    font-weight: Normal;
 }
 
+@media(max-width:412px){
+    .poster-container{
+        margin: 5px 0;
+
+    }
+    .poster-container img {
+        width: 175px;
+        height: auto;
+        display: flex;
+        flex-wrap: wrap;
+        margin-left: 10px;
+        margin-right: 10px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+}
+
+@media(max-width:389px){
+    .poster-container img {
+        width: 165px;
+        height: auto;
+        display: flex;
+        flex-wrap: wrap;
+        margin-left: 10px;
+        margin-right: 10px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+}
+
+/* Marvel */
 .marvel-container {
     background-image:url("https://www.desktopbackground.org/download/2560x1440/2015/12/23/1062154_top-hd-chalk-board-wallpapers_3600x3600_h.jpg");
     background-size: cover;
@@ -141,6 +223,14 @@ body {
     padding-top: 20px;
     padding-bottom: 20px;
     /* z-index: -10,000; */
+    overflow: hidden;
+}
+
+@media(max-width:412px){
+    .marvel-container{
+        padding-top: 0;
+        padding-bottom: 4vh;
+    }
 }
 
 .club { 
@@ -151,10 +241,10 @@ body {
   margin: auto auto;
   text-align: center;
   color: rgb(230, 230, 230); 
-  width: 570px; 
+  width: 545px; 
   /* margin-top: 0;   */
   font-size: 12em; 
-  line-height: .80;
+  line-height: .70;
   font-family: "Rock Salt", sans-serif; 
   text-shadow: 3px 5px 10px #000;
   /* position: absolute; */
@@ -162,22 +252,41 @@ body {
   margin-bottom: 50px;
 }
 
+@media(max-width:412px){
+    .club{
+        width: 55%;
+        font-size: 5em; 
+        line-height: .60;
+        margin-bottom: 0;
+    }
+}
+
 .the { 
   /* border: solid 1px rgb(230, 230, 230); */
   /* box-shadow: 3px 5px 10px #000; */
-  top: 20px;
+  top: 35px;
   padding: 8px 4px 0 0;
   margin: auto auto;
   text-align: center;
   color: rgb(230, 230, 230); 
   width: 570px; 
   /* margin-top: 0;   */
-  font-size: 4em; 
+  font-size: 5em; 
   line-height: .80;
   font-family: "Rock Salt", sans-serif; 
   text-shadow: 3px 5px 10px #000;
   position: relative;
   z-index: 2;
+}
+
+@media(max-width:412px){
+    .the{
+        top: 1.8vh;
+        width: 55%;
+        font-size: 2em; 
+        line-height: .80;
+        margin-bottom: 0;
+    }
 }
 
 .studios { 
@@ -189,8 +298,22 @@ body {
   letter-spacing: 67px;
   text-align: center;
   position: relative;
-  margin: 7px 15px 7px 85px;
+  margin: 7px 15px 5px 270px;
   text-shadow: 3px 5px 10px #000;
+  bottom: 54px;
+  letter-spacing: 3em;
+  /* font-size: large; */
+}
+
+@media(max-width:412px){
+    .studios{
+
+        margin: 0 0 0 0;
+        bottom: .3vh;
+        left: 12vw;
+        letter-spacing: 17px;
+        font-size: .5em;
+    }
 }
 
 .alphabetical {
@@ -200,7 +323,12 @@ body {
     width: 100%;
     align-items: center;
     overflow: scroll;
+}
 
+@media(max-width:412px){
+    .alphabetical {
+        padding: 8px 0;
+    }
 }
 
 .alphabetical h1 {
@@ -208,24 +336,24 @@ body {
     font-size: 400%;
 }
 
+@media(max-width:412px){
+    .alphabetical h1 {
+        font-size: 3em
+    }
+}
+
 .letters {
     margin-right: 48px;
     margin-left: 25px;
 }
 
-.marginRight {
-    margin-right: 16px;
+@media(max-width:412px){
+    .letters {
+        margin-right: 10px;
+        margin-left: 20px;
+    }
 }
 
-/* .marvelContainerAZ {
-    background-image:url("https://www.desktopbackground.org/download/2560x1440/2015/12/23/1062154_top-hd-chalk-board-wallpapers_3600x3600_h.jpg");
-    background-size: cover;
-    opacity: 0.5;
-    background: #550703;
-    box-shadow: 3px 5px 10px #000;
-    box-shadow: 1px 1px 11px 5px #000;
-    padding-top: 20px;
-    padding-bottom: 30px;
-    z-index: -10,000;
-    margin-bottom: 175px;
-} */
+.marginRight {
+    /* margin-right: 16px; */
+}
