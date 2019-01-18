@@ -1,7 +1,7 @@
 .loginContainer::before {
   display: block;
   content: " ";
-  height: 9vh;
+  height: 55px;
   visibility: hidden;
 }
 
@@ -64,6 +64,7 @@
   
   @media(max-width:500px){
     .loginPage{
-      margin: 5% 10% 5% 10%;
+      margin: 5.1% 10% 5.1% 10%;
     }
   }
+

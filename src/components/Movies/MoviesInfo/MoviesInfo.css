@@ -1,7 +1,7 @@
 .moviesContainer::before {
     display: block;
     content: " ";
-    height: 9vh;
+    height: 55px;
     visibility: hidden;
 }
 
@@ -75,16 +75,25 @@
     box-shadow: 3px 5px 10px #000;
 }
 
-.moviePlay:hover{
+@media(max-width:500px){
+    .poster{
+      top: 20vh;  
+      left: 25vw;
+      height: auto;
+      width: 50%;
+    }
+  }
+
+.poster:hover{
     transform: scale(1.1)
 }
 
 .playButton {
     position: absolute;
-    left: 8vw;
-    top: 28vh;
+    left: 16.2vw;
+    top: auto;
     z-index: 10;
-    width: 31%; 
+    width: 10%;
     height: auto;
     opacity: .7;
     background-color: white;
@@ -104,8 +113,19 @@
     display: inline-block;
     text-align: center;
     /* background-color: purple; */
-
 }
+
+
+@media(max-width:500px){
+    .textContainer{
+        top: 60vh;
+        bottom: 11vh;
+        left: 15vw;
+        right: 10vw;
+        display: inline;
+        text-emphasis: center;
+    }
+  }
 
 .movieTitle {
     /* font-family: 'Lato', sans-serif; */
@@ -123,6 +143,12 @@
     /* margin-left: 40%; */
     /* padding-bottom: 0px; */
 }
+
+@media(max-width:500px){
+    .movieTitle{
+     font-size: 5vh;
+    }
+  }
 
 .rating{
     font-size: 2vw;
@@ -166,7 +192,7 @@
     padding: 5px 1px;
     background-color: #1e21268e;
     box-shadow: 3px 5px 10px #000;
-    line-height: 1.8;
+    line-height: 1.4;
 
     /* bottom: 550px; */
     /* padding-bottom: 0px; */
