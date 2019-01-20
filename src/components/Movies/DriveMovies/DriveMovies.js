@@ -257,7 +257,7 @@ class Movies extends Component {
       <div className='drivemovies'>
         <div className='toolbar-container'>
             <div className='button-container'>
-              <CheeseburgerMenu 
+              <CheeseburgerMenu
               isOpen={this.state.open}
               closeCallback={this.closeMenu.bind(this)}
               >

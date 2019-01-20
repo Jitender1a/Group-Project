@@ -2,14 +2,11 @@
     display: none;
 }
 
-html, body {
-    max-width: 100%;
-    overflow-x: hidden;
-}
-
 body {     
   background: #1e2126;
   width: 100vw;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 .drivemovies::before {
@@ -40,7 +37,7 @@ body {
     /* padding: 0; */
 }
 
-.hamburger {
+.hamburgers {
     color: rgb(230, 230, 230);
     margin: 8px 6px;
     padding: 5px 14px;
