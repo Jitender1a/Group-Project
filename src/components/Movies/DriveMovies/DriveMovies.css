@@ -5,8 +5,8 @@
 body {     
   background: #1e2126;
   width: 100vw;
-  max-width: 100%;
-  overflow-x: hidden;
+  /* max-width: 100%;
+  overflow-x: hidden; */
 }
 
 .drivemovies::before {
@@ -37,13 +37,34 @@ body {
     /* padding: 0; */
 }
 
-.hamburgers {
+.hamburger {
+    display: flex;
+    align-items: center;
+}
+
+.hamburgerButtons {
     color: rgb(230, 230, 230);
-    margin: 8px 6px;
-    padding: 5px 14px;
-    text-shadow: 3px 5px 10px #000;
-    z-index: 2;
-    display: none;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+
+}
+
+.asdf {
+    display: flex;
+    align-items: center;
+    border: 1px solid gray;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    padding-left: 16px;
+    background-color: rgba(230, 230, 230, 0.068);
+    height: 55px;
+}
+
+.asdf p {
+    font-size: 24px;
+    margin-left: 32px;
 }
 
 .fa-bars:hover {
@@ -53,13 +74,6 @@ body {
 }
 
 @media(max-width:412px){
-    .fa-bars{
-        display: initial;
-        margin: 8px 0px;
-        padding: 0px 0px;
-        margin-left: 6px;
-        font-size: 1.8em;
-    }
     .a-z{
         display: none;
     }
@@ -83,10 +97,6 @@ body {
         box-shadow: 3px 5px 10px #000;
         width: 70.5vw;
     }
-}
-
-.hamburgerAZ {
-    color: black;
 }
 
 

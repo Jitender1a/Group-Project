@@ -16,7 +16,9 @@ class Search extends Component {
             title: '',
             rating: '',
             overview: '',
-            posters: []
+            posters: [],
+            request: '',
+            disabled: false
         }
     }
 
@@ -31,18 +33,37 @@ class Search extends Component {
         let query = this.props.search.replace(/ /g, '%20')
         console.log(query)
         Axios.get(`https://api.themoviedb.org/3/search/movie?include_adult=false&page=1&query=${query}&language=en-US&api_key=${TMDB_api_key.tmdb}`).then(res => {
-            console.log(res.data.results[0])
             if(!res.data.results[0]){
                 this.setState({
                     poster: ''
                 })
             } else {
+                let index = allPosters.indexOf(`https://image.tmdb.org/t/p/original${res.data.results[0].poster_path}`)
+                if(index !== -1) {
+                    let {id, title, year} = this.props.posters[index]
+                    this.props.getInfo({
+                        year: year,
+                        title: title,
+                        id: id,
+                    })
+                }
                 this.setState({
                     poster: `https://image.tmdb.org/t/p/original${res.data.results[0].poster_path}`,
                     backDrop: `https://image.tmdb.org/t/p/original${res.data.results[0].backdrop_path}`,
                     title: res.data.results[0].title,
                     rating: res.data.results[0].vote_average,
-                    overview: res.data.results[0].overview
+                    overview: res.data.results[0].overview,
+                })
+            }
+        })
+    }
+
+    handleClick = () => {
+        Axios.post('/email', {text: this.props.search}).then(res => {
+            if(res.status === 200){
+                this.setState({
+                    request: 'Request Sent!',
+                    disabled: true
                 })
             }
         })
@@ -50,7 +71,6 @@ class Search extends Component {
 
 
     render() {
-        console.log(this.state.posters)
         let index = this.state.posters.indexOf(this.state.poster)
         if(index === -1){
             return (
@@ -65,29 +85,37 @@ class Search extends Component {
                <div className='LinkDiv'>
                <Link className='linkHome'to='/DriveMovies'>Return Home</Link>
                </div>
+               <div className='requestButton'>
+                <button 
+                disabled={this.state.disabled}
+                onClick={this.handleClick}
+                >
+                Request Movie
+                </button>
+               </div>
+               <div className='requestText'>
+                {this.state.request}
+               </div>
             </div>
             )
         } else { 
-            console.log(this.props.posters[index])
             return (
                 <div className='moviesContainer'>
                 <div className='backdrop'>
                     <img src={this.state.backDrop} alt="" width='100%' height='100%'/>
                     
                 </div>
-                {/* <img className='background' src='https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/rN0W64K4ipau8gxv/dark-gray-background-soft-fifteen-shades-of-grey-smooth-background-with-the-addition-of-a-bit-of-noise_bvu2c-5qtg_thumbnail-full01.png' alt=""/> */}
                 <div className='infoContainer'>
                     <div className='posterContainer'>
                     {
                         this.props.isAuthenticated ?
                         <Link to='/PlayMovie'> 
                             <img className='poster' src={this.state.poster} alt=""/>
-                            {/* <img className='playButton' src='https://www.clipartmax.com/png/middle/201-2017485_movie-player-play-button-comments-round-play-button-png.png' alt=""/> */}
+                            }}/>
                         </Link>
                         :
                         <Link to='/Login'> 
                             <img className='poster' src={this.state.poster} alt=""/>
-                            {/* <img className='playButton' src='https://www.clipartmax.com/png/middle/201-2017485_movie-player-play-button-comments-round-play-button-png.png' alt=""/> */}
                         </Link>
                     }
                     </div>
@@ -100,7 +128,6 @@ class Search extends Component {
                         <div className='rating'>
                             <div className='imdb'>IMDb</div> 
                             { this.state.rating }
-                            {/* <img width = "55px" height = "34px" src='https://cdn.freebiesupply.com/logos/large/2x/dolby-digital-5-1-logo-png-transparent.png' alt=""/> */}
                         </div>
         
                         <div className='description'>
@@ -115,10 +142,11 @@ class Search extends Component {
 }
 
 function mapStateToProps(state){
-    let { search, posters } = state
+    let { search, posters, info } = state
     return {
         search,
-        posters
+        posters,
+        info
     }
 }
 
