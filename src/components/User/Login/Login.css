@@ -68,3 +68,9 @@
     }
   }
 
+  @media(max-width:500px){
+    .loginContainer{
+      padding-top: 100px;
+    }
+  }
+
