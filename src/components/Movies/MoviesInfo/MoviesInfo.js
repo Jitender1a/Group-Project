@@ -4,6 +4,7 @@ import Axios from 'axios';
 import TMDB_api_key from '../../../TMDB_api_key'
 import { Link } from 'react-router-dom'
 import './MoviesInfo.css'
+import { getInfo } from '../../../ducks/reducer'
 
 
 class MoviesInfo extends Component {
@@ -24,7 +25,6 @@ class MoviesInfo extends Component {
    }
 
  render() {
-     console.log(this.state.movieInfo)
      let { movieInfo } = this.state
    return (
      <div className='moviesContainer'>
@@ -38,7 +38,7 @@ class MoviesInfo extends Component {
             {
                 this.props.isAuthenticated ?
                 <Link to='/PlayMovie'> 
-                    <img className='poster' src={`https://image.tmdb.org/t/p/original${movieInfo.poster_path}`} alt=""/>
+                    <img className='poster' src={`https://image.tmdb.org/t/p/original${movieInfo.poster_path}`} alt="" />
                     {/* <img className='playButton' src='https://www.clipartmax.com/png/middle/201-2017485_movie-player-play-button-comments-round-play-button-png.png' alt=""/> */}
                 </Link>
                 :
@@ -78,4 +78,4 @@ function mapStateToProps(state){
    }
 }
 
-export default connect(mapStateToProps)(MoviesInfo)
+export default connect(mapStateToProps, { getInfo })(MoviesInfo)

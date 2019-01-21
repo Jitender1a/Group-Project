@@ -1,7 +1,7 @@
   .LoginHome::before {
     display: block; 
     content: " "; 
-    height: 9vh; 
+    height: 55px;
     visibility: hidden; 
   }
 
@@ -24,9 +24,11 @@
     text-decoration: none;
     color: Black;
   }
+
   .LoginLink:hover{
     color: grey;
   }
+
   .RegLink{
     text-decoration: none;
     color: Black;
@@ -35,6 +37,7 @@
   .RegLink:hover{
     color: grey;
   }
+  
   .user{
     border: solid;
     margin: 0 35%;

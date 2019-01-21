@@ -7,6 +7,8 @@ import { getInfo, search, getPosters } from '../../../ducks/reducer'
 import { Link, Redirect } from 'react-router-dom'
 import './DriveMovies.css'
 import functions from './DriveMovieFunctions'
+import HamburgerMenu from 'react-hamburger-menu'
+import CheeseburgerMenu from 'cheeseburger-menu' 
 
 class Movies extends Component {
   constructor(){
@@ -50,17 +52,16 @@ class Movies extends Component {
         alphabetical: false,
         nextPageToken: '',
         marvelContainer: 'marvel-container',
-        keyPress: true
+        keyPress: true,
+        open: false,
+        mobile: false
       }
   }
 
     
       componentDidMount(){
-        Axios.get('/token').then(res => {
-          this.setState({
-            nextPageToken: res.data
-          })
-        })
+        this.updateWidth()
+        window.addEventListener('resize', this.updateWidth.bind(this))
         Axios.get('/files').then(res => {
           this.setState({
             movies: res.data,
@@ -235,79 +236,194 @@ class Movies extends Component {
           })
         }
       }
+
+      openMenu = () => {
+        this.setState({
+          open: true
+        })
+      }
+      closeMenu = () => {
+        this.setState({
+          open: false
+        })
+      }
+
+      updateWidth = () => {
+        if(window.innerWidth > 412){
+          this.setState({
+            mobile: false
+          })
+        } else {
+          this.setState({
+            mobile: true
+          })
+        }
+      }
         
       
   render() {
-    console.log(this.state.movies)
+    // console.log(screen)
     return (
       <div className='drivemovies'>
         <div className='toolbar-container'>
-          <div className='button-container'>
-          <button
-          onClick={() => (this.setState({
-            moviePosters: [ ...this.state.moviePosters ].sort(functions.compareAlphabetically),
-            alphabetical: true,
-            marvelContainer: 'marvelContainerAZ'
-          }))}
-          >
-            A-Z
-          </button>
+            <div className='button-container'>
+            {
+              this.state.mobile ?
+              <div className='hamburger'>
+              <CheeseburgerMenu 
+              isOpen={this.state.open}
+              closeCallback={this.closeMenu.bind(this)}
+              backgroundColor='#1e2126'
+              >
 
-          <button
-          onClick={() => (this.setState({
-            moviePosters: [ ...this.state.moviePosters ].sort(functions.comparePopularity),
-            alphabetical: false,
-            marvelContainer: 'marvelContainerAZ'
-          }))}
-          >
-            Popular
-          </button>
+              <div className='hamburgerButtons'>
 
-          <button
-          onClick={() => (this.setState({
-            moviePosters: [ ...this.state.moviePosters ].sort(functions.compareRating),
-            alphabetical: false,
-            marvelContainer: 'marvelContainerAZ'
-          }))}
-          >
-            Top Rated
-          </button>
-          
-          <button
-          onClick={() => (this.setState({
-            moviePosters: [ ...this.state.moviePosters ].sort(functions.compareReleaseDate),
-            alphabetical: false,
-            marvelContainer: 'marvelContainerAZ'
-          }))}
-          >
-            Release Date
-          </button>
-          </div>
-          <div className='searchbar'>
-          <input 
-          onChange={(e) => {this.handleChange(e.target.value, 'search')}}
-          value={this.state.search}
-          onKeyPress={this.handleKeyPress}
-          placeholder='Search Movies'
-          />
-          {
-            this.state.keyPress ?
+                <div 
+                onClick={() => (this.setState({
+                  moviePosters: [ ...this.state.moviePosters ].sort(functions.compareAlphabetically),
+                  alphabetical: true,
+                  marvelContainer: 'marvelContainerAZ',
+                  open: false
+                }))}
+                className='asdf'
+                >
+                  {/* <i class="fas fa-sort fa-2x"></i> */}
+                  <i class="fas fa-th-large fa-2x"></i>
+                  <p>
+                    A-Z
 
-          <Link to='/Search'>
-            {/* <button onClick={this.searchClick}>
-              Search
-            </button> */}
-          </Link>
-          :
-          <Redirect to='/Search'/>
-          }
-          </div>
-          </div>
-          <div className='marvel-container'>
+                  </p>
+                </div>
+                
+                <div
+                onClick={() => (this.setState({
+                  moviePosters: [ ...this.state.moviePosters ].sort(functions.comparePopularity),
+                  alphabetical: false,
+                  marvelContainer: 'marvelContainerAZ',
+                  open: false
+                }))}
+                className='asdf'>
+                  <i class="fas fa-fire fa-2x"></i>
+                  <p>
+                  Popular
+                </p>
+                </div>
+                
+                <div
+                onClick={() => (this.setState({
+                  moviePosters: [ ...this.state.moviePosters ].sort(functions.compareRating),
+                  alphabetical: false,
+                  marvelContainer: 'marvelContainerAZ',
+                  open: false
+                }))}
+                className='asdf'>
+                  {/* <i class="fas fa-star-half-alt fa-2x"></i> */}
+                  {/* <i class="fas fa-star-half fa-2x"></i> */}
+                  {/* <i class="fas fa-star fa-2x"></i> */}
+                  <i class="fas fa-film fa-2x"></i>
+                  <p>
+                    Top Rated
+                  </p>
+                </div>
+                
+                <div
+                onClick={() => (this.setState({
+                  moviePosters: [ ...this.state.moviePosters ].sort(functions.compareReleaseDate),
+                  alphabetical: false,
+                  marvelContainer: 'marvelContainerAZ',
+                  open: false
+                }))}
+                className='asdf'>
+                <i class="fas fa-ticket-alt fa-2x"></i>
+                <p>
+                  Release Date
+                </p>
+                </div>
+
+              </div>
+
+              </CheeseburgerMenu>
+
+              <HamburgerMenu
+              width={30}
+              height={20}
+              isOpen={this.state.open}
+              menuClicked={this.openMenu.bind(this)}
+              color='white'
+              animationDuration={0.5}
+              />
+              </div>
+              :
+              null
+            }
+
+              <button className='a-z'
+              onClick={() => (this.setState({
+                moviePosters: [ ...this.state.moviePosters ].sort(functions.compareAlphabetically),
+                alphabetical: true,
+                marvelContainer: 'marvelContainerAZ'
+              }))}
+              >
+                A-Z
+
+              </button>
+
+              <button className='popular'
+              onClick={() => (this.setState({
+                moviePosters: [ ...this.state.moviePosters ].sort(functions.comparePopularity),
+                alphabetical: false,
+                marvelContainer: 'marvelContainerAZ'
+              }))}
+              >
+                Popular
+              </button>
+
+              <button className='topRated'
+              onClick={() => (this.setState({
+                moviePosters: [ ...this.state.moviePosters ].sort(functions.compareRating),
+                alphabetical: false,
+                marvelContainer: 'marvelContainerAZ'
+              }))}
+              >
+                Top Rated
+              </button>
+              
+              <button className='releaseDate'
+              onClick={() => (this.setState({
+                moviePosters: [ ...this.state.moviePosters ].sort(functions.compareReleaseDate),
+                alphabetical: false,
+                marvelContainer: 'marvelContainerAZ'
+              }))}
+              >
+                Release Date
+              </button>
+            </div>
+            
+            <div className='searchbar'>
+              <input 
+              onChange={(e) => {this.handleChange(e.target.value, 'search')}}
+              value={this.state.search}
+              onKeyPress={this.handleKeyPress}
+              placeholder='Search Movies'
+              />
+              {
+                this.state.keyPress ?
+
+              <Link to='/Search'>
+                {/* <button onClick={this.searchClick}>
+                  Search
+                </button> */}
+              </Link>
+              :
+              <Redirect to='/Search'/>
+              }
+            </div>
+        </div>
+        <div className='marvel-container'>
           <div className="the">The</div>
           <div className="club">Club</div>
           <div className="studios">STUDIO</div>
-          </div>
+        </div>
 
           {
             this.state.alphabetical ?
