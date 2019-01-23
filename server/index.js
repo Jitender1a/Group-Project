@@ -109,7 +109,7 @@ function listFiles(req, response) {
     const auth = req.app.get('auth')
     const drive = google.drive({version: 'v3', auth});
     drive.files.list({
-      pageSize: 250
+      pageSize: 40
       ,
       fields: 'nextPageToken, files(id, name)',
     }, (err, res) => {
