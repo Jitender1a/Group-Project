@@ -428,7 +428,7 @@ class Movies extends Component {
             </div>
         </div>
         <div className='marvel-container'>
-          <div className="the">Le</div>
+          <div className="the">The</div>
           <div className="club">Club</div>
           <div className="studios">STUDIO</div>
         </div>
