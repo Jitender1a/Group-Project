@@ -1,7 +1,7 @@
 module.exports = {
     movieYear: (str) => {
         let noUnderScores = str.replace(/_/g, ' ')
-        let noFileFormat = noUnderScores.replace(/.mp4|.mkv/g, '')
+        let noFileFormat = noUnderScores.replace(/.mp4|.mkv|.avi/g, '')
         let year = noFileFormat.replace(/[^0-9]/ig, '')
         let years = [] 
         years.push(year)
@@ -10,7 +10,7 @@ module.exports = {
 
     movieTitles: (str) => {
         let noUnderScores = str.replace(/_/g, ' ')
-        let noFileFormat = noUnderScores.replace(/.mp4|.mkv/g, '')
+        let noFileFormat = noUnderScores.replace(/.mp4|.mkv|.avi/g, '')
         let queryString = noFileFormat.replace(/[0-9]|[()]/ig, '')
         let noSpaces = queryString.replace(/ /g, '%20')
         let titles = []
