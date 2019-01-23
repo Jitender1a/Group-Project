@@ -30,6 +30,7 @@ massive(CONNECTION_STRING).then(db => {
 })
 
 
+app.use( express.static( `${__dirname}/../build` ) );
 
 // If modifying these scopes, delete token.json.
 const SCOPES = ['https://www.googleapis.com/auth/drive'];
@@ -108,7 +109,7 @@ function listFiles(req, response) {
     const auth = req.app.get('auth')
     const drive = google.drive({version: 'v3', auth});
     drive.files.list({
-      pageSize: 50,
+      pageSize: 40,
       fields: 'nextPageToken, files(id, name)',
     }, (err, res) => {
       if (err) return console.log('The API returned an error: ' + err);

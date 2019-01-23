@@ -6,9 +6,14 @@
     justify-content: space-between;
     align-items: center;
     background-color: rgb(41, 44, 51);
+    border-bottom-left-radius: 20px 10%;
+    border-bottom-right-radius: 20px 10%;
     position: fixed;
     z-index: 10;
     box-shadow: 3px 5px 10px #000;
+    /* background-image:url("https://www.desktopbackground.org/download/2560x1440/2015/12/23/1062154_top-hd-chalk-board-wallpapers_3600x3600_h.jpg");
+    background-size: cover; */
+    /* background-image: linear-gradient(#C35910 20%, #FF9D29 80%, #C35910); */
     /* margin-right: 6%; */
 }
 
