@@ -63,9 +63,14 @@ class Movies extends Component {
         this.updateWidth()
         window.addEventListener('resize', this.updateWidth.bind(this))
         Axios.get('/files').then(res => {
+          // console.log(res)
           this.setState({
             movies: res.data,
           })
+          let noFolders = this.state.movies.filter(file => {
+            return file.name !== 'Movies'
+          })
+          console.log(noFolders)
           let years = this.state.movies.map(movie => {
             return functions.movieYear(movie.name)
           })
@@ -100,8 +105,9 @@ class Movies extends Component {
             let noSpaces = noDate.replace(/ /g, '%20')
             // console.log('4', noSpaces)
             let year = noFileFormat.replace(/[^0-9]/ig, '')
-            return Axios.get(`https://api.themoviedb.org/3/search/movie?year=${year}&include_adult=false&page=1&query=${noSpaces}&language=en-US&api_key=${TMDB_api_key.tmdb}`).then(res => {
-              console.log(res.data.results[0])
+            return Axios.get(`https://api.themoviedb.org/3/search/movie?year=${year}&include_adult=false&page=1&query=${noSpaces}&language=en-US&api_key=${TMDB_api_key.tmdb}`)
+              .then(res => {
+                console.log(res.data.results[0])
                 let moviePosters = []
                 moviePosters.push({
                   poster: `https://image.tmdb.org/t/p/original${res.data.results[0].poster_path}`,
@@ -116,6 +122,7 @@ class Movies extends Component {
               })
           })
           Promise.all(posters).then(res => {
+            // console.log(res.data)
             let posters = res.map(data => {
               return {
                 poster: data[0].poster,
