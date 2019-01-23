@@ -30,6 +30,7 @@ massive(CONNECTION_STRING).then(db => {
 })
 
 
+app.use( express.static( `${__dirname}/../build` ) );
 
 // If modifying these scopes, delete token.json.
 const SCOPES = ['https://www.googleapis.com/auth/drive'];
