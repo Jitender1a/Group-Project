@@ -313,7 +313,7 @@ class Movies extends Component {
                 className='asdf'>
                   <i class="fas fa-fire fa-2x"></i>
                   <p>
-                  Popular
+                  Trending
                 </p>
                 </div>
                 
@@ -383,7 +383,7 @@ class Movies extends Component {
                 marvelContainer: 'marvelContainerAZ'
               }))}
               >
-                Popular
+                Trending
               </button>
 
               <button className='topRated'
