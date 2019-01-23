@@ -299,7 +299,6 @@ class Movies extends Component {
                   <i class="fas fa-th-large fa-2x"></i>
                   <p>
                     A-Z
-
                   </p>
                 </div>
                 
@@ -373,7 +372,6 @@ class Movies extends Component {
               }))}
               >
                 A-Z
-
               </button>
 
               <button className='popular'
