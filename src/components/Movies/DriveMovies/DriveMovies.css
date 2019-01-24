@@ -88,13 +88,25 @@ body {
 }
 
 .button-container button:hover {
-    color: #d4d5d6;
+    color: #16aaff;
     transform: scale(1.05);
     /* border: #fff solid .01px */
 }
 
+.searchbar {
+    position: relative;
+}
+
+.searchbar i {
+    color: #1098e7;
+    text-shadow: 3px 5px 10px rgb(117, 117, 117);
+    position: absolute;
+    top: 14px;
+    left: 15px;
+}
+
 .searchbar input {
-    border-radius: 3px;
+    /* border-radius: 3px; */
     /* margin-left: 20px; */
     /* background-image: linear-gradient(to right, #5f6875, #353a42); */
     background-color: rgb(230, 230, 230);
@@ -103,8 +115,12 @@ body {
     /* font-family: 'Amatic SC', cursive; */
     font-size: 15px;
     margin: 8px 6px;
-    padding: 5px 14px;
+    padding: 5px 5px 5px 32px;
     box-shadow: 3px 5px 10px #000;
+    border-top-left-radius: 20px 7%;
+    border-top-right-radius: 20px 7%;
+    border-bottom-left-radius: 20px 7%;
+    border-bottom-right-radius: 20px 7%;
 }
 
 
@@ -180,7 +196,7 @@ body {
 }
 
 .club { 
-  border: solid 1px rgb(230, 230, 230);
+  border: solid 1.3px #1098e7;
   border-radius: 15px;
   box-shadow: 3px 5px 10px #000;
   padding: 8px 4px 0 0;
@@ -196,13 +212,14 @@ body {
   /* position: absolute; */
   z-index: 1;
   margin-bottom: 50px;
+  
 }
 
 .the { 
     /* border: solid 1px rgb(230, 230, 230); */
   /* box-shadow: 3px 5px 10px #000; */
   top: 35px;
-  padding: 8px 4px 0 0;
+  padding: 8px 22px 0 0;
   margin: auto auto;
   text-align: center;
   color: rgb(230, 230, 230); 
@@ -221,7 +238,7 @@ body {
   animation: zoomOut 9s ease-in-out infinite;
   -webkit-animation: zoomOut 9s ease-in-out infinite ;
   font-weight: bolder;
-  color: #fff;
+  color: #16aaff;
   letter-spacing: 67px;
   text-align: center;
   position: relative;
@@ -242,8 +259,10 @@ body {
 }
 
 .alphabetical h1 {
+    /* font-family: "Rock Salt", sans-serif; */
     color: white;
-    font-size: 400%;
+    font-size: 300%;
+    text-shadow: 3px 5px 10px #000;
 }
 
 .letters {

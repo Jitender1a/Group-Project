@@ -407,6 +407,10 @@ class Movies extends Component {
             </div>
             
             <div className='searchbar'>
+              <i class="fas fa-search"
+              onChange={(e) => {this.handleChange(e.target.value, 'search')}}
+              value={this.state.search}
+              onKeyPress={this.handleKeyPress}/>
               <input 
               onChange={(e) => {this.handleChange(e.target.value, 'search')}}
               value={this.state.search}
@@ -427,7 +431,7 @@ class Movies extends Component {
             </div>
         </div>
         <div className='marvel-container'>
-          <div className="the">The</div>
+          <div className="the">Le</div>
           <div className="club">Club</div>
           <div className="studios">STUDIO</div>
         </div>
