@@ -19,7 +19,7 @@
 
 .searchS{
     text-align: center;
-    color: white;
+    color: rgb(230, 230, 230);
     font-size: 50px;
     
 }
@@ -27,7 +27,7 @@
 .LinkDiv{
     margin-top: 3%;
     text-align: center;
-    border: 1px solid white; 
+    border: 1px solid rgb(230, 230, 230); 
     opacity: .9;
     width: 15%;
     margin-left: 42%;
@@ -43,29 +43,29 @@
 
 .linkHome{
     text-decoration: none;
-    color: white;
+    color: rgb(230, 230, 230);
     font-size: 16px;
 }
 
 .exact{
     margin-top: 2%;
     text-align: center;
-    color: white;
+    color: rgb(230, 230, 230);
 }
 
 .requestText {
     margin-top: 2%;
     text-align: center;
-    color: white;
+    color: rgb(230, 230, 230);
     font-size: 32px;
 }
 
 .requestButton button{
     text-align: center;
     font-size: 16px;
-    color: white;
+    color: rgb(230, 230, 230);
     background-color: black;
-    border: 1px solid white;
+    border: 1px solid rgb(230, 230, 230);
     padding: 10px;
     margin: auto;
     display: block;
@@ -75,6 +75,6 @@
 }
 
 #request button{
-    color: white;
+    color: rgb(230, 230, 230);
     font-size: 16px;
 }

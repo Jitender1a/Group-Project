@@ -80,7 +80,7 @@ class Search extends Component {
                     Movie Not Available
                </div>
                <div className='exact'>
-                   Please Make Sure Spelling Is Exact
+                   (Please Make Sure Spelling Is Exact)
                </div>
                <div className='LinkDiv'>
                <Link className='linkHome'to='/DriveMovies'>Return Home</Link>
