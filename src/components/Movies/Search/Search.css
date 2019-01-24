@@ -73,3 +73,8 @@
     outline: none;
     cursor: pointer;
 }
+
+#request button{
+    color: white;
+    font-size: 16px;
+}
