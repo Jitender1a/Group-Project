@@ -271,6 +271,7 @@ class Movies extends Component {
       
   render() {
     // console.log(screen)
+    console.log(this.state.moviePosters)
     return (
       <div className='drivemovies'>
         <div className='toolbar-container'>

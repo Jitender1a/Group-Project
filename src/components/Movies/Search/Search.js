@@ -85,7 +85,7 @@ class Search extends Component {
                <div className='LinkDiv'>
                <Link className='linkHome'to='/DriveMovies'>Return Home</Link>
                </div>
-               <div className='requestButton'>
+               <div className='LinkDiv' id='request'>
                 <button 
                 disabled={this.state.disabled}
                 onClick={this.handleClick}
