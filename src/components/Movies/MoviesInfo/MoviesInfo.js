@@ -54,7 +54,7 @@ class MoviesInfo extends Component {
             <div className='textContainer'>
                 <div className='movieTitle'>
                     <div>
-                        <p>{movieInfo.title}<small className='small'>{` (${year})`}</small></p>
+                        {movieInfo.title}
                     </div>
                     {/* {`${movieInfo.title} (${year})`}<br/> */}
                 </div>
