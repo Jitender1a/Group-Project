@@ -5,35 +5,37 @@
     visibility: hidden;
 }
 
-
-.searchS::before {
-    display: block; 
-    content: " "; 
-    height: 9vh; 
-    visibility: hidden;
+.search {
+    background-color: #1e2126;
+    width: 100vw;
+    height: 100vh;
 }
 
-.paddingN{
-    margin-top: 10%;
-}
-
-.searchS{
+.title {
+    margin-top: 140px;
     text-align: center;
-    color: white;
+    color: rgb(230, 230, 230);
     font-size: 50px;
+    text-shadow: 3px 5px 10px #000;
     
 }
 
-.LinkDiv{
+.returnHome {
     margin-top: 3%;
     text-align: center;
-    border: 1px solid white; 
+    border: 1px solid #1098e7; 
     opacity: .9;
     width: 15%;
     margin-left: 42%;
     transition: transform .9s;
     padding: 8px;
     margin-bottom: 24px;
+    border-top-left-radius: 20px 7%;
+    border-top-right-radius: 20px 7%;
+    border-bottom-left-radius: 20px 7%;
+    border-bottom-right-radius: 20px 7%;
+    text-shadow: 3px 5px 10px #000;
+    box-shadow: 3px 5px 10px #000;
 }
 
 /* .LinkDiv:hover{
@@ -41,31 +43,32 @@
     border-color: grey;
 } */
 
-.linkHome{
+.linkHome {
     text-decoration: none;
-    color: white;
+    color: rgb(230, 230, 230);
     font-size: 16px;
 }
 
-.exact{
+.exact {
     margin-top: 2%;
     text-align: center;
-    color: white;
+    color: gray;
+    text-shadow: 3px 5px 10px #000;
 }
 
 .requestText {
     margin-top: 2%;
     text-align: center;
-    color: white;
+    color: rgb(230, 230, 230);
     font-size: 32px;
 }
 
 .requestButton button{
     text-align: center;
     font-size: 16px;
-    color: white;
+    color: rgb(230, 230, 230);
     background-color: black;
-    border: 1px solid white;
+    border: 1px solid rgb(230, 230, 230);
     padding: 10px;
     margin: auto;
     display: block;
@@ -81,12 +84,18 @@
 }
 
 #request p{
-    color: white;
+    color: rgb(230, 230, 230);
+    text-shadow: 3px 5px 10px #000;
     font-size: 16px;
     background-color: none;
-    border: 1px solid white;
+    border: 1px solid #1098e7;
     width: 15%;
     display: flex;
     justify-content: center;
     padding: 8px;
+    border-top-left-radius: 20px 7%;
+    border-top-right-radius: 20px 7%;
+    border-bottom-left-radius: 20px 7%;
+    border-bottom-right-radius: 20px 7%;
+    box-shadow: 3px 5px 10px #000;
 }

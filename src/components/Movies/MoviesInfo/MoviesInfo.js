@@ -60,11 +60,13 @@ class MoviesInfo extends Component {
                 </div>
 
                 <div className='rating'>
-                    <div className='imdb'>
-                        { `IMDb ${movieInfo.vote_average}` }
-                    </div> 
-                    <div className='imdb'>
-                        { `Release Date: ${movieInfo.release_date}`}
+                    <div className='container'>
+                        <div className='imdb'>IMDb:</div> 
+                        {movieInfo.vote_average}
+                    </div>
+                    <div className='container'>
+                        <div className='imdb'>Release Date:</div>
+                        {movieInfo.release_date}
                     </div>
                     {/* <img width = "55px" height = "34px" src='http://pluspng.com/img-png/png-hd-icons-1080-1080p-full-hd-icon-icon-512.png' alt=""/> */}
                 </div>

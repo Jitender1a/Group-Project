@@ -14,10 +14,8 @@
   align-items: center;
 }
 
-
-
 .loginPage{
-    border: solid white;
+    border: solid #1098e7;
     color: white;
     opacity: .7;
     text-align: center;
@@ -44,7 +42,7 @@
   
   
   .LoginButton{
-    margin-top: 5px;
+    margin-top: 3%;
     font-size: 13.5px;
     -webkit-transition-duration: 0.4s;
     transition-duration: 0.4s;
