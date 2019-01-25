@@ -55,7 +55,7 @@ body {
 .asdf {
     display: flex;
     align-items: center;
-    border: 1px solid gray;
+    border: 1px solid #1098e7;
     margin-bottom: 10px;
     border-radius: 8px;
     padding-left: 16px;
@@ -294,9 +294,9 @@ body {
         border: none;
         font-size: 15px;
         margin: 8px 6px;
-        padding: 5px 14px;
+        padding: 5px 5px 5px 32px;
         box-shadow: 3px 5px 10px #000;
-        width: 68vw;
+        width: 65.5vw;
     }
     .poster-container{
         margin: 5px 0;
@@ -444,6 +444,7 @@ body {
         font-size: 1.8em; 
         line-height: .80;
         margin-bottom: 0;
+        padding: 4px 12px 0 0;
     }
     .studios{
         margin: 0 0 0 0;
