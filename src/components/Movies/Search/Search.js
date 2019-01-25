@@ -74,29 +74,29 @@ class Search extends Component {
         let index = this.state.posters.indexOf(this.state.poster)
         if(index === -1){
             return (
-            <div>
-               <div className='searchS'>
-               <div className='paddingN'></div>
-                    Movie Not Available
-               </div>
-               <div className='exact'>
-                   Please Make Sure Spelling Is Exact
-               </div>
-               <div className='LinkDiv'>
-               <Link className='linkHome'to='/DriveMovies'>Return Home</Link>
-               </div>
-               <div  id='request'
-               disabled={this.state.disabled}
-               onClick={this.handleClick}
-               >
-                <p>
-                Request Movie
-                </p>
-               </div>
-               <div className='requestText'>
-                {this.state.request}
-               </div>
-            </div>
+                <div className='search'>
+                    <div className='title'>
+                        Movie Not Available :(
+                    </div>
+                    <div className='exact'>
+                        (Spelling Must Be An Exact Match)
+                    </div>
+                    <div className='sideBySide'>
+                        <div className='returnHome'>
+                            <Link className='linkHome'to='/DriveMovies'>Return Home</Link>
+                        </div>
+                        <div id='request'
+                            disabled={this.state.disabled}
+                            onClick={this.handleClick}>
+                            <p>
+                            Request Movie
+                            </p>
+                        </div>
+                    </div>
+                    <div className='requestText'>
+                        {this.state.request}
+                    </div>
+                </div>
             )
         } else { 
             return (
