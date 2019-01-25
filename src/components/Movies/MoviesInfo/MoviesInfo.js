@@ -26,7 +26,8 @@ class MoviesInfo extends Component {
 
  render() {
      let { movieInfo } = this.state
-     console.log(movieInfo)
+    const year = typeof movieInfo.release_date === 'string' ? movieInfo.release_date.split('-')[0] : ''
+    console.log(year)
    return (
      <div className='moviesContainer'>
         <div className='backdrop'>
@@ -52,7 +53,10 @@ class MoviesInfo extends Component {
 
             <div className='textContainer'>
                 <div className='movieTitle'>
-                    {movieInfo.title}<br/>
+                    <div>
+                        <p>{movieInfo.title}<small className='small'>{` (${year})`}</small></p>
+                    </div>
+                    {/* {`${movieInfo.title} (${year})`}<br/> */}
                 </div>
 
                 <div className='rating'>

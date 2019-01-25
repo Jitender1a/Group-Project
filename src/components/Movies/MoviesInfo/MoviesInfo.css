@@ -63,11 +63,12 @@
     height: auto;
 } */
 
+
 .poster{
     position: absolute;
     top: 19vh;
     bottom: 0;
-    left: 8vw;
+    left: 7vw;
     right: 0;
     border-radius: 5px;
     z-index: 1;
@@ -139,18 +140,30 @@
 .movieTitle {
     /* font-family: 'Lato', sans-serif; */
     /* font-family: 'Homenaje', sans-serif; */
+    display: flex;
     color: rgb(230, 230, 230);
-    font-size: 5vw;
-    position: relative;
+    font-size: 4vw;
+    /* position: relative; */
     justify-content: center;
     text-shadow: 3px 5px 10px #000;
     border-bottom: rgb(230, 230, 230);
-    margin: 0 20px;
+    /* margin: 0 20px; */
+    align-items: center;
     /* margin:auto; */
     /* font-weight: 500; */
     /* top:-400px; */
     /* margin-left: 40%; */
     /* padding-bottom: 0px; */
+    height: 50px;
+    /* text-overflow: ellipsis; */
+    /* width: 500px; */
+    margin-bottom: 12%;
+}
+
+.small {
+    font-size: 2vw;
+    margin-left: 1vw;
+
 }
 
 @media(max-width:500px){
@@ -169,7 +182,7 @@
     margin-left: 7%;
     margin-right: 7%;
     margin-top: 10px;
-    margin-bottom: 20px;
+    margin-bottom: 32px;
 
     /* text-align: center; */
     /* top: -950px; */
@@ -216,6 +229,7 @@
     /* padding-bottom: 0px; */
     /* margin-right: 9%; */
   }
+
 
   @media(max-width:500px){
     .description{
